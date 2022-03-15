@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="pt" xml:lang="pt">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 7 Fazendo mapas | Geodados: uma introdução gentil</title>
+  <meta name="description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 7 Fazendo mapas | Geodados: uma introdução gentil" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="escola-de-dados.github.io/GIS-curriculum/" />
+  <meta property="og:image" content="escola-de-dados.github.io/GIS-curriculum//media/cover/cover.jpg" />
+  <meta property="og:description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="github-repo" content="escola-de-dados/GIS-curriculum" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 7 Fazendo mapas | Geodados: uma introdução gentil" />
+  
+  <meta name="twitter:description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="twitter:image" content="escola-de-dados.github.io/GIS-curriculum//media/cover/cover.jpg" />
+
+<meta name="author" content="Ben Hur Pintor, Ketty Adoch, Codrina Maria Ilie" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="camadas-de-estilo.html"/>
+<link rel="next" href="atributos-da-camada.html"/>
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Geodados: uma introdução gentil</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Edite esse livro! ;)<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#créditos"><i class="fa fa-check"></i><b>1.1</b> Créditos<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conjuntos-de-dados"><i class="fa fa-check"></i><b>1.2</b> Conjuntos de dados<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html"><i class="fa fa-check"></i><b>2</b> Introdução suave a conceitos de GIS<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#mapas-e-coordenadas"><i class="fa fa-check"></i><b>2.1</b> Mapas e coordenadas<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#projeções-cartográficas"><i class="fa fa-check"></i><b>2.2</b> Projeções cartográficas<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#sistemas-de-referência-de-coordenadas"><i class="fa fa-check"></i><b>2.3</b> Sistemas de referência de coordenadas<span></span></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#quiz"><i class="fa fa-check"></i><b>2.3.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#tipos-de-dados-espaciais"><i class="fa fa-check"></i><b>2.4</b> Tipos de dados espaciais<span></span></a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#dados-raster"><i class="fa fa-check"></i><b>2.4.1</b> Dados raster<span></span></a></li>
+<li class="chapter" data-level="2.4.2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#dados-vetoriais"><i class="fa fa-check"></i><b>2.4.2</b> Dados vetoriais<span></span></a></li>
+<li class="chapter" data-level="2.4.3" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#quiz-1"><i class="fa fa-check"></i><b>2.4.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#sig"><i class="fa fa-check"></i><b>2.5</b> SIG<span></span></a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#quiz-2"><i class="fa fa-check"></i><b>2.5.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#foss4g"><i class="fa fa-check"></i><b>2.6</b> FOSS4G<span></span></a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#software-grátis"><i class="fa fa-check"></i><b>2.6.1</b> Software grátis<span></span></a></li>
+<li class="chapter" data-level="2.6.2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#código-aberto"><i class="fa fa-check"></i><b>2.6.2</b> Código aberto<span></span></a></li>
+<li class="chapter" data-level="2.6.3" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#osgeo"><i class="fa fa-check"></i><b>2.6.3</b> OSGeo<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#se-você-quiser-ir-mais-longe"><i class="fa fa-check"></i><b>2.7</b> Se você quiser ir mais longe<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html"><i class="fa fa-check"></i><b>3</b> Introdução ao QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#introdução-ao-qgis-e-à-interface-do-qgis"><i class="fa fa-check"></i><b>3.1</b> Introdução ao QGIS e à interface do QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#o-que-é-o-qgis"><i class="fa fa-check"></i><b>3.1.1</b> O que é o QGIS<span></span></a></li>
+<li class="chapter" data-level="3.1.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#ciclo-de-lançamento-e-versões"><i class="fa fa-check"></i><b>3.1.2</b> Ciclo de lançamento e versões<span></span></a></li>
+<li class="chapter" data-level="3.1.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#exemplos-de-mapas-qgis"><i class="fa fa-check"></i><b>3.1.3</b> Exemplos de mapas QGIS<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#instalando-o-qgis"><i class="fa fa-check"></i><b>3.2</b> Instalando o QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#partes-da-interface-do-qgis"><i class="fa fa-check"></i><b>3.2.1</b> Partes da interface do QGIS<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorialexercício-mudando-a-aparência-e-layout-da-interface-qgis"><i class="fa fa-check"></i><b>3.2.2</b> Tutorial/Exercício: Mudando a aparência e layout da interface QGIS<span></span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#quiz-3"><i class="fa fa-check"></i><b>3.2.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#complementos-qgis"><i class="fa fa-check"></i><b>3.3</b> Complementos QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorialexercício-instalando-um-complemento-qgis"><i class="fa fa-check"></i><b>3.3.1</b> Tutorial/Exercício: Instalando um complemento QGIS<span></span></a></li>
+<li class="chapter" data-level="3.3.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#quiz-4"><i class="fa fa-check"></i><b>3.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#configurações-qgis"><i class="fa fa-check"></i><b>3.4</b> Configurações QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorialexercício-criando-um-perfil-de-usuário"><i class="fa fa-check"></i><b>3.4.1</b> Tutorial/Exercício: Criando um perfil de usuário<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#quiz-5"><i class="fa fa-check"></i><b>3.4.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#formatos-de-arquivo-do-qgis"><i class="fa fa-check"></i><b>3.5</b> Formatos de arquivo do QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#arquivo-de-projeto-qgis-qgs-qgz"><i class="fa fa-check"></i><b>3.5.1</b> Arquivo de projeto QGIS (QGS / QGZ)<span></span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#definição-da-camada-qgis-qlr"><i class="fa fa-check"></i><b>3.5.2</b> Definição da camada QGIS (QLR)<span></span></a></li>
+<li class="chapter" data-level="3.5.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#arquivo-de-estilo-qgis-qml"><i class="fa fa-check"></i><b>3.5.3</b> Arquivo de estilo QGIS (QML)<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#se-você-quiser-ir-mais-longe-1"><i class="fa fa-check"></i><b>3.6</b> Se você quiser ir mais longe<span></span></a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#para-praticar-suas-novas-habilidades-tente"><i class="fa fa-check"></i><b>3.6.1</b> Para praticar suas novas habilidades, tente…<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html"><i class="fa fa-check"></i><b>4</b> Camadas no QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-dados-formatos-de-arquivo-o-painel-do-navegador-e-o-painel-de-camadas"><i class="fa fa-check"></i><b>4.1</b> Tipos de dados, formatos de arquivo, o painel do navegador e o painel de camadas<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-dados-e-formatos-de-arquivo-comuns"><i class="fa fa-check"></i><b>4.1.1</b> Tipos de dados e formatos de arquivo comuns<span></span></a></li>
+<li class="chapter" data-level="4.1.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-fontes-de-dados"><i class="fa fa-check"></i><b>4.1.2</b> Tipos de fontes de dados<span></span></a></li>
+<li class="chapter" data-level="4.1.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregando-camadas-no-qgis"><i class="fa fa-check"></i><b>4.1.3</b> Carregando camadas no QGIS<span></span></a></li>
+<li class="chapter" data-level="4.1.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-painel-do-navegador"><i class="fa fa-check"></i><b>4.1.4</b> O painel do navegador<span></span></a></li>
+<li class="chapter" data-level="4.1.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-painel-de-camadas"><i class="fa fa-check"></i><b>4.1.5</b> O painel de camadas<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#propriedades-da-camada"><i class="fa fa-check"></i><b>4.2</b> Propriedades da camada<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#metadados-geoespaciais"><i class="fa fa-check"></i><b>4.3</b> Metadados geoespaciais<span></span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tutorialexercício-adicionando-metadados"><i class="fa fa-check"></i><b>4.3.1</b> Tutorial/Exercício: Adicionando metadados<span></span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#quiz-6"><i class="fa fa-check"></i><b>4.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-gerenciador-de-fonte-de-dados-e-conexão-com-serviços-remotos"><i class="fa fa-check"></i><b>4.4</b> O gerenciador de fonte de dados e conexão com serviços remotos<span></span></a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-gerenciador-de-fonte-de-dados"><i class="fa fa-check"></i><b>4.4.1</b> O gerenciador de fonte de dados<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#conectando-qgis-a-serviços-remotos"><i class="fa fa-check"></i><b>4.4.2</b> Conectando QGIS a serviços remotos<span></span></a></li>
+<li class="chapter" data-level="4.4.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#quiz-7"><i class="fa fa-check"></i><b>4.4.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exportando-camadas-camadas-na-memória-temporárias-e-camadas-virtuais"><i class="fa fa-check"></i><b>4.5</b> Exportando camadas, camadas na memória (temporárias) e camadas virtuais<span></span></a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exportando-camadas-do-qgis"><i class="fa fa-check"></i><b>4.5.1</b> Exportando camadas do QGIS<span></span></a></li>
+<li class="chapter" data-level="4.5.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#camadas-na-memória"><i class="fa fa-check"></i><b>4.5.2</b> Camadas na memória<span></span></a></li>
+<li class="chapter" data-level="4.5.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#camadas-virtuais"><i class="fa fa-check"></i><b>4.5.3</b> Camadas virtuais<span></span></a></li>
+<li class="chapter" data-level="4.5.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#quiz-8"><i class="fa fa-check"></i><b>4.5.4</b> Quiz<span></span></a></li>
+<li class="chapter" data-level="4.5.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#se-você-quiser-ir-mais-longe-2"><i class="fa fa-check"></i><b>4.5.5</b> Se você quiser ir mais longe<span></span></a></li>
+<li class="chapter" data-level="4.5.6" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exercíciotutorial-camadas-virtuais"><i class="fa fa-check"></i><b>4.5.6</b> Exercício/Tutorial: Camadas virtuais<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#para-praticar-suas-novas-habilidades-tente-1"><i class="fa fa-check"></i><b>4.6</b> Para praticar suas novas habilidades, tente…<span></span></a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregar-rasters-e-vetores-encontrados-na-internet"><i class="fa fa-check"></i><b>4.6.1</b> Carregar rasters e vetores encontrados na internet<span></span></a></li>
+<li class="chapter" data-level="4.6.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregar-uma-planilha-no-qgis-usando-o-plugin-spreadsheet-layers"><i class="fa fa-check"></i><b>4.6.2</b> Carregar uma planilha no QGIS usando o plugin Spreadsheet Layers<span></span></a></li>
+<li class="chapter" data-level="4.6.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#dicas"><i class="fa fa-check"></i><b>4.6.3</b> Dicas<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><i class="fa fa-check"></i><b>5</b> OSM e a camada de assentamentos de alta resolução<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#dados-do-osm"><i class="fa fa-check"></i><b>5.1</b> Dados do OSM<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#o-que-é-osm"><i class="fa fa-check"></i><b>5.1.1</b> O que é OSM?<span></span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#onde-o-osm-é-usado"><i class="fa fa-check"></i><b>5.1.2</b> Onde o OSM é usado?<span></span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#como-o-osm-pode-ser-usado-no-qgis"><i class="fa fa-check"></i><b>5.1.3</b> Como o OSM pode ser usado no QGIS?<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#os-dados-da-camada-de-assentamentos-de-alta-resolução-hrsl"><i class="fa fa-check"></i><b>5.2</b> Os dados da camada de assentamentos de alta resolução (HRSL)<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#o-que-é-high-resolution-settlement-layer-hrsl-ou-camada-de-assentamentos-de-alta-resolução"><i class="fa fa-check"></i><b>5.2.1</b> O que é High Resolution Settlement Layer (HRSL) ou camada de assentamentos de alta resolução?<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#casos-de-uso-do-hrsl"><i class="fa fa-check"></i><b>5.2.2</b> Casos de uso do HRSL<span></span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#se-você-quiser-ir-além"><i class="fa fa-check"></i><b>5.2.3</b> Se você quiser ir além<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#para-praticar-suas-novas-habilidades-tente-2"><i class="fa fa-check"></i><b>5.3</b> Para praticar suas novas habilidades, tente…<span></span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#carregar-mais-recursos-do-osm-usando-o-plug-in-quickosm"><i class="fa fa-check"></i><b>5.3.1</b> Carregar mais recursos do OSM usando o plug-in QuickOSM<span></span></a></li>
+<li class="chapter" data-level="5.3.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#dicas-1"><i class="fa fa-check"></i><b>5.3.2</b> Dicas<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html"><i class="fa fa-check"></i><b>6</b> Camadas de estilo<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#painéis-guias-e-tipos-de-renderização-principais"><i class="fa fa-check"></i><b>6.1</b> Painéis, guias e tipos de renderização principais<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#painel-de-estilo-da-camada"><i class="fa fa-check"></i><b>6.1.1</b> Painel de estilo da camada<span></span></a></li>
+<li class="chapter" data-level="6.1.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#guia-simbologia-nas-propriedades-das-camadas"><i class="fa fa-check"></i><b>6.1.2</b> Guia simbologia nas propriedades das camadas<span></span></a></li>
+<li class="chapter" data-level="6.1.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#renderização-raster-renderização-de-banda"><i class="fa fa-check"></i><b>6.1.3</b> Renderização raster: renderização de banda<span></span></a></li>
+<li class="chapter" data-level="6.1.4" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#renderização-de-vetor"><i class="fa fa-check"></i><b>6.1.4</b> Renderização de vetor<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#raster-básico-e-simbologia-vetorial"><i class="fa fa-check"></i><b>6.2</b> Raster básico e simbologia vetorial<span></span></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercício-renderização-vetorial"><i class="fa fa-check"></i><b>6.2.1</b> Tutorial/Exercício: Renderização vetorial<span></span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercicio-renderização-raster"><i class="fa fa-check"></i><b>6.2.2</b> Tutorial/Exercicio: Renderização raster<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#modos-de-mesclagem-e-efeitos-de-desenho"><i class="fa fa-check"></i><b>6.3</b> Modos de mesclagem e efeitos de desenho<span></span></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercício"><i class="fa fa-check"></i><b>6.3.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#substituições-definidas-por-dados-e-geradores-de-geometria"><i class="fa fa-check"></i><b>6.4</b> Substituições definidas por dados e geradores de geometria<span></span></a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercício-1"><i class="fa fa-check"></i><b>6.4.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html"><i class="fa fa-check"></i><b>7</b> Fazendo mapas<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#exportando-a-tela-do-mapa"><i class="fa fa-check"></i><b>7.1</b> Exportando a tela do mapa<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#primeiro-método-exportar-a-tela-do-mapa-sem-o-layout-de-impressão"><i class="fa fa-check"></i><b>7.1.1</b> Primeiro método: Exportar a tela do mapa sem o layout de impressão<span></span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#segundo-método-exportar-a-tela-do-mapa-para-a-impressão-layout"><i class="fa fa-check"></i><b>7.1.2</b> Segundo método: Exportar a tela do mapa para a impressão layout<span></span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#quiz-12"><i class="fa fa-check"></i><b>7.1.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#adicionando-e-editando-elementos-do-mapa-ao-layout-de-impressão"><i class="fa fa-check"></i><b>7.2</b> Adicionando e editando elementos do mapa ao layout de impressão<span></span></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#tutorialexercício-2"><i class="fa fa-check"></i><b>7.2.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="7.2.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#quiz-13"><i class="fa fa-check"></i><b>7.2.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#automatizando-a-criação-de-mapas-usando-os-recursos-do-atlas"><i class="fa fa-check"></i><b>7.3</b> Automatizando a criação de mapas usando os recursos do Atlas<span></span></a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#tutorialexercício-3"><i class="fa fa-check"></i><b>7.3.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html"><i class="fa fa-check"></i><b>8</b> Atributos da camada<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#editando-atributos-da-camada"><i class="fa fa-check"></i><b>8.1</b> Editando atributos da camada<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#tutorialexercício-4"><i class="fa fa-check"></i><b>8.1.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="8.1.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#quiz-14"><i class="fa fa-check"></i><b>8.1.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#entender-e-trabalhar-com-dados-de-atributos-consultas-e-análises"><i class="fa fa-check"></i><b>8.2</b> Entender e trabalhar com dados de atributos, consultas e análises<span></span></a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#tutorialexercício-5"><i class="fa fa-check"></i><b>8.2.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="8.2.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#quiz-15"><i class="fa fa-check"></i><b>8.2.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#expressões-de-qgis-avançadas"><i class="fa fa-check"></i><b>8.3</b> Expressões de QGIS avançadas<span></span></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#tutorialexercício-6"><i class="fa fa-check"></i><b>8.3.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="8.3.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#quiz-16"><i class="fa fa-check"></i><b>8.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html"><i class="fa fa-check"></i><b>9</b> Criando e editando camadas<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-uma-nova-camada-geopackage-ou-shapefile"><i class="fa fa-check"></i><b>9.1</b> Criando uma nova camada GeoPackage ou Shapefile<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-uma-nova-camada-geopackage"><i class="fa fa-check"></i><b>9.1.1</b> Criando uma nova camada GeoPackage<span></span></a></li>
+<li class="chapter" data-level="9.1.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-um-novo-shapefile"><i class="fa fa-check"></i><b>9.1.2</b> Criando um novo Shapefile<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#digitalizando-uma-camada-existente"><i class="fa fa-check"></i><b>9.2</b> Digitalizando uma camada existente<span></span></a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#tutorialexercício-7"><i class="fa fa-check"></i><b>9.2.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#georreferenciando-um-mapa-topográfico"><i class="fa fa-check"></i><b>9.3</b> Georreferenciando um mapa topográfico<span></span></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#tutorialexercício-8"><i class="fa fa-check"></i><b>9.3.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="9.3.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#quiz-17"><i class="fa fa-check"></i><b>9.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html"><i class="fa fa-check"></i><b>10</b> Processamento e análise vetorial<span></span></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#o-modelo-de-dados-vetoriais"><i class="fa fa-check"></i><b>10.1</b> O modelo de dados vetoriais<span></span></a></li>
+<li class="chapter" data-level="10.2" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#metadados"><i class="fa fa-check"></i><b>10.2</b> Metadados<span></span></a></li>
+<li class="chapter" data-level="10.3" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#lógica-do-processamento-vetorial"><i class="fa fa-check"></i><b>10.3</b> Lógica do processamento vetorial<span></span></a></li>
+<li class="chapter" data-level="10.4" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#entendendo-seus-dados"><i class="fa fa-check"></i><b>10.4</b> Entendendo seus dados<span></span></a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-1-prepare-seu-ambiente-de-trabalho"><i class="fa fa-check"></i><b>10.4.1</b> Etapa 1: Prepare seu ambiente de trabalho<span></span></a></li>
+<li class="chapter" data-level="10.4.2" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-2-entenda-o-que-você-está-olhando"><i class="fa fa-check"></i><b>10.4.2</b> Etapa 2: Entenda o que você está olhando<span></span></a></li>
+<li class="chapter" data-level="10.4.3" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-3-verificações-básicas-para-encontrar-erros-rapidamente-em-seus-dados"><i class="fa fa-check"></i><b>10.4.3</b> Etapa 3: Verificações básicas para encontrar erros rapidamente em seus dados<span></span></a></li>
+<li class="chapter" data-level="10.4.4" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-4-observe-as-informações-anexadas-aos-pontos-linhas-e-polígonos"><i class="fa fa-check"></i><b>10.4.4</b> Etapa 4: Observe as informações anexadas aos pontos, linhas e polígonos<span></span></a></li>
+<li class="chapter" data-level="10.4.5" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#quiz-18"><i class="fa fa-check"></i><b>10.4.5</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#introdução-ao-processamento-vetorial"><i class="fa fa-check"></i><b>10.5</b> Introdução ao processamento vetorial<span></span></a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#quiz-19"><i class="fa fa-check"></i><b>10.5.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#geoestatística-e-interpolação"><i class="fa fa-check"></i><b>10.6</b> Geoestatística e interpolação<span></span></a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#quiz-20"><i class="fa fa-check"></i><b>10.6.1</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html"><i class="fa fa-check"></i><b>11</b> Processamento e análise raster<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#o-modelo-de-dados"><i class="fa fa-check"></i><b>11.1</b> O modelo de dados<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#racional-do-processamento-raster"><i class="fa fa-check"></i><b>11.2</b> Racional do processamento raster<span></span></a></li>
+<li class="chapter" data-level="11.3" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#entendendo-seus-dados-raster"><i class="fa fa-check"></i><b>11.3</b> Entendendo seus dados raster<span></span></a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#etapa-1-prepare-seu-ambiente-de-trabalho-1"><i class="fa fa-check"></i><b>11.3.1</b> Etapa 1: Prepare seu ambiente de trabalho<span></span></a></li>
+<li class="chapter" data-level="11.3.2" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#etapa-2-entenda-o-que-você-está-olhando-1"><i class="fa fa-check"></i><b>11.3.2</b> Etapa 2: Entenda o que você está olhando<span></span></a></li>
+<li class="chapter" data-level="11.3.3" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#quiz-21"><i class="fa fa-check"></i><b>11.3.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#introdução-ao-trabalho-com-dados-raster"><i class="fa fa-check"></i><b>11.4</b> Introdução ao trabalho com dados raster<span></span></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#quiz-22"><i class="fa fa-check"></i><b>11.4.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#trabalho-com-dados-raster-e-vetoriais"><i class="fa fa-check"></i><b>11.5</b> Trabalho com dados raster e vetoriais<span></span></a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#quiz-23"><i class="fa fa-check"></i><b>11.5.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#referências"><i class="fa fa-check"></i><b>11.6</b> Referências<span></span></a></li>
+<li class="chapter" data-level="11.7" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#notas"><i class="fa fa-check"></i><b>11.7</b> Notas<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="plugins-qgis.html"><a href="plugins-qgis.html"><i class="fa fa-check"></i><b>12</b> Plugins QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#introdução-à-mentalidade-do-plugin"><i class="fa fa-check"></i><b>12.1</b> Introdução à mentalidade do plugin<span></span></a></li>
+<li class="chapter" data-level="12.2" data-path="plugins-qgis.html"><a href="plugins-qgis.html#o-gerenciador-de-plugins"><i class="fa fa-check"></i><b>12.2</b> O gerenciador de plugins<span></span></a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#quiz-24"><i class="fa fa-check"></i><b>12.2.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="plugins-qgis.html"><a href="plugins-qgis.html#alguns-plugins-interessantes"><i class="fa fa-check"></i><b>12.3</b> Alguns plugins interessantes<span></span></a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#discovery"><i class="fa fa-check"></i><b>12.3.1</b> Discovery<span></span></a></li>
+<li class="chapter" data-level="12.3.2" data-path="plugins-qgis.html"><a href="plugins-qgis.html#polygon-divider"><i class="fa fa-check"></i><b>12.3.2</b> Polygon Divider<span></span></a></li>
+<li class="chapter" data-level="12.3.3" data-path="plugins-qgis.html"><a href="plugins-qgis.html#load-them-all"><i class="fa fa-check"></i><b>12.3.3</b> Load Them All<span></span></a></li>
+<li class="chapter" data-level="12.3.4" data-path="plugins-qgis.html"><a href="plugins-qgis.html#raster-tracer"><i class="fa fa-check"></i><b>12.3.4</b> Raster tracer<span></span></a></li>
+<li class="chapter" data-level="12.3.5" data-path="plugins-qgis.html"><a href="plugins-qgis.html#active-fire"><i class="fa fa-check"></i><b>12.3.5</b> Active Fire<span></span></a></li>
+<li class="chapter" data-level="12.3.6" data-path="plugins-qgis.html"><a href="plugins-qgis.html#qgis2web"><i class="fa fa-check"></i><b>12.3.6</b> <span>Qgis2web</span><span></span></a></li>
+<li class="chapter" data-level="12.3.7" data-path="plugins-qgis.html"><a href="plugins-qgis.html#dataplotly"><i class="fa fa-check"></i><b>12.3.7</b> DataPlotly<span></span></a></li>
+<li class="chapter" data-level="12.3.8" data-path="plugins-qgis.html"><a href="plugins-qgis.html#plugin-quickmapservices-openlayers"><i class="fa fa-check"></i><b>12.3.8</b> Plugin QuickMapServices / OpenLayers<span></span></a></li>
+<li class="chapter" data-level="12.3.9" data-path="plugins-qgis.html"><a href="plugins-qgis.html#table2style"><i class="fa fa-check"></i><b>12.3.9</b> Table2Style<span></span></a></li>
+<li class="chapter" data-level="12.3.10" data-path="plugins-qgis.html"><a href="plugins-qgis.html#ors-tools"><i class="fa fa-check"></i><b>12.3.10</b> ORS Tools<span></span></a></li>
+<li class="chapter" data-level="12.3.11" data-path="plugins-qgis.html"><a href="plugins-qgis.html#quiz-25"><i class="fa fa-check"></i><b>12.3.11</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com o bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Geodados: uma introdução gentil</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="fazendo-mapas" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Capitulo 7</span> Fazendo mapas<a href="fazendo-mapas.html#fazendo-mapas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Autor</strong>: Ketty</p>
+<p>Este módulo irá fornecer a você uma visão geral das etapas frequentemente necessárias para elaborar um mapa no QGIS. No final do módulo, os participantes conhecerão os seguintes conceitos:</p>
+<ul>
+<li>Tela do mapa e camadas relacionadas</li>
+<li>O layout de impressão e o layout de impressão</li>
+<li>Elementos e propriedades do mapa</li>
+</ul>
+<p>Além disso, você terá aprendido as seguintes habilidades;</p>
+<ul>
+<li>Usando o layout de impressão para fazer um mapa</li>
+<li>Adicionando elementos do mapa ao mapa</li>
+<li>Gerenciando layouts de impressão diferentes</li>
+</ul>
+<p>Ferramentas e recursos necessários:</p>
+<ul>
+<li>Computador</li>
+<li>Acesso à Internet</li>
+<li>QGIS 3.16 ou posterior</li>
+<li>Camada de limite administrativo <code>rj_capital</code> (dentro de <a href="data/module5/module5.gpkg">module5.gpkg</a>)</li>
+<li><code>rj_clinics</code> (dentro de <a href="data/module5/module5.gpkg">module5.gpkg</a>)</li>
+<li>Unidades Federativas do Brasil, <code>br_ufs</code> (dentro de <a href="data/module5/module5.gpkg">module5.gpkg</a>)</li>
+<li><a href="data/module5/hrsl_rj_capital_populacao.tif">RJ High Resolution Settlement Layer</a></li>
+</ul>
+<p>Pré-requisitos:</p>
+<ul>
+<li>Conhecimento básico de como operar um computador</li>
+<li>Uma compreensão de todos os módulos anteriores</li>
+</ul>
+<p>Recursos adicionais:</p>
+<ul>
+<li>QGIS Map LayOut - <a href="https://docs.qgis.org/3.16/en/docs/training_manual/map_layout/map_layout.html">https://docs.qgis.org/3.16/en/ docs/training_manual/map_layout/map_layout.html</a></li>
+<li>Modelos de layout - <a href="https://layout-hub.github.io/">https://layout-hub.github.io/</a></li>
+<li>Gerenciador de estilos - <a href="https://docs.qgis.org/3.16/en/docs/user_manual/style_library/style_manager.html">https://docs.qgis.org/3.16/en/docs/user_manual/style_library/style_manager.html</a></li>
+<li>Biblioteca de estilos - <a href="https://docs.qgis.org/3.16/en/docs/user_manual/style_library/index.html">https://docs.qgis.org/3.16/en/docs/user_manual/style_library/index.html</a></li>
+</ul>
+<p>Vamos começar com um exemplo:</p>
+<p>Para fazer um mapa, você precisará de um tópico que gostaria de entender melhor, por exemplo ‘Distribuição espacial de clínicas (equipamentos de saúde) no Rio de Janeiro’. Você notará que o tópico fornece um tema para explorar e a localização geográfica. Munido com essas informações e os dados relevantes que permitem que você explore mais a questão, você pode prosseguir para elaborar um mapa.</p>
+<p>Este módulo enfocará os seguintes conceitos-chave de criação de mapas; tela do mapa e camadas relacionadas, o layout de impressão e elementos e propriedades do mapa. Primeiro, aqui estão as definições curtas de cada um:</p>
+<ul>
+<li>a <strong>tela do mapa e camadas relacionadas</strong>: é provavelmente o widget mais importante no QGIS porque mostra o mapa composto de camadas sobrepostas e permite a interação com o mapa e as camadas. Isso é abordado no Módulo 0: Introdução ao QGIS</li>
+<li>o <strong>layout de impressão</strong>: O layout de impressão fornece layout e recursos de impressão. Ele permite que você adicione elementos como o mapa, rótulos de texto, imagens, legendas, barras de escala, formas básicas, setas, tabelas de atributos e quadros HTML. Com o layout de impressão, você pode criar belos mapas e atlas que podem ser impressos ou salvos como um arquivo PDF, uma imagem ou um arquivo SVG. Esta é uma maneira poderosa de compartilhar informações geográficas produzidas com QGIS que podem ser incluídas em relatórios ou publicadas. Você pode salvar o layout como um modelo e carregá-lo novamente em outra sessão. Finalmente, a geração de vários mapas com base em um modelo pode ser feita por meio do gerador de atlas. A imagem abaixo mostra o layout de impressão e a interface do layout de impressão. Esta interface é aberta quando você abre um novo layout de impressão.</li>
+</ul>
+<div class="figure">
+<img src="media/modulo5/print_comp2.png" title="Layout de impressão" alt="" />
+<p class="caption">Layout de impressão</p>
+</div>
+<p>Figura 5.1: Layout de impressão</p>
+<ul>
+<li><strong>elementos e propriedades do mapa</strong>: os mapas contêm muitas informações. A maioria dos mapas terá as cinco seguintes coisas: um título, uma legenda, uma grade, uma rosa dos ventos para indicar a direção e uma escala. O título informa o que está sendo representado no mapa.</li>
+</ul>
+<div id="exportando-a-tela-do-mapa" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Exportando a tela do mapa<a href="fazendo-mapas.html#exportando-a-tela-do-mapa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Neste tutorial, mostraremos duas maneiras de ‘Exportar a tela do mapa’ para o layout de impressão do QGIS. O primeiro método é direto, enquanto o segundo método explora os recursos mais avançados fornecidos pelo layout de impressão.</p>
+<div id="primeiro-método-exportar-a-tela-do-mapa-sem-o-layout-de-impressão" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Primeiro método: Exportar a tela do mapa sem o layout de impressão<a href="fazendo-mapas.html#primeiro-método-exportar-a-tela-do-mapa-sem-o-layout-de-impressão" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>As camadas de dados já devem estar adicionadas à tela do QGIS. As camadas podem então ser estilizadas para comunicar informações em seus dados. Adicione as decorações do mapa clicando em <strong>Exibir &gt; Decorações</strong>. Selecione sua decoração de mapa preferida. Por exemplo, você pode adicionar o rótulo de título, barra de escala e rótulo de direitos autorais. Para cada decoração, você terá que especificar as configurações em uma caixa de diálogo.</li>
+<li>A etapa final é exportar o mapa para o formato de imagem ou PDF. Para fazer isso, clique em <strong>Projeto &gt; Importar/Exportar</strong> e selecione o formato de exportação de sua preferência. A caixa de diálogo de exportação abaixo deve aparecer.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/export-map-canvas-image.png" title="Exportando a tela do mapa como imagem" alt="" />
+<p class="caption">Exportando a tela do mapa como imagem</p>
+</div>
+<div class="figure">
+<img src="media/modulo5/export-map-canvas.png" title="Exportando o mapa" alt="" />
+<p class="caption">Exportando o mapa</p>
+</div>
+<p>Figura 5.2: Exportando o mapa</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Clique em <strong>Salvar</strong>. O mapa na tela do QGIS será salvo como um documento PDF ou imagem. Navegue até o local onde o arquivo foi salvo e agora você pode imprimir ou compartilhar o mapa.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/exported-map-canvas.png" title="Tela do mapa exportada como imagem" alt="" />
+<p class="caption">Tela do mapa exportada como imagem</p>
+</div>
+<p>Figura 5.3: Tela do mapa exportada como imagem</p>
+</div>
+<div id="segundo-método-exportar-a-tela-do-mapa-para-a-impressão-layout" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Segundo método: Exportar a tela do mapa para a impressão layout<a href="fazendo-mapas.html#segundo-método-exportar-a-tela-do-mapa-para-a-impressão-layout" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Neste tutorial, faremos um mapa mostrando a 1.) localização dos centros de saúde e 2.) densidade populacional do Rio de Janeiro. As camadas de dados já devem ser adicionadas à tela do QGIS. As camadas podem então ser estilizadas para comunicar as informações dos seus dados.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/new-print-layout.png" title="Criando novo layout de impressão" alt="" />
+<p class="caption">Criando novo layout de impressão</p>
+</div>
+<p>Figura 5.4: Criando novo layout de impressão</p>
+<ol start="2" style="list-style-type: decimal">
+<li>A tela do mapa agora pode ser exportada para o layout de impressão. Clique no ‘botão novo layout de impressão’ <img src="media/modulo5/newprint_composer.png" title="Novo layout de impressão" alt="Novo layout de impressão" />. Isso pode ser acessado através da barra de ferramentas. Como alternative, acesse usando a barra de menu ‘Projetos’. Uma caixa de diálogo de título será aberta, solicitando que você digite o título do Layout de impressão. Digite ‘Rio de Janeiro’ e clique em OK.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/new-print-layout-name.png" title="Nomeando o layout de impressão" alt="" />
+<p class="caption">Nomeando o layout de impressão</p>
+</div>
+<p>Figura 5.5: Nomeando o layout de impressão</p>
+<ol start="3" style="list-style-type: decimal">
+<li>O layout de impressão será aberto</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/new-print-layout-window.png" title="A janela Layout de impressão" alt="" />
+<p class="caption">A janela Layout de impressão</p>
+</div>
+<p>Figura 5.6: A janela Layout de impressão</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Você notará que a tela do layout de impressão está vazia. Para adicionar o mapa estilizado da tela QGIS, clique no botão ‘Adicionar novo mapa ao layout’<img src="media/modulo5/add_new_map_to_layout.png" title="image_tooltip" alt="Alt_text" />, clique com o botão esquerdo do mouse e desenhe um retângulo no espaço em branco no centro do layout de impressão. O mapa será adicionado. Você acabou de adicionar um mapa para o layout de impressão. Agora é possível adicionar todos os outros elementos do mapa, como título, legenda, grades, etc.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/print-layout-map.png" title="Adicionar mapa ao layout de impressão" alt="" />
+<p class="caption">Adicionar mapa ao layout de impressão</p>
+</div>
+<p>Figura 5.7: Adicionar mapa a Layout de impressão</p>
+</div>
+<div id="quiz-12" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Quiz<a href="fazendo-mapas.html#quiz-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>O que é a tela do mapa QGIS?</p>
+<ol style="list-style-type: lower-alpha">
+<li>mostra o mapa composto de camadas de mapa sobrepostas</li>
+<li>permite interação com o mapa e camadas</li>
+<li>um widget para fazer mapas</li>
+</ol></li>
+<li><p>Qual é a utilidade do layout de impressão?</p>
+<ol style="list-style-type: lower-alpha">
+<li>fornece layout crescente e recursos de impressão</li>
+<li>permite adicionar elementos do mapa</li>
+<li>lidar com a exportação e impressão de mapas</li>
+</ol></li>
+<li><p>Qual dos seguintes não é um elemento do mapa?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Título</li>
+<li>Escala</li>
+<li>Legenda</li>
+<li>Cores e designs</li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="adicionando-e-editando-elementos-do-mapa-ao-layout-de-impressão" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Adicionando e editando elementos do mapa ao layout de impressão<a href="fazendo-mapas.html#adicionando-e-editando-elementos-do-mapa-ao-layout-de-impressão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tutorialexercício-2" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Tutorial/Exercício<a href="fazendo-mapas.html#tutorialexercício-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Agora que o mapa estilizado foi adicionado ao layout de impressão, é hora de adicionar elementos importantes como o título, escala, legenda, grade, metadados etc. para o layout de impressão. A maioria dos botões está localizada à esquerda do layout de impressão.</p>
+<ol style="list-style-type: decimal">
+<li>Clique no botão ‘Adicionar rótulo’ <img src="media/modulo5/add_title.png" title="image_tooltip" alt="Alt_text" />, mantenha pressionado o botão esquerdo do mouse e desenhe um retângulo onde deseja colocar o título do mapa. Digite o título no menu ‘Propriedades principais’ no lado direito do layout de impressão. As propriedades da fonte podem ser alteradas no item de menu ‘Aparência’.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/print-layout-with-title.png" title="Adicione o título do mapa" alt="" />
+<p class="caption">Adicione o título do mapa</p>
+</div>
+<p>Figura 5.8: Adicione o título do mapa</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Em seguida, adicionaremos a legenda e a escala. Uma declaração de atribuição de dados pode ser adicionada usando o botão ‘Adicionar rótulo’. Clique no botão de Adicionar rótulo na barra da esquerda. Siga as mesmas etapas do item 1. acima para adicionar esse elemento ao layout de impressão. Você pode adicionar outros elementos do mapa, mas tome cuidado para que o mapa não fique muito confuso.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/scale-bar.png" title="Barra de escala" alt="" />
+<p class="caption">Barra de escala</p>
+</div>
+<p>Figura 5.9: Adicionar barra de escala ao mapa</p>
+<div class="figure">
+<img src="media/modulo5/legend.png" title="Legenda" alt="" />
+<p class="caption">Legenda</p>
+</div>
+<p>Figura 5.9: Adicionar legenda ao mapa</p>
+<div class="figure">
+<img src="media/modulo5/attribution.png" title="Atribuição" alt="" />
+<p class="caption">Atribuição</p>
+</div>
+<p>Figura 5.10: Adicionar atribuição ao mapa</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Se o layout do mapa estiver satisfatório, você já pode exportar o mapa um PDF, PNG, JPEG ou SVG, pronto para impressão. Lembre-se também de salvar o layout. Todas as funções de salvamento podem ser acessadas através do menu ‘layout’.</p></li>
+<li><p>Salve o mapa como uma imagem usando <strong>Layout &gt; Exportar como imagem</strong> ou clicando no botão <strong>Exportar como imagem</strong> <img src="media/modulo5/export-image-btn.png" title="Exportar mapa como imagem" alt="Exportar mapa como imagem" />. O QGIS irá perguntar a você em qual arquivo salvar o mapa, bem como os parâmetros da imagem.</p></li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/img-parameters.png" title="Parâmetros de imagem" alt="" />
+<p class="caption">Parâmetros de imagem</p>
+</div>
+<p>Figura 5.10: Adicionar atribuição ao mapa</p>
+<div class="figure">
+<img src="media/modulo5/exported-map.png" title="Mapa exportado como img." alt="" />
+<p class="caption">Mapa exportado como img.</p>
+</div>
+<p>Figura 5.11 : Mapa exportado como imagem</p>
+</div>
+<div id="quiz-13" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Quiz<a href="fazendo-mapas.html#quiz-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Em qual das seguintes guias você pode alterar as propriedades dos elementos do mapa?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Composição</li>
+<li>Propriedades do item</li>
+<li>Geração de Atlas</li>
+</ol></li>
+<li><p>Qual é a diferença entre o layout do mapa e o layout de impressão? -<strong><em>O layout do mapa permite que você adicione mapas da tela do mapa, enquanto o layout de impressão permite que você componha seu mapa</em></strong></p></li>
+<li><p>Como você pode adicionar texto de atribuição ao layout do mapa? -<strong><em>Adicione uma caixa de título e digite o texto de atribuição. Observe que a caixa de título permite que você adicione todas as formas de texto ao seu mapa.</em></strong></p></li>
+</ol>
+</div>
+</div>
+<div id="automatizando-a-criação-de-mapas-usando-os-recursos-do-atlas" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Automatizando a criação de mapas usando os recursos do Atlas<a href="fazendo-mapas.html#automatizando-a-criação-de-mapas-usando-os-recursos-do-atlas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tutorialexercício-3" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Tutorial/Exercício<a href="fazendo-mapas.html#tutorialexercício-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se sua organização publica mapas impressos ou on-line, geralmente você precisa criar muitos mapas com o mesmo modelo - geralmente um para cada unidade administrativa ou região de interesse. Criar esses mapas manualmente pode levar muito tempo e, se você quiser atualizá-los regularmente, isso pode se tornar uma tarefa árdua. O QGIS tem uma ferramenta chamada Atlas que pode ajudá-lo a criar um modelo de mapa e publicar facilmente um grande número de mapas para diferentes regiões geográficas. Vamos tomar as diferentes Unidades Federativas do Brasil como exemplo:</p>
+<div class="figure">
+<img src="media/modulo5/atlas-coverage.png" title="Camada de cobertura" alt="" />
+<p class="caption">Camada de cobertura</p>
+</div>
+<p>Figura 5.12: Camada de cobertura</p>
+<div class="figure">
+<img src="media/modulo5/atlas-attr.png" title="Tabela de atributos" alt="" />
+<p class="caption">Tabela de atributos</p>
+</div>
+<p>Figura 5.13: Tabela de atributos</p>
+<ol style="list-style-type: decimal">
+<li><p>Esta camada servirá como camada de cobertura externa, o que significa que o Atlas QGIS irá cirar um mapa para cada uma das feições dessa camada de cobertura. Ao todo, serão gerados 27 mapas.</p></li>
+<li><p>Abra ou crie um novo Layout de impressão e adicione um mapa.</p></li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/atlas-print-layout.png" title="Layout de impressão do Atlas" alt="" />
+<p class="caption">Layout de impressão do Atlas</p>
+</div>
+<p>Figura 5.14: Layout de impressão do Atlas</p>
+<ol start="3" style="list-style-type: decimal">
+<li>No painel direito do Layout de impressão, certifique-se de selecionar o menu <strong>Atlas</strong> e marque a caixa <strong>Gerar um atlas</strong>. Você também pode abrir as Configurações do Atlas usando o botão Configurações do Atlas <img src="media/modulo5/atlas-settings-btn.png" title="Configurações do Atlas" alt="Configurações do Atlas" /> na barra de ferramentas do Atlas.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/generate-atlas.png" title="Geração Atlas" alt="" />
+<p class="caption">Geração Atlas</p>
+</div>
+<p>Figura 5.15: Geração Atlas</p>
+<ol start="3" style="list-style-type: decimal">
+<li>A próxima etapa é escolher a camada de cobertura; A camada de cobertura é a camada de índice usada para criar cada página. Um mapa/página para o Atlas será gerada para cada feição na camada de cobertura. No nosso caso, usar a camada de cobertura <code>br_ufs</code> criará um mapa para cada uma das 27 UFs. O QGIS Atlas altera dinamicamente a extensão da visualização para cada recurso na camada de cobertura. Você pode optar por tornar a camada de cobertura oculta nos mapas que você cria (ou seja, a camada de cobertura não será visível no Layout de Impressão) e selecionar como nomear cada página do Atlas. Você também pode realizar alguma filtragem e classificação da camada de cobertura, se necessário. Para a <strong>Saída</strong>, você pode optar por ter um único arquivo como saída marcando a caixa de seleção <strong>Exportar arquivo único quando possível</strong>. Se desmarcado, você gerará um arquivo diferente por mapa.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/coverage-layer.png" title="Selecionar camada de cobertura" alt="" />
+<p class="caption">Selecionar camada de cobertura</p>
+</div>
+<p>Figura 5.16: Selecionar camada de cobertura</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Agora que definimos a camada de cobertura, devemos dizer ao Layout de impressão para usar o atlas para controlar a extensão dos mapas (área visível no mapa imprimível) que iremos gerar. Na guia <strong>Propriedades do item</strong>, marque a caixa para <strong>Controlado pelo Atlas</strong></li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/atlas-controlled.png" title="Controlado pelo Atlas" alt="" />
+<p class="caption">Controlado pelo Atlas</p>
+</div>
+<p>Figura 5.17: Certifique-se de que a extensão do mapa é controlado pelo Atlas</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Para visualizar seu Atlas, clique no botão Visualizar Atlas <img src="media/modulo5/atlas-preview-btn.png" title="botão Visualizar Atlas" alt="Botão Visualizar Atlas" /> na barra de ferramentas Atlas. Isso mostrará os 27 mapas que você gerou. Use a barra de ferramentas do Atlas <img src="media/modulo5/atlas-toolbar-nav.png" title="Barra de ferramentas do Atlas" alt="Barra de ferramentas do Atlas" /> para navegar pelos mapas do Atlas.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/atlas-preview.png" title="Atlas Preview" alt="" />
+<p class="caption">Atlas Preview</p>
+</div>
+<p>Figura 5.18: Atlas Preview</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Você pode exportar os mapas do Atlas através do botão <strong>Exportar Atlas</strong> <img src="media/modulo5/atlas-export-btn.png" title="Botão Exportar Atlas" alt="Botão Exportar Atlas" /> como imagens ou PDFs. Selecione <strong>Exportar Atlas como imagem</strong>. Você deve gerar 27 mapas, e cada mapa mostrará a extensão de uma das UFs.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo5/atlas-outputs.png" title="Resultado do Atlas" alt="" />
+<p class="caption">Resultado do Atlas</p>
+</div>
+<p>Figura 5.18: Resultado do Atlas</p>
+<ol start="7" style="list-style-type: decimal">
+<li><p><strong>DICA</strong>: Para este exemplo, mapeamos apenas a camada de cobertura. O poder do Atlas é quando mapeamos várias camadas. Por exemplo, temos as clínicas, rede de estradas e dados de densidade populacional para todo o país carregados como camadas no QGIS. Em seguida, gostaríamos de criar um mapa para cada uma das UFs mostrando essas mesmas camadas. Usar o Atlas exigiria que criássemos apenas um modelo de layout e deixássemos o Atlas lidar com a geração dos outros mapas com base na camada de cobertura que usamos.</p></li>
+<li><p><strong>DICA</strong>: Você pode usar as expressões QGIS e substituições definidas por dados para definir os outros elementos do mapa em seu Atlas para que eles também mudem dinamicamente, dependendo da feição da camada de cobertura que está sendo mapeado. Por exemplo, você pode usar uma expressão QGIS chamando o valor do campo NAME_1 em seu rótulo para que ele mude dinamicamente para exibir o valor de NAME_1 para a feição atual que está sendo mapeada.</p></li>
+</ol>
+<p>Para obter mais informações sobre o Atlas QGIS, consulte: <a href="https://www.youtube.com/watch?v=tOnMJBUvEjY">https://www.youtube.com/watch?v=tOnMJBUvEjY</a>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="camadas-de-estilo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="atributos-da-camada.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/escola-de-dados/GIS-curriculum/edit/gh-pages/module05.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ebook-gis.pdf", "ebook-gis.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

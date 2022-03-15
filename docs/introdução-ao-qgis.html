@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="pt" xml:lang="pt">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 3 Introdução ao QGIS | Geodados: uma introdução gentil</title>
+  <meta name="description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 3 Introdução ao QGIS | Geodados: uma introdução gentil" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="escola-de-dados.github.io/GIS-curriculum/" />
+  <meta property="og:image" content="escola-de-dados.github.io/GIS-curriculum//media/cover/cover.jpg" />
+  <meta property="og:description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="github-repo" content="escola-de-dados/GIS-curriculum" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 3 Introdução ao QGIS | Geodados: uma introdução gentil" />
+  
+  <meta name="twitter:description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="twitter:image" content="escola-de-dados.github.io/GIS-curriculum//media/cover/cover.jpg" />
+
+<meta name="author" content="Ben Hur Pintor, Ketty Adoch, Codrina Maria Ilie" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introdução-suave-a-conceitos-de-gis.html"/>
+<link rel="next" href="camadas-no-qgis.html"/>
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Geodados: uma introdução gentil</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Edite esse livro! ;)<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#créditos"><i class="fa fa-check"></i><b>1.1</b> Créditos<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conjuntos-de-dados"><i class="fa fa-check"></i><b>1.2</b> Conjuntos de dados<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html"><i class="fa fa-check"></i><b>2</b> Introdução suave a conceitos de GIS<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#mapas-e-coordenadas"><i class="fa fa-check"></i><b>2.1</b> Mapas e coordenadas<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#projeções-cartográficas"><i class="fa fa-check"></i><b>2.2</b> Projeções cartográficas<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#sistemas-de-referência-de-coordenadas"><i class="fa fa-check"></i><b>2.3</b> Sistemas de referência de coordenadas<span></span></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#quiz"><i class="fa fa-check"></i><b>2.3.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#tipos-de-dados-espaciais"><i class="fa fa-check"></i><b>2.4</b> Tipos de dados espaciais<span></span></a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#dados-raster"><i class="fa fa-check"></i><b>2.4.1</b> Dados raster<span></span></a></li>
+<li class="chapter" data-level="2.4.2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#dados-vetoriais"><i class="fa fa-check"></i><b>2.4.2</b> Dados vetoriais<span></span></a></li>
+<li class="chapter" data-level="2.4.3" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#quiz-1"><i class="fa fa-check"></i><b>2.4.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#sig"><i class="fa fa-check"></i><b>2.5</b> SIG<span></span></a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#quiz-2"><i class="fa fa-check"></i><b>2.5.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#foss4g"><i class="fa fa-check"></i><b>2.6</b> FOSS4G<span></span></a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#software-grátis"><i class="fa fa-check"></i><b>2.6.1</b> Software grátis<span></span></a></li>
+<li class="chapter" data-level="2.6.2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#código-aberto"><i class="fa fa-check"></i><b>2.6.2</b> Código aberto<span></span></a></li>
+<li class="chapter" data-level="2.6.3" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#osgeo"><i class="fa fa-check"></i><b>2.6.3</b> OSGeo<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#se-você-quiser-ir-mais-longe"><i class="fa fa-check"></i><b>2.7</b> Se você quiser ir mais longe<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html"><i class="fa fa-check"></i><b>3</b> Introdução ao QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#introdução-ao-qgis-e-à-interface-do-qgis"><i class="fa fa-check"></i><b>3.1</b> Introdução ao QGIS e à interface do QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#o-que-é-o-qgis"><i class="fa fa-check"></i><b>3.1.1</b> O que é o QGIS<span></span></a></li>
+<li class="chapter" data-level="3.1.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#ciclo-de-lançamento-e-versões"><i class="fa fa-check"></i><b>3.1.2</b> Ciclo de lançamento e versões<span></span></a></li>
+<li class="chapter" data-level="3.1.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#exemplos-de-mapas-qgis"><i class="fa fa-check"></i><b>3.1.3</b> Exemplos de mapas QGIS<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#instalando-o-qgis"><i class="fa fa-check"></i><b>3.2</b> Instalando o QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#partes-da-interface-do-qgis"><i class="fa fa-check"></i><b>3.2.1</b> Partes da interface do QGIS<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorialexercício-mudando-a-aparência-e-layout-da-interface-qgis"><i class="fa fa-check"></i><b>3.2.2</b> Tutorial/Exercício: Mudando a aparência e layout da interface QGIS<span></span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#quiz-3"><i class="fa fa-check"></i><b>3.2.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#complementos-qgis"><i class="fa fa-check"></i><b>3.3</b> Complementos QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorialexercício-instalando-um-complemento-qgis"><i class="fa fa-check"></i><b>3.3.1</b> Tutorial/Exercício: Instalando um complemento QGIS<span></span></a></li>
+<li class="chapter" data-level="3.3.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#quiz-4"><i class="fa fa-check"></i><b>3.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#configurações-qgis"><i class="fa fa-check"></i><b>3.4</b> Configurações QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorialexercício-criando-um-perfil-de-usuário"><i class="fa fa-check"></i><b>3.4.1</b> Tutorial/Exercício: Criando um perfil de usuário<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#quiz-5"><i class="fa fa-check"></i><b>3.4.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#formatos-de-arquivo-do-qgis"><i class="fa fa-check"></i><b>3.5</b> Formatos de arquivo do QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#arquivo-de-projeto-qgis-qgs-qgz"><i class="fa fa-check"></i><b>3.5.1</b> Arquivo de projeto QGIS (QGS / QGZ)<span></span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#definição-da-camada-qgis-qlr"><i class="fa fa-check"></i><b>3.5.2</b> Definição da camada QGIS (QLR)<span></span></a></li>
+<li class="chapter" data-level="3.5.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#arquivo-de-estilo-qgis-qml"><i class="fa fa-check"></i><b>3.5.3</b> Arquivo de estilo QGIS (QML)<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#se-você-quiser-ir-mais-longe-1"><i class="fa fa-check"></i><b>3.6</b> Se você quiser ir mais longe<span></span></a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#para-praticar-suas-novas-habilidades-tente"><i class="fa fa-check"></i><b>3.6.1</b> Para praticar suas novas habilidades, tente…<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html"><i class="fa fa-check"></i><b>4</b> Camadas no QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-dados-formatos-de-arquivo-o-painel-do-navegador-e-o-painel-de-camadas"><i class="fa fa-check"></i><b>4.1</b> Tipos de dados, formatos de arquivo, o painel do navegador e o painel de camadas<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-dados-e-formatos-de-arquivo-comuns"><i class="fa fa-check"></i><b>4.1.1</b> Tipos de dados e formatos de arquivo comuns<span></span></a></li>
+<li class="chapter" data-level="4.1.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-fontes-de-dados"><i class="fa fa-check"></i><b>4.1.2</b> Tipos de fontes de dados<span></span></a></li>
+<li class="chapter" data-level="4.1.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregando-camadas-no-qgis"><i class="fa fa-check"></i><b>4.1.3</b> Carregando camadas no QGIS<span></span></a></li>
+<li class="chapter" data-level="4.1.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-painel-do-navegador"><i class="fa fa-check"></i><b>4.1.4</b> O painel do navegador<span></span></a></li>
+<li class="chapter" data-level="4.1.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-painel-de-camadas"><i class="fa fa-check"></i><b>4.1.5</b> O painel de camadas<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#propriedades-da-camada"><i class="fa fa-check"></i><b>4.2</b> Propriedades da camada<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#metadados-geoespaciais"><i class="fa fa-check"></i><b>4.3</b> Metadados geoespaciais<span></span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tutorialexercício-adicionando-metadados"><i class="fa fa-check"></i><b>4.3.1</b> Tutorial/Exercício: Adicionando metadados<span></span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#quiz-6"><i class="fa fa-check"></i><b>4.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-gerenciador-de-fonte-de-dados-e-conexão-com-serviços-remotos"><i class="fa fa-check"></i><b>4.4</b> O gerenciador de fonte de dados e conexão com serviços remotos<span></span></a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-gerenciador-de-fonte-de-dados"><i class="fa fa-check"></i><b>4.4.1</b> O gerenciador de fonte de dados<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#conectando-qgis-a-serviços-remotos"><i class="fa fa-check"></i><b>4.4.2</b> Conectando QGIS a serviços remotos<span></span></a></li>
+<li class="chapter" data-level="4.4.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#quiz-7"><i class="fa fa-check"></i><b>4.4.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exportando-camadas-camadas-na-memória-temporárias-e-camadas-virtuais"><i class="fa fa-check"></i><b>4.5</b> Exportando camadas, camadas na memória (temporárias) e camadas virtuais<span></span></a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exportando-camadas-do-qgis"><i class="fa fa-check"></i><b>4.5.1</b> Exportando camadas do QGIS<span></span></a></li>
+<li class="chapter" data-level="4.5.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#camadas-na-memória"><i class="fa fa-check"></i><b>4.5.2</b> Camadas na memória<span></span></a></li>
+<li class="chapter" data-level="4.5.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#camadas-virtuais"><i class="fa fa-check"></i><b>4.5.3</b> Camadas virtuais<span></span></a></li>
+<li class="chapter" data-level="4.5.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#quiz-8"><i class="fa fa-check"></i><b>4.5.4</b> Quiz<span></span></a></li>
+<li class="chapter" data-level="4.5.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#se-você-quiser-ir-mais-longe-2"><i class="fa fa-check"></i><b>4.5.5</b> Se você quiser ir mais longe<span></span></a></li>
+<li class="chapter" data-level="4.5.6" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exercíciotutorial-camadas-virtuais"><i class="fa fa-check"></i><b>4.5.6</b> Exercício/Tutorial: Camadas virtuais<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#para-praticar-suas-novas-habilidades-tente-1"><i class="fa fa-check"></i><b>4.6</b> Para praticar suas novas habilidades, tente…<span></span></a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregar-rasters-e-vetores-encontrados-na-internet"><i class="fa fa-check"></i><b>4.6.1</b> Carregar rasters e vetores encontrados na internet<span></span></a></li>
+<li class="chapter" data-level="4.6.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregar-uma-planilha-no-qgis-usando-o-plugin-spreadsheet-layers"><i class="fa fa-check"></i><b>4.6.2</b> Carregar uma planilha no QGIS usando o plugin Spreadsheet Layers<span></span></a></li>
+<li class="chapter" data-level="4.6.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#dicas"><i class="fa fa-check"></i><b>4.6.3</b> Dicas<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><i class="fa fa-check"></i><b>5</b> OSM e a camada de assentamentos de alta resolução<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#dados-do-osm"><i class="fa fa-check"></i><b>5.1</b> Dados do OSM<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#o-que-é-osm"><i class="fa fa-check"></i><b>5.1.1</b> O que é OSM?<span></span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#onde-o-osm-é-usado"><i class="fa fa-check"></i><b>5.1.2</b> Onde o OSM é usado?<span></span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#como-o-osm-pode-ser-usado-no-qgis"><i class="fa fa-check"></i><b>5.1.3</b> Como o OSM pode ser usado no QGIS?<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#os-dados-da-camada-de-assentamentos-de-alta-resolução-hrsl"><i class="fa fa-check"></i><b>5.2</b> Os dados da camada de assentamentos de alta resolução (HRSL)<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#o-que-é-high-resolution-settlement-layer-hrsl-ou-camada-de-assentamentos-de-alta-resolução"><i class="fa fa-check"></i><b>5.2.1</b> O que é High Resolution Settlement Layer (HRSL) ou camada de assentamentos de alta resolução?<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#casos-de-uso-do-hrsl"><i class="fa fa-check"></i><b>5.2.2</b> Casos de uso do HRSL<span></span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#se-você-quiser-ir-além"><i class="fa fa-check"></i><b>5.2.3</b> Se você quiser ir além<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#para-praticar-suas-novas-habilidades-tente-2"><i class="fa fa-check"></i><b>5.3</b> Para praticar suas novas habilidades, tente…<span></span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#carregar-mais-recursos-do-osm-usando-o-plug-in-quickosm"><i class="fa fa-check"></i><b>5.3.1</b> Carregar mais recursos do OSM usando o plug-in QuickOSM<span></span></a></li>
+<li class="chapter" data-level="5.3.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#dicas-1"><i class="fa fa-check"></i><b>5.3.2</b> Dicas<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html"><i class="fa fa-check"></i><b>6</b> Camadas de estilo<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#painéis-guias-e-tipos-de-renderização-principais"><i class="fa fa-check"></i><b>6.1</b> Painéis, guias e tipos de renderização principais<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#painel-de-estilo-da-camada"><i class="fa fa-check"></i><b>6.1.1</b> Painel de estilo da camada<span></span></a></li>
+<li class="chapter" data-level="6.1.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#guia-simbologia-nas-propriedades-das-camadas"><i class="fa fa-check"></i><b>6.1.2</b> Guia simbologia nas propriedades das camadas<span></span></a></li>
+<li class="chapter" data-level="6.1.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#renderização-raster-renderização-de-banda"><i class="fa fa-check"></i><b>6.1.3</b> Renderização raster: renderização de banda<span></span></a></li>
+<li class="chapter" data-level="6.1.4" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#renderização-de-vetor"><i class="fa fa-check"></i><b>6.1.4</b> Renderização de vetor<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#raster-básico-e-simbologia-vetorial"><i class="fa fa-check"></i><b>6.2</b> Raster básico e simbologia vetorial<span></span></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercício-renderização-vetorial"><i class="fa fa-check"></i><b>6.2.1</b> Tutorial/Exercício: Renderização vetorial<span></span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercicio-renderização-raster"><i class="fa fa-check"></i><b>6.2.2</b> Tutorial/Exercicio: Renderização raster<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#modos-de-mesclagem-e-efeitos-de-desenho"><i class="fa fa-check"></i><b>6.3</b> Modos de mesclagem e efeitos de desenho<span></span></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercício"><i class="fa fa-check"></i><b>6.3.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#substituições-definidas-por-dados-e-geradores-de-geometria"><i class="fa fa-check"></i><b>6.4</b> Substituições definidas por dados e geradores de geometria<span></span></a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercício-1"><i class="fa fa-check"></i><b>6.4.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html"><i class="fa fa-check"></i><b>7</b> Fazendo mapas<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#exportando-a-tela-do-mapa"><i class="fa fa-check"></i><b>7.1</b> Exportando a tela do mapa<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#primeiro-método-exportar-a-tela-do-mapa-sem-o-layout-de-impressão"><i class="fa fa-check"></i><b>7.1.1</b> Primeiro método: Exportar a tela do mapa sem o layout de impressão<span></span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#segundo-método-exportar-a-tela-do-mapa-para-a-impressão-layout"><i class="fa fa-check"></i><b>7.1.2</b> Segundo método: Exportar a tela do mapa para a impressão layout<span></span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#quiz-12"><i class="fa fa-check"></i><b>7.1.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#adicionando-e-editando-elementos-do-mapa-ao-layout-de-impressão"><i class="fa fa-check"></i><b>7.2</b> Adicionando e editando elementos do mapa ao layout de impressão<span></span></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#tutorialexercício-2"><i class="fa fa-check"></i><b>7.2.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="7.2.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#quiz-13"><i class="fa fa-check"></i><b>7.2.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#automatizando-a-criação-de-mapas-usando-os-recursos-do-atlas"><i class="fa fa-check"></i><b>7.3</b> Automatizando a criação de mapas usando os recursos do Atlas<span></span></a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#tutorialexercício-3"><i class="fa fa-check"></i><b>7.3.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html"><i class="fa fa-check"></i><b>8</b> Atributos da camada<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#editando-atributos-da-camada"><i class="fa fa-check"></i><b>8.1</b> Editando atributos da camada<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#tutorialexercício-4"><i class="fa fa-check"></i><b>8.1.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="8.1.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#quiz-14"><i class="fa fa-check"></i><b>8.1.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#entender-e-trabalhar-com-dados-de-atributos-consultas-e-análises"><i class="fa fa-check"></i><b>8.2</b> Entender e trabalhar com dados de atributos, consultas e análises<span></span></a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#tutorialexercício-5"><i class="fa fa-check"></i><b>8.2.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="8.2.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#quiz-15"><i class="fa fa-check"></i><b>8.2.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#expressões-de-qgis-avançadas"><i class="fa fa-check"></i><b>8.3</b> Expressões de QGIS avançadas<span></span></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#tutorialexercício-6"><i class="fa fa-check"></i><b>8.3.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="8.3.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#quiz-16"><i class="fa fa-check"></i><b>8.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html"><i class="fa fa-check"></i><b>9</b> Criando e editando camadas<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-uma-nova-camada-geopackage-ou-shapefile"><i class="fa fa-check"></i><b>9.1</b> Criando uma nova camada GeoPackage ou Shapefile<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-uma-nova-camada-geopackage"><i class="fa fa-check"></i><b>9.1.1</b> Criando uma nova camada GeoPackage<span></span></a></li>
+<li class="chapter" data-level="9.1.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-um-novo-shapefile"><i class="fa fa-check"></i><b>9.1.2</b> Criando um novo Shapefile<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#digitalizando-uma-camada-existente"><i class="fa fa-check"></i><b>9.2</b> Digitalizando uma camada existente<span></span></a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#tutorialexercício-7"><i class="fa fa-check"></i><b>9.2.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#georreferenciando-um-mapa-topográfico"><i class="fa fa-check"></i><b>9.3</b> Georreferenciando um mapa topográfico<span></span></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#tutorialexercício-8"><i class="fa fa-check"></i><b>9.3.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="9.3.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#quiz-17"><i class="fa fa-check"></i><b>9.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html"><i class="fa fa-check"></i><b>10</b> Processamento e análise vetorial<span></span></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#o-modelo-de-dados-vetoriais"><i class="fa fa-check"></i><b>10.1</b> O modelo de dados vetoriais<span></span></a></li>
+<li class="chapter" data-level="10.2" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#metadados"><i class="fa fa-check"></i><b>10.2</b> Metadados<span></span></a></li>
+<li class="chapter" data-level="10.3" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#lógica-do-processamento-vetorial"><i class="fa fa-check"></i><b>10.3</b> Lógica do processamento vetorial<span></span></a></li>
+<li class="chapter" data-level="10.4" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#entendendo-seus-dados"><i class="fa fa-check"></i><b>10.4</b> Entendendo seus dados<span></span></a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-1-prepare-seu-ambiente-de-trabalho"><i class="fa fa-check"></i><b>10.4.1</b> Etapa 1: Prepare seu ambiente de trabalho<span></span></a></li>
+<li class="chapter" data-level="10.4.2" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-2-entenda-o-que-você-está-olhando"><i class="fa fa-check"></i><b>10.4.2</b> Etapa 2: Entenda o que você está olhando<span></span></a></li>
+<li class="chapter" data-level="10.4.3" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-3-verificações-básicas-para-encontrar-erros-rapidamente-em-seus-dados"><i class="fa fa-check"></i><b>10.4.3</b> Etapa 3: Verificações básicas para encontrar erros rapidamente em seus dados<span></span></a></li>
+<li class="chapter" data-level="10.4.4" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-4-observe-as-informações-anexadas-aos-pontos-linhas-e-polígonos"><i class="fa fa-check"></i><b>10.4.4</b> Etapa 4: Observe as informações anexadas aos pontos, linhas e polígonos<span></span></a></li>
+<li class="chapter" data-level="10.4.5" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#quiz-18"><i class="fa fa-check"></i><b>10.4.5</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#introdução-ao-processamento-vetorial"><i class="fa fa-check"></i><b>10.5</b> Introdução ao processamento vetorial<span></span></a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#quiz-19"><i class="fa fa-check"></i><b>10.5.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#geoestatística-e-interpolação"><i class="fa fa-check"></i><b>10.6</b> Geoestatística e interpolação<span></span></a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#quiz-20"><i class="fa fa-check"></i><b>10.6.1</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html"><i class="fa fa-check"></i><b>11</b> Processamento e análise raster<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#o-modelo-de-dados"><i class="fa fa-check"></i><b>11.1</b> O modelo de dados<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#racional-do-processamento-raster"><i class="fa fa-check"></i><b>11.2</b> Racional do processamento raster<span></span></a></li>
+<li class="chapter" data-level="11.3" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#entendendo-seus-dados-raster"><i class="fa fa-check"></i><b>11.3</b> Entendendo seus dados raster<span></span></a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#etapa-1-prepare-seu-ambiente-de-trabalho-1"><i class="fa fa-check"></i><b>11.3.1</b> Etapa 1: Prepare seu ambiente de trabalho<span></span></a></li>
+<li class="chapter" data-level="11.3.2" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#etapa-2-entenda-o-que-você-está-olhando-1"><i class="fa fa-check"></i><b>11.3.2</b> Etapa 2: Entenda o que você está olhando<span></span></a></li>
+<li class="chapter" data-level="11.3.3" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#quiz-21"><i class="fa fa-check"></i><b>11.3.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#introdução-ao-trabalho-com-dados-raster"><i class="fa fa-check"></i><b>11.4</b> Introdução ao trabalho com dados raster<span></span></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#quiz-22"><i class="fa fa-check"></i><b>11.4.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#trabalho-com-dados-raster-e-vetoriais"><i class="fa fa-check"></i><b>11.5</b> Trabalho com dados raster e vetoriais<span></span></a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#quiz-23"><i class="fa fa-check"></i><b>11.5.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#referências"><i class="fa fa-check"></i><b>11.6</b> Referências<span></span></a></li>
+<li class="chapter" data-level="11.7" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#notas"><i class="fa fa-check"></i><b>11.7</b> Notas<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="plugins-qgis.html"><a href="plugins-qgis.html"><i class="fa fa-check"></i><b>12</b> Plugins QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#introdução-à-mentalidade-do-plugin"><i class="fa fa-check"></i><b>12.1</b> Introdução à mentalidade do plugin<span></span></a></li>
+<li class="chapter" data-level="12.2" data-path="plugins-qgis.html"><a href="plugins-qgis.html#o-gerenciador-de-plugins"><i class="fa fa-check"></i><b>12.2</b> O gerenciador de plugins<span></span></a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#quiz-24"><i class="fa fa-check"></i><b>12.2.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="plugins-qgis.html"><a href="plugins-qgis.html#alguns-plugins-interessantes"><i class="fa fa-check"></i><b>12.3</b> Alguns plugins interessantes<span></span></a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#discovery"><i class="fa fa-check"></i><b>12.3.1</b> Discovery<span></span></a></li>
+<li class="chapter" data-level="12.3.2" data-path="plugins-qgis.html"><a href="plugins-qgis.html#polygon-divider"><i class="fa fa-check"></i><b>12.3.2</b> Polygon Divider<span></span></a></li>
+<li class="chapter" data-level="12.3.3" data-path="plugins-qgis.html"><a href="plugins-qgis.html#load-them-all"><i class="fa fa-check"></i><b>12.3.3</b> Load Them All<span></span></a></li>
+<li class="chapter" data-level="12.3.4" data-path="plugins-qgis.html"><a href="plugins-qgis.html#raster-tracer"><i class="fa fa-check"></i><b>12.3.4</b> Raster tracer<span></span></a></li>
+<li class="chapter" data-level="12.3.5" data-path="plugins-qgis.html"><a href="plugins-qgis.html#active-fire"><i class="fa fa-check"></i><b>12.3.5</b> Active Fire<span></span></a></li>
+<li class="chapter" data-level="12.3.6" data-path="plugins-qgis.html"><a href="plugins-qgis.html#qgis2web"><i class="fa fa-check"></i><b>12.3.6</b> <span>Qgis2web</span><span></span></a></li>
+<li class="chapter" data-level="12.3.7" data-path="plugins-qgis.html"><a href="plugins-qgis.html#dataplotly"><i class="fa fa-check"></i><b>12.3.7</b> DataPlotly<span></span></a></li>
+<li class="chapter" data-level="12.3.8" data-path="plugins-qgis.html"><a href="plugins-qgis.html#plugin-quickmapservices-openlayers"><i class="fa fa-check"></i><b>12.3.8</b> Plugin QuickMapServices / OpenLayers<span></span></a></li>
+<li class="chapter" data-level="12.3.9" data-path="plugins-qgis.html"><a href="plugins-qgis.html#table2style"><i class="fa fa-check"></i><b>12.3.9</b> Table2Style<span></span></a></li>
+<li class="chapter" data-level="12.3.10" data-path="plugins-qgis.html"><a href="plugins-qgis.html#ors-tools"><i class="fa fa-check"></i><b>12.3.10</b> ORS Tools<span></span></a></li>
+<li class="chapter" data-level="12.3.11" data-path="plugins-qgis.html"><a href="plugins-qgis.html#quiz-25"><i class="fa fa-check"></i><b>12.3.11</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com o bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Geodados: uma introdução gentil</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introdução-ao-qgis" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capitulo 3</span> Introdução ao QGIS<a href="introdução-ao-qgis.html#introdução-ao-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Autor</strong>: Ben Hur</p>
+<p>Este módulo serve como uma introdução ao QGIS. No final deste módulo, os alunos devem estar familiarizados com:</p>
+<ul>
+<li>O que é o QGIS</li>
+<li>Interface do QGIS</li>
+<li>Configurações do QGIS</li>
+<li>Complementos do QGIS</li>
+</ul>
+<p>Eles também devem aprender:</p>
+<ul>
+<li>Como instalar e abrir o QGIS</li>
+<li>As diferentes partes e recursos da interface do QGIS</li>
+<li>Como editar o layout e o tema da interface</li>
+<li>As diferentes configurações do QGIS, como alterá-las e como elas afetam o QGIS</li>
+<li>O que são perfis de usuário e como usá-los</li>
+<li>O que são complementos e como instalá-los</li>
+</ul>
+<p>O módulo também irá discutir algumas nuances do QGIS e o que o torna único ou diferente de outros softwares GIS, como formatos de arquivo QGIS.</p>
+<p>As ferramentas e recursos necessários para este módulo são:</p>
+<ul>
+<li>Computador</li>
+<li>Conexão de internet</li>
+<li>QGIS 3.16 instalado no computador (<a href="https://qgis.org/en/site/forusers/download.html">https://qgis.org/en/site/forusers/download.html</a>)</li>
+</ul>
+<p>Pré-requisitos:</p>
+<ul>
+<li>Conhecimento básico de informática</li>
+</ul>
+<p>Recursos adicionais:</p>
+<ul>
+<li>Manual do usuário QGIS - <a href="https://docs.qgis.org/3.16/en/docs/user_manual/">https://docs.qgis.org/3.16/en/docs/user_manual/</a></li>
+<li>Manual de treinamento QGIS - <a href="https://docs.qgis.org/3.16/en/docs/training_manual/index.html">https://docs.qgis.org/3.16/en/docs/training_manual/index.html</a></li>
+</ul>
+<p>O mapa abaixo (<a href="https://flic.kr/p/2jFfGJP">https://flic.kr/p/2jFfGJP</a>), de Andrés Felipe Lancheros Sánchez, mostra partes da cidade de Bogotá na Colômbia feitas no estilo da pintura “Noite estrelada” de Vincent van Gogh.</p>
+<div class="figure">
+<img src="media/modulo1/sample-1.jpg" title="Mapa de Bogotá, Columbia no estilo Noite Estrelada" alt="" />
+<p class="caption">Mapa de Bogotá, Colômbia no estilo Noite Estrelada</p>
+</div>
+<p>Este próximo mapa (<a href="https://flic.kr/p/2jAsphv">https://flic.kr/p/2jAsphv</a>) mostra dados de rastreamento de tempestade da NOAA (o órgão de metereologia do governo dos EUA) entre 1851 e 2020 feitos por Fajr Alim.</p>
+<div class="figure">
+<img src="media/modulo1/sample-2.jpg" title="Dados de rastreamento de tempestade entre 1851 a 2020" alt="" />
+<p class="caption">Dados de rastreamento de tempestade entre 1851 a 2020</p>
+</div>
+<p>Este próximo (<a href="https://flic.kr/p/FA9TiR">https://flic.kr/p/FA9TiR</a>) é um mapa da Ilha Kerguelen, feito por Heinrich Lingnau Schneider.</p>
+<div class="figure">
+<img src="media/modulo1/sample-3.jpg" title="Mapa da Ilha Kerguelen" alt="" />
+<p class="caption">Mapa da Ilha Kerguelen</p>
+</div>
+<p>Este último (<a href="https://flic.kr/p/v2kqVzsg">https://flic.kr/p/2kqVzsg</a>) é de tentativas de arremessos de quadra e pontos marcados por tentativa durante a temporada 81 do Torneio de Basquete Masculino UAAP em as Filipinas por Ben Hur Pintor.</p>
+<div class="figure">
+<img src="media/modulo1/sample-4.jpg" title="Tentativas de field goal e pontos marcados na temporada 81 do UAAP" alt="" />
+<p class="caption">Tentativas de arremessos de quadra e pontos marcados na temporada 81 do UAAP</p>
+</div>
+<p>O que todos esses mapas têm em comum? Todos eles foram feitos usando o QGIS.</p>
+<p>Os mapas mostrados acima foram todos criados no QGIS (<a href="https://qgis.org/en/site/">https://qgis.org/en/site/</a>), um Sistema de Informação Geográfica (SIG, ou GIS) gratuito e de código aberto. O QGIS pode ser usado com todos os tipos de dados espaciais (como dados de basquete no último exemplo) e não apenas com dados geoespaciais relacionados à Terra.</p>
+<p>As pessoas são capazes de criar mapas maravilhosos e surpreendentes, como os exemplos acima, porque o QGIS é gratuito, de código aberto e possui recursos poderosos de gerenciamento de dados, análise e apresentação.</p>
+<div id="introdução-ao-qgis-e-à-interface-do-qgis" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Introdução ao QGIS e à interface do QGIS<a href="introdução-ao-qgis.html#introdução-ao-qgis-e-à-interface-do-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="o-que-é-o-qgis" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> O que é o QGIS<a href="introdução-ao-qgis.html#o-que-é-o-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>QGIS</strong>, conhecido como Quantum GIS antes de seu lançamento 2.X, é um Sistema de Informação Geoespacial (GIS) maduro, multiplataforma, gratuito e de código aberto.</p>
+<p>É um GIS de nível enterprise que possui recursos para coletar, armazenar, analisar, apresentar e gerenciar dados espaciais e não espaciais. Ele também se integra bem com outras tecnologias geoespaciais existentes e serve como parte integrante de qualquer pilha (stack) FOSS4G (Software Livre e de Código Aberto para Geoespacial).</p>
+<p>Por ser multiplataforma, o QGIS pode ser executado em GNU / Linux, macOS, Windows e até mesmo Android.</p>
+</div>
+<div id="ciclo-de-lançamento-e-versões" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Ciclo de lançamento e versões<a href="introdução-ao-qgis.html#ciclo-de-lançamento-e-versões" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Os lançamentos e o desenvolvimento do QGIS seguem um cronograma / roteiro baseado no tempo (<a href="https://www.qgis.org/en/site/%20getinvolved%20/%20development%20/%20roadmap.html">https://www.qgis.org/en/site/getinvolved/development/roadmap.html</a>).</p>
+<p>Uma versão do QGIS é especificada por três números (X.Y.Z). Por exemplo, QGIS 3.16.4.</p>
+<ul>
+<li>X refere-se à versão principal. Neste caso, QGIS 3.</li>
+<li>Y refere-se à versão de lançamento. Neste caso, a versão 16. As versões de lançamento são sempre números pares, pois os números ímpares são reservados para versões de desenvolvimento.</li>
+<li>Z refere-se ao Point Release (PR) dessa versão. Para 3.16.4, isso significa que é o quarto ponto de lançamento da versão 3.16.</li>
+</ul>
+<p>Existem três ramificações (ou branches) principais do QGIS que os usuários podem instalar. Estas são a ramificação <strong>Long Term Release (LTR)</strong>, a ramificação <strong>Latest Release (LR)</strong> e a ramificação <strong>Development (Nightly)</strong>.</p>
+<ul>
+<li><strong>Long Term Release (LTR)</strong> tem esse nome porque é mantido e recebe correções de bug até o próximo LTR ser lançado. Atualmente, isso significa um (1) ano. Em fevereiro de 2021, o LTR atual é 3.16.4. Está programado para ser substituído pelo QGIS 3.22.4 em fevereiro de 2022.</li>
+<li><strong>Última versão (LR)</strong> refere-se a versão de lançamento do QGIS que contém os recursos mais recentes ou mais recentes. Um novo LR é lançado a cada quatro (4) meses. Por exemplo, um novo LR 3,18 foi lançado em fevereiro de 2021. O próximo LR (3.20) será lançado 4 meses a partir de agora, ou seja, em junho de 2021. Atualmente, cada terceiro LR se torna o próximo LTR. Por exemplo, o LTR de fevereiro de 2021 é a versão 3.16. O terceiro LR de 3.16 é 3.22, portanto, o próximo LTR será baseado na versão de lançamento 3.22.</li>
+<li><strong>Development / Nightly</strong> é baseado na versão mais recente do código-fonte QGIS, mas é útil se você deseja testar, depurar ou ajudar no desenvolvimento do QGIS.</li>
+</ul>
+<p>Então, qual versão você deve usar? Depende. Se você precisa de uma versão que é mantida por mais tempo e não precisa necessariamente de novos recursos à medida que são lançados, a versão LTR pode ser a versão para você. Se você precisa dos recursos mais recentes e não se importa em fazer uma atualização a cada poucos meses, a versão LR pode ser ideal para você. Às vezes, também é bom dar uma olhada nas versões de desenvolvimento ou noturnas, especialmente se você estiver curioso ou animado com os próximos recursos do QGIS.</p>
+<p>Para obter mais informações, visite: <a href="https://bnhr.xyz/2020/10/26/%20about-qgis-versions-release-cycle-english.html">https://bnhr.xyz/2020/10/26/about-qgis-versions-release-cycle-english.html</a></p>
+</div>
+<div id="exemplos-de-mapas-qgis" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Exemplos de mapas QGIS<a href="introdução-ao-qgis.html#exemplos-de-mapas-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo1/qgis-map-showcase.png" title="QGIS Map Showcase" alt="" />
+<p class="caption">QGIS Map Showcase</p>
+</div>
+<p>Figura 1.1. Demonstração do mapa QGIS</p>
+<p>Para mais mapas criados com o QGIS, visite: <a href="https://www.flickr.com/groups/2244553@N22/%20piscina/com/50355460063/">https://www.flickr.com/groups/2244553@N22/pool/with/50355460063/</a></p>
+</div>
+</div>
+<div id="instalando-o-qgis" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Instalando o QGIS<a href="introdução-ao-qgis.html#instalando-o-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>QGIS é multiplataforma e funciona em Linux, Windows e macOS. Sendo de código aberto, você pode construir e instalar o QGIS a partir de seu código-fonte, disponível em <a href="https://github.com/qgis/QGIS/">https://github.com/qgis/QGIS/</a>.</p>
+<p>Instaladores e instruções de instalação também estão disponíveis em <a href="https://qgis.org/en/site/forusers/download.html">https://qgis.org/en/site/forusers/download.html</a> ou <a href="https://qgis.org/en/site/forusers/alldownloads.html">https: //qgis.org/en/site/forusers/alldownloads.html</a>.</p>
+<p>Para <strong>Linux (ou GNU / Linux)</strong>, o QGIS geralmente está disponível no gerenciador de pacotes de sua distribuição. Para usuários Debian / Ubuntu, o QGIS tem repositórios para os ramos LR, LTR e Desenvolvimento (Development), bem como versões do QGIS com dependências do PPA ubuntugis-unstable. O QGIS também está disponível como pacote Flatpak ou no Conda.</p>
+<p>Para <strong>Windows</strong>, os usuários podem escolher entre o instalador de rede OSGeo4W ou os instaladores independentes. Há um instalador independente para a versão LTR e LR.</p>
+<p>Os instaladores autônomos são os mais fáceis de instalar e são recomendados para iniciantes. Várias versões do QGIS podem ser instaladas em seu computador ao mesmo tempo. Isso significa que você pode ter ambas as versões QGIS 3.16 e 3.18 instaladas.</p>
+<p>O OSGeo4W Network Installer é um pouco mais avançado e complexo do que os instaladores autônomos, mas também oferece a capacidade de atualizar e atualizar sua versão do QGIS no local, o que significa que você não precisará desinstalar uma versão mais antiga se quiser instalar um mais novo.</p>
+<p>Em alguns casos, você precisará de direitos de administrador para instalar o QGIS, portanto, se estiver instalando em um computador onde o seu usuário não possui direitos de administrador, pode ser necessário pedir ao seu administrador de TI ou escritório para instalar o QGIS para você.</p>
+<p>A instalação no Windows também vem com QGIS com GRASS (outro GIS Livre e de Código Aberto).</p>
+<p>Observe que o QGIS está <a href="https://blog.qgis.org/2020/10/15/phasing-out-32-bit-support-in-qgis/">removendo lentamente o suporte de 32 bits para Windows</a>, então é melhor para instalar o QGIS em um computador que executa um sistema operacional de 64 bits.</p>
+<p>Para o <strong>macOS</strong>, existem instaladores oficiais “All-in-one” assinados para macOS High Sierra (10.13) e mais recentes. O QGIS ainda não foi autenticado conforme exigido pelas regras de segurança do macOS Catalina (10.15). Na primeira inicialização, clique com o botão direito no ícone do aplicativo QGIS, segure a tecla Option e escolha Abrir.</p>
+<div id="partes-da-interface-do-qgis" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Partes da interface do QGIS<a href="introdução-ao-qgis.html#partes-da-interface-do-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Depois de instalar o QGIS, você pode executá-lo ou abri-lo como faria com qualquer programa em seu computador. Ao abrir o QGIS, você será saudado com a Interface do Usuário (IU, ou UI em inglês) padrão que se parecerá com a abaixo.</p>
+<div class="figure">
+<img src="media/modulo1/qgis-interface.png" title="A interface QGIS" alt="" />
+<p class="caption">A interface QGIS</p>
+</div>
+<p>Figura 1.2. A interface QGIS em uma nova instalação</p>
+<p>Existem seis partes principais da interface de usuário do QGIS - barra de menu, tela do mapa, barra de ferramentas, painéis, barra de status e localizador.</p>
+<p>No centro da interface está uma tela de mapa. Painéis e barras de ferramentas podem ser posicionados em torno dessa tela. Os painéis também podem ser acoplados para criar um painel com várias abas. Existem também outras partes da interface, como a interface Python, janelas de complemento, etc.</p>
+<p><strong>Barra de menus</strong> - a barra de menus é um menu hierárquico simples que fornece acesso às funções e comandos do QGIS. Geralmente está localizado na parte superior da interface.</p>
+<p><strong>Tela do mapa</strong> - a tela do mapa é onde as camadas carregadas no QGIS são mostradas. Este é também o local onde os filtros, seleções, e simbologias criadas pelo usuário são refletidas. Mais de uma tela de mapa pode estar presente a qualquer momento. Um usuário pode aplicar zoom, panorâmica e até mesmo girar a tela do mapa. Uma tela de mapa também pode mostrar dados 3D.</p>
+<p><strong>Barras de ferramentas</strong> - as barras de ferramentas mostram botões de acesso fácil aos comandos, recursos, complementos do QGIS. Eles podem ser movidos e encaixados na tela do mapa. A lista de barras de ferramentas pode ser encontrada, ativada e desativada na barra de menus em <strong>Exibir &gt; Barras de ferramentas</strong>. Exemplos de barras de ferramentas são a barra de ferramentas de atributos e a barra de ferramentas de digitalização.</p>
+<p><strong>Painéis</strong> - os painéis são semelhantes às barras de ferramentas, mas, em vez de botões, fornecem uma interface para funções e recursos mais complexos. O painel de camadas e o painel do navegador são dois exemplos. Semelhante às barras de ferramentas, eles podem ser movidos e encaixados na tela do mapa. A lista de painéis pode ser encontrada, ativada e desativada na barra de menus em <strong>Exibir &gt; Painéis</strong>.</p>
+<p><strong>Barra de status</strong> - a barra de status é comumente encontrada na parte inferior da interface e mostra informações relevantes, como CRS, escala, notificações, etc.</p>
+<p><strong>Barra Localizadora</strong> - a barra Localizadora é encontrada no canto inferior esquerdo da interface do QGIS. Ele permite que o usuário acesse facilmente camadas, campos, algoritmos de processamento e outras funcionalidades no QGIS. Este é um dos recursos mais poderosos do QGIS.</p>
+<div class="figure">
+<img src="media/modulo1/qgis-interface-parts.png" title="Partes da interface QGIS" alt="" />
+<p class="caption">Partes da interface QGIS</p>
+</div>
+<p>Figura 1.3. Partes da interface QGIS</p>
+<p>Uma das belezas do QGIS é a personalização ele que oferece aos seus usuários. Essa personalização começa com a interface do usuário. Ao editar algumas configurações e mover algumas partes da interface, você pode ter um QGIS semelhante a este abaixo:</p>
+<div class="figure">
+<img src="media/modulo1/qgis-interface-custom.png" title="Interface QGIS com algumas personalizações" alt="" />
+<p class="caption">Interface QGIS com algumas personalizações</p>
+</div>
+<p>Figura 1.4. A interface QGIS com algumas personalizações</p>
+</div>
+<div id="tutorialexercício-mudando-a-aparência-e-layout-da-interface-qgis" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Tutorial/Exercício: Mudando a aparência e layout da interface QGIS<a href="introdução-ao-qgis.html#tutorialexercício-mudando-a-aparência-e-layout-da-interface-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Abra o <strong>QGIS</strong></li>
+<li>Clique no menu <strong>Visão</strong></li>
+</ol>
+<div class="figure">
+<img src="media/modulo1/ex01-01.png" title="Abra o QGIS e clique no menu Visão" alt="" />
+<p class="caption">Abra o QGIS e clique no menu Exibir</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>Observe o menu <strong>Painéis</strong></li>
+</ol>
+<div class="figure">
+<img src="media/modulo1/ex01-02.png" title="Observe o menu Painéis" alt="" />
+<p class="caption">Observe o menu Painéis</p>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li>Observe o menu <strong>Barras de ferramentas</strong></li>
+</ol>
+<div class="figure">
+<img src="media/modulo1/ex01-03.png" title="Observe o menu Barras de ferramentas" alt="" />
+<p class="caption">Observe o menu Barras de ferramentas</p>
+</div>
+<ol start="5" style="list-style-type: decimal">
+<li>Selecione as <strong>Barras de ferramentas</strong> e <strong>Painéis</strong> que você deseja mostrar na interface do usuário. Alguns dos painéis úteis incluem <strong>Estilização de camadas</strong> e <strong>Caixa de Ferramentas de Processamento</strong>.</li>
+<li>Mova as <strong>Barras de Ferramentas</strong> e <strong>Painéis</strong> para as posições que fizerem mais sentido para você</li>
+</ol>
+<p><strong>Resetando a interface QGIS</strong></p>
+<p>Para redefinir sua tela para as configurações padrão, vá para <strong>Configurações &gt; Opções &gt; Guia Sistema &gt; Configurações &gt; Botão Redefinir</strong> e reinicie o QGIS.</p>
+</div>
+<div id="quiz-3" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Quiz<a href="introdução-ao-qgis.html#quiz-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Verdadeiro ou falso:
+<ol style="list-style-type: decimal">
+<li>Você pode ter várias telas de mapa - <strong><em>Verdadeiro</em></strong></li>
+<li>Você pode mostrar ou ocultar painéis e barras de ferramentas - <strong><em>Verdadeiro</em></strong></li>
+<li>Você só pode colocar painéis no lado esquerdo ou direito da tela do mapa - <strong><em>Falso (você também pode colocar painéis acima ou abaixo da tela do mapa)</em></strong></li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="complementos-qgis" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Complementos QGIS<a href="introdução-ao-qgis.html#complementos-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A capacidade de adicionar, criar e estender a funcionalidade do QGIS por meio de complementos (ou plug-ins) é um de seus recursos mais poderosos.</p>
+<p>A partir do QGIS 3.16.3, existem mais de 700 complementos disponíveis para o usuário baixar e melhorar. Esses complementos variam do complexo ao simples.</p>
+<p>Os complementos QGIS podem ser classificados como:</p>
+<ul>
+<li><strong>Complementos core</strong> - integrado à sua versão do QGIS, não pode ser desinstalado</li>
+<li><strong>Complementos externos</strong> - manualmente instalados por meio de busca em um repositório externo (ou seja, QGIS Official Plugin Repository) ou através do código-fonte.</li>
+</ul>
+<p>Os complementos podem ser instalados de três (3) maneiras:</p>
+<ol style="list-style-type: decimal">
+<li>Através da caixa de diálogo Gerenciar e instalar complementos (<strong>Complementos &gt; Gerenciar e instalar complementos</strong>)</li>
+<li>Instalando do ZIP, que pode ser acessado na guia <strong>Instalar do ZIP</strong> na caixa de diálogo Gerenciar e instalar complementos.</li>
+<li>Adicionando manualmente o código-fonte na pasta de complementos do seu perfil QGIS. Essa pasta geralmente pode ser encontrada em:
+<ol style="list-style-type: decimal">
+<li><strong>Linux</strong>: .local/share/QGIS/QGIS3/profiles/default/python/plugins</li>
+<li><strong>Mac OS X</strong>: Biblioteca/Aplicativo/Suporte/QGIS/QGIS3/profiles/default/python/plugins</li>
+<li><strong>Windows:</strong> <code>C:\Usuário\&lt;Nome&gt;\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins</code></li>
+</ol></li>
+</ol>
+<div class="figure">
+<img src="media/modulo1/plugins-menu.png" title="Menu Gerenciar e Instalar Complementos" alt="" />
+<p class="caption">Menu Gerenciar e Instalar Complementos</p>
+</div>
+<p>Figura 1.5. Acessando a caixa de diálogo Gerenciar e instalar complementos</p>
+<p><strong>Diálogo Gerenciar e Instalar Complementos</strong></p>
+<p>A caixa de diálogo Gerenciar e instalar complementos se conecta ao repositório de complementos oficiais do QGIS (ou qualquer repositório que você indicar na guia Configurações) para buscar complementos disponíveis para sua versão do QGIS. Possui cinco (5) abas:</p>
+<ul>
+<li><strong>Aba Tudo</strong> - mostra TODOS os complementos disponíveis para sua versão QGIS, incluindo aqueles que já estão instalados em sua máquina</li>
+<li><strong>Aba Instalados</strong> - mostra apenas os complementos instalados em sua máquina</li>
+<li><strong>Aba não instalado</strong> - mostra os complementos que não estão instalados em sua máquina</li>
+<li><strong>Aba Instalar a partir do do ZIP</strong> - permite que você instale complementos de um arquivo ZIP</li>
+<li><strong>Aba Opções</strong> - oferece opções sobre quando verificar se há atualizações de complementos, incluir ou não complementos experimentais e obsoletos ou adicionar / alterar o repositório para buscar complementos</li>
+</ul>
+<p>Se o complemento que você está procurando está marcado como experimental ou obsoleto, você precisa marcar <strong>Mostrar complementos experimentais</strong> e <strong>Mostrar complementos obsoletos</strong> na guia Opções.</p>
+<p>A <strong>Barra de Pesquisa</strong> permite que você pesquise complementos encontrados no(s) repositório(s) de complementos aos quais você está conectado.</p>
+<div class="figure">
+<img src="media/modulo1/manage-and-install-plugins-dialog.png" title="Caixa de diálogo Gerenciar e instalar complementos" alt="" />
+<p class="caption">Caixa de diálogo Gerenciar e instalar complementos</p>
+</div>
+<p>Figura 1.6. A caixa de diálogo Gerenciar e instalar complementos</p>
+<div id="tutorialexercício-instalando-um-complemento-qgis" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Tutorial/Exercício: Instalando um complemento QGIS<a href="introdução-ao-qgis.html#tutorialexercício-instalando-um-complemento-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Abra a caixa de diálogo <strong>Gerenciar e instalar complementos</strong> em <strong>Complementos &gt; Gerenciar e instalar complementos</strong> na barra de menus. Isso abrirá a caixa de diálogo Gerenciar e instalar complementos.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo1/plugins-menu-2.png" title="Abrir caixa de diálogo Gerenciar e instalar complementos" alt="" />
+<p class="caption">Abrir caixa de diálogo Gerenciar e instalar complementos</p>
+</div>
+<div class="figure">
+<img src="media/modulo1/manage-and-install-plugins-dialog.png" title="Caixa de diálogo Gerenciar e instalar complementos" alt="" />
+<p class="caption">Caixa de diálogo Gerenciar e instalar complementos</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Instale os complementos a seguir procurando por eles na guia <strong>Todos</strong> e clicando em <strong>Instalar complemento</strong> no canto inferior direito da caixa de diálogo Gerenciar e instalar complementos.
+<ul>
+<li>Memory Layer Saver</li>
+</ul></li>
+</ol>
+<div class="figure">
+<img src="media/modulo1/memory-layer-saver-plugin.png" title="Instalar o plugin Memory Layer Saver" alt="" />
+<p class="caption">Instalar o plugin Memory Layer Saver</p>
+</div>
+<ul>
+<li>QuickOSM</li>
+</ul>
+<div class="figure">
+<img src="media/modulo1/quickosm-plugin.png" title="Instalar plugin QuickOSM" alt="" />
+<p class="caption">Instalar plugin QuickOSM</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>Verifique se os complementos foram instalados com sucesso. O plugin Memory Layer Saver deve estar disponível em <strong>Complementos &gt; Memory Layer Saver</strong> na barra de menus, enquanto o plugin QuickOSM deve estar disponível em <strong>Vetor &gt; QuickOSM</strong> na barra de menus.</li>
+</ol>
+</div>
+<div id="quiz-4" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Quiz<a href="introdução-ao-qgis.html#quiz-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Verdadeiro ou falso
+<ol style="list-style-type: decimal">
+<li>Você pode remover ou desinstalar os complementos do Core - <strong><em>Falso</em></strong></li>
+<li>Você pode adicionar complementos que não são encontrados no repositório oficial de complementos do QGIS - <strong><em>Verdadeiro</em></strong></li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="configurações-qgis" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Configurações QGIS<a href="introdução-ao-qgis.html#configurações-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Configurações do sistema e do projeto</strong></p>
+<p>As configurações do QGIS permitem que você edite e gerencie coisas diferentes sobre o QGIS, como perfis de usuário, estilos, sistemas de referência de coordenadas, atalhos de teclado, a interface do usuário, cores padrão, etc. As configurações do sistema podem ser encontradas no menu <strong>Configurações</strong> e são as configurações padrão usadas pelo QGIS, a menos que sejam substituídas pelas configurações de um projeto. As configurações do projeto podem ser encontradas em <strong>Projeto &gt; Propriedades</strong> e referem-se às configurações ou propriedades do projeto atual. Esses valores substituem os padrões do sistema.</p>
+<div class="figure">
+<img src="media/modulo1/settings-1.png" title="As Configurações do Sistema" alt="" />
+<p class="caption">As Configurações do Sistema</p>
+</div>
+<p>Figura 1.7. As configurações do sistema</p>
+<div class="figure">
+<img src="media/modulo1/settings-2.png" title="Configurações do projeto" alt="" />
+<p class="caption">Configurações do projeto</p>
+</div>
+<p>Figura 1.8. Configurações do projeto</p>
+<p><strong>Mudando o tema QGIS</strong></p>
+<p>Você pode alterar a aparência do QGIS em <strong>Configurações &gt; Opções &gt; Aba Geral</strong>.</p>
+<p>Você pode escolher entre três temas - padrão (default), Blend of Grey e Night Mapping. Você também pode alterar o tamanho dos ícones, a fonte usada pelo QGIS e outros padrões do sistema.</p>
+<div class="figure">
+<img src="media/modulo1/change-theme.png" title="Configurações gerais do QGIS" alt="" />
+<p class="caption">Configurações gerais do QGIS</p>
+</div>
+<p>Figura 1.9. Configurações gerais do QGIS</p>
+<p>Para algumas configurações no QGIS, pode ser necessário reiniciar o aplicativo para que tenham efeito.</p>
+<p><strong>Perfis de usuário</strong></p>
+<p>QGIS 3.X introduziu o conceito de Perfis de Usuário QGIS.</p>
+<p>Um perfil de usuário é uma coleção de configurações para complementos instalados, barras de ferramentas habilitadas, organização da interface do usuário e outras configurações. QGIS vem com um Perfil de Usuário padrão chamado default. Perfis de usuário permitem que o usuário crie configurações diferentes para análises específicas (por exemplo, um perfil de usuário específico para gestão de recursos hídricos, digitalização de dados, cartografia, etc.), projetos particulares ou mesmo clientes.</p>
+<p>Perfis de usuário podem ser criados e acessados na barra de menus em: <strong>Configurações &gt; Perfis de usuário</strong>.</p>
+<p>O perfil de usuário ativo é mostrado com [Perfil do usuário] na barra de título.</p>
+<div class="figure">
+<img src="media/modulo1/user-profiles-1.png" title="Acessando perfis de usuário" alt="" />
+<p class="caption">Acessando perfis de usuário</p>
+</div>
+<p>Figura 1.10. Acessando perfis de usuário</p>
+<p>Os perfis de usuário são salvos em um diretório em seu computador que pode ser acessado clicando em <strong>Configurações &gt; Perfis de usuário &gt; Abrir pasta de perfil ativo</strong>.</p>
+<div id="tutorialexercício-criando-um-perfil-de-usuário" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Tutorial/Exercício: Criando um perfil de usuário<a href="introdução-ao-qgis.html#tutorialexercício-criando-um-perfil-de-usuário" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Vá para <strong>Configurações &gt; Perfis de usuário &gt; Novo perfil …</strong></li>
+</ol>
+<div class="figure">
+<img src="media/modulo1/user-profiles-2.png" title="Opção novo perfil" alt="" />
+<p class="caption">Opção novo perfil</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Dê um nome ao seu novo perfil de usuário.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo1/user-profiles-3.png" title="caixa de entrada &#39;novo nome de perfil&#39;" alt="" />
+<p class="caption">caixa de entrada ‘novo nome de perfil’</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Uma nova janela QGIS deve abrir com seu novo perfil de usuário. Observe que o nome do seu perfil é mostrado na barra de título do QGIS.</p></li>
+<li><p>Você percebe alguma diferença no novo perfil do usuário? Verifique a interface do usuário, os complementos e as configurações do perfil antigo e do novo perfil que você criou.</p></li>
+</ol>
+</div>
+<div id="quiz-5" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Quiz<a href="introdução-ao-qgis.html#quiz-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Verdadeiro ou falso
+<ol style="list-style-type: decimal">
+<li>Você só pode ter um perfil de usuário no QGIS. - <strong><em>Falso (você pode ter vários perfis de usuário)</em></strong></li>
+<li>Você não pode substituir as configurações e propriedades do sistema. - <strong><em>Falso</em></strong></li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="formatos-de-arquivo-do-qgis" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Formatos de arquivo do QGIS<a href="introdução-ao-qgis.html#formatos-de-arquivo-do-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="arquivo-de-projeto-qgis-qgs-qgz" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Arquivo de projeto QGIS (QGS / QGZ)<a href="introdução-ao-qgis.html#arquivo-de-projeto-qgis-qgs-qgz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Projetos QGIS estão para QGIS como arquivos .mxd são para ArcMap. Esses arquivos vêm como <strong>QGS (<em>.qgs)<strong> ou </strong>QGZ (</em>.qgz)</strong>. A principal diferença entre os dois é que o formato QGZ é um arquivo compactado (zip) contendo um arquivo QGS e um arquivo QGD. O formato QGS é um formato XML para armazenar projetos QGIS. O arquivo QGD é o banco de dados sqlite associado do projeto QGIS que contém dados auxiliares para o projeto. Se não houver dados auxiliares, o arquivo QGD ficará vazio.</p>
+<p>Um arquivo de projeto QGIS contém tudo o que é necessário para armazenar um projeto QGIS, incluindo:</p>
+<ul>
+<li>título do projeto</li>
+<li>CRS do projeto</li>
+<li>a árvore de camadas</li>
+<li>configurações de ajuste</li>
+<li>relações</li>
+<li>a extensão da tela do mapa</li>
+<li>modelos de projeto</li>
+<li>legend</li>
+<li>docas mapview (2D e 3D)</li>
+<li>as camadas com links para os conjuntos de dados subjacentes (fontes de dados) e outras propriedades da camada, incluindo extensão, CRS, junções, estilos, renderizador, modo de mesclagem, opacidade e muito mais</li>
+<li>propriedades do projeto</li>
+</ul>
+<p>Os arquivos do projeto QGIS podem ser salvos em um banco de dados GeoPackage ou PostGIS. Salvar o arquivo do projeto junto com o arquivo de estilo e as camadas correspondentes em um único GeoPackage facilita o compartilhamento de projetos QGIS.</p>
+</div>
+<div id="definição-da-camada-qgis-qlr" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Definição da camada QGIS (QLR)<a href="introdução-ao-qgis.html#definição-da-camada-qgis-qlr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Um arquivo de definição de camada QGIS (<strong>QLR</strong>) é um arquivo XML que contém um ponteiro para a fonte de dados da camada, além das informações de estilo QGIS para a camada. Atualmente, um arquivo QLR corresponde a uma única camada apenas.</p>
+<p>O caso de uso para este arquivo é simples: ter um único arquivo para abrir uma fonte de dados e trazer todas as informações de estilo relacionadas. Os arquivos QLR também permitem definir a fonte de dados subjacente em um arquivo fácil de abrir.</p>
+<p>Um exemplo de uso de QLR é para abrir uma camada de um banco de dados PostGIS. Em vez de se conectar ao banco de dados, encontrar a camada e aplicar um filtro, você pode apenas abrir um arquivo .qlr que aponta para a camada PostGIS correta com seu estilo e filtro correspondentes.</p>
+</div>
+<div id="arquivo-de-estilo-qgis-qml" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Arquivo de estilo QGIS (QML)<a href="introdução-ao-qgis.html#arquivo-de-estilo-qgis-qml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>QML</strong> é um formato XML para armazenar estilos de camadas. Um arquivo QML (.qml) contém todas as informações que dizem ao QGIS como renderizar geometrias de feições que incluem definições de símbolos, tamanhos e rotações, rótulos, opacidade, modo de mesclagem e muito mais.</p>
+<p>Um arquivo .qml deve ter o mesmo nome da fonte de dados a que ele corresponde. Quando ele for encontrado no mesmo diretório ou pasta da fonte de dados, carregar a fonte de dados também carregará automaticamente seu estilo, conforme definido no arquivo .qml.</p>
+<p>Por exemplo, se você tiver um GeoJSON chamado <code>regioes.geojson</code> e um arquivo QML chamado <code>regioes.qml</code>, carregar as <code>regioes.geojson</code> no QGIS aplicará os estilos definidos em <code>regioes.qml</code> na camada carregada.</p>
+<p>Ao usar GeoPackages (.gpkg), um arquivo .qml muitas vezes não é necessário, pois você pode salvar o estilo de uma camada diretamente no geopacote.</p>
+</div>
+</div>
+<div id="se-você-quiser-ir-mais-longe-1" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Se você quiser ir mais longe<a href="introdução-ao-qgis.html#se-você-quiser-ir-mais-longe-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Você pode tentar criar seu próprio plugin QGIS. Se não houver um complemento que faça o que você deseja, você pode criar um você mesmo.</p>
+<p>O <strong>Plugin Builder</strong> é um plugin que cria um modelo que pode servir como ponto de partida para o desenvolvimento do plugin QGIS para que você não precise criar um desde o início. Você pode instalá-lo na caixa de diálogo Gerenciar e instalar complementos.</p>
+<p>Claro, você sempre pode criar um plugin do zero. Se você estiver interessado em criar seu próprio plugin, pode verificar a documentação oficial do QGIS (<a href="https://documentation.qgis.org/">https://documentation.qgis.org/</a>). Para complementos Python, é uma boa ideia verificar o PyQGIS Developer Cookbook (<a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook%20/">https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/</a>).</p>
+<p>Para obter mais informações, consulte: <a href="https://bnhr.xyz/2018/10/08/qgis-plugins-3.0.%20html">https://bnhr.xyz/2018/10/08/qgis-plugins-3.0.html</a></p>
+<div id="para-praticar-suas-novas-habilidades-tente" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Para praticar suas novas habilidades, tente…<a href="introdução-ao-qgis.html#para-praticar-suas-novas-habilidades-tente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Altere o tema e a aparência da interface do usuário QGIS de acordo com sua preferência.</li>
+<li>Instale outros complementos QGIS.</li>
+<li>Altere outras configurações do QGIS.
+<ul>
+<li>Crie um sistema de referência de coordenadas personalizado</li>
+<li>Adicione uma tela inicial personalizada (<a href="https://bnhr.xyz/2020/09/05/custom-splash%20-screen-qgis.html">https://bnhr.xyz/2020/09/05/custom-splash-screen-qgis.html</a>)</li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introdução-suave-a-conceitos-de-gis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="camadas-no-qgis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/escola-de-dados/GIS-curriculum/edit/gh-pages/module01.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ebook-gis.pdf", "ebook-gis.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

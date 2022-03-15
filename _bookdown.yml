@@ -1,0 +1,9 @@
+book_filename: "ebook-gis"
+output_dir: "docs"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Capitulo "
+    
+    
+

@@ -1,0 +1,48 @@
+name: Render and deploy GitBook
+'on':
+  - push
+  - pull_request
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    container: rocker/verse:latest
+    steps:
+      - uses: actions/checkout@v2 #checkout step
+     
+      - name: Install R packages and update
+        run: |-
+          Rscript -e "install.packages(c('remotes', 'bookdown','qpdf'))"
+          Rscript -e "update.packages(ask = FALSE, checkBuilt = TRUE)"
+          Rscript -e "tinytex::tlmgr_update()"
+
+      - name: Build site, PDF and EPUB
+        run: |-
+          Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
+          Rscript -e "rmarkdown::render_site(output_format = 'pdf_document', encoding = 'UTF-8')"
+          Rscript -e "rmarkdown::render_site(output_format = 'bookdown::epub_book', encoding = 'UTF-8')"
+          
+      - name: Insert cover page
+        run: |-
+          mv ebook-gis.pdf docs/
+          Rscript -e "qpdf::pdf_combine(input = c('docs/cover.pdf', 'docs/ebook-gis.pdf'),output = 'docs/ebook-gis-final.pdf')"
+                              
+      - name: Rename PDF file
+        run: |-
+          mv docs/ebook-gis-final.pdf docs/ebook-gis.pdf
+          
+      - name: Convert ebook
+        uses: jensvog/ebook-convert-action@v1
+        with:
+          in: docs/ebook-gis.pdf
+          out: docs/ebook-gis.mobi
+
+      - name: Commit and push
+        run: |-
+          git config user.name "Automated"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          timestamp=$(date -u)
+          git commit -m "Latest change: ${timestamp}" &&
+            export COMMIT_HASH=$(git rev-parse HEAD) ||
+            exit 0
+          git push  

@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="pt" xml:lang="pt">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 12 Plugins QGIS | Geodados: uma introdução gentil</title>
+  <meta name="description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 12 Plugins QGIS | Geodados: uma introdução gentil" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="escola-de-dados.github.io/GIS-curriculum/" />
+  <meta property="og:image" content="escola-de-dados.github.io/GIS-curriculum//media/cover/cover.jpg" />
+  <meta property="og:description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="github-repo" content="escola-de-dados/GIS-curriculum" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 12 Plugins QGIS | Geodados: uma introdução gentil" />
+  
+  <meta name="twitter:description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="twitter:image" content="escola-de-dados.github.io/GIS-curriculum//media/cover/cover.jpg" />
+
+<meta name="author" content="Ben Hur Pintor, Ketty Adoch, Codrina Maria Ilie" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="processamento-e-análise-raster.html"/>
+
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Geodados: uma introdução gentil</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Edite esse livro! ;)<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#créditos"><i class="fa fa-check"></i><b>1.1</b> Créditos<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conjuntos-de-dados"><i class="fa fa-check"></i><b>1.2</b> Conjuntos de dados<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html"><i class="fa fa-check"></i><b>2</b> Introdução suave a conceitos de GIS<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#mapas-e-coordenadas"><i class="fa fa-check"></i><b>2.1</b> Mapas e coordenadas<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#projeções-cartográficas"><i class="fa fa-check"></i><b>2.2</b> Projeções cartográficas<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#sistemas-de-referência-de-coordenadas"><i class="fa fa-check"></i><b>2.3</b> Sistemas de referência de coordenadas<span></span></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#quiz"><i class="fa fa-check"></i><b>2.3.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#tipos-de-dados-espaciais"><i class="fa fa-check"></i><b>2.4</b> Tipos de dados espaciais<span></span></a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#dados-raster"><i class="fa fa-check"></i><b>2.4.1</b> Dados raster<span></span></a></li>
+<li class="chapter" data-level="2.4.2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#dados-vetoriais"><i class="fa fa-check"></i><b>2.4.2</b> Dados vetoriais<span></span></a></li>
+<li class="chapter" data-level="2.4.3" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#quiz-1"><i class="fa fa-check"></i><b>2.4.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#sig"><i class="fa fa-check"></i><b>2.5</b> SIG<span></span></a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#quiz-2"><i class="fa fa-check"></i><b>2.5.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#foss4g"><i class="fa fa-check"></i><b>2.6</b> FOSS4G<span></span></a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#software-grátis"><i class="fa fa-check"></i><b>2.6.1</b> Software grátis<span></span></a></li>
+<li class="chapter" data-level="2.6.2" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#código-aberto"><i class="fa fa-check"></i><b>2.6.2</b> Código aberto<span></span></a></li>
+<li class="chapter" data-level="2.6.3" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#osgeo"><i class="fa fa-check"></i><b>2.6.3</b> OSGeo<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introdução-suave-a-conceitos-de-gis.html"><a href="introdução-suave-a-conceitos-de-gis.html#se-você-quiser-ir-mais-longe"><i class="fa fa-check"></i><b>2.7</b> Se você quiser ir mais longe<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html"><i class="fa fa-check"></i><b>3</b> Introdução ao QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#introdução-ao-qgis-e-à-interface-do-qgis"><i class="fa fa-check"></i><b>3.1</b> Introdução ao QGIS e à interface do QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#o-que-é-o-qgis"><i class="fa fa-check"></i><b>3.1.1</b> O que é o QGIS<span></span></a></li>
+<li class="chapter" data-level="3.1.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#ciclo-de-lançamento-e-versões"><i class="fa fa-check"></i><b>3.1.2</b> Ciclo de lançamento e versões<span></span></a></li>
+<li class="chapter" data-level="3.1.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#exemplos-de-mapas-qgis"><i class="fa fa-check"></i><b>3.1.3</b> Exemplos de mapas QGIS<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#instalando-o-qgis"><i class="fa fa-check"></i><b>3.2</b> Instalando o QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#partes-da-interface-do-qgis"><i class="fa fa-check"></i><b>3.2.1</b> Partes da interface do QGIS<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorialexercício-mudando-a-aparência-e-layout-da-interface-qgis"><i class="fa fa-check"></i><b>3.2.2</b> Tutorial/Exercício: Mudando a aparência e layout da interface QGIS<span></span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#quiz-3"><i class="fa fa-check"></i><b>3.2.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#complementos-qgis"><i class="fa fa-check"></i><b>3.3</b> Complementos QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorialexercício-instalando-um-complemento-qgis"><i class="fa fa-check"></i><b>3.3.1</b> Tutorial/Exercício: Instalando um complemento QGIS<span></span></a></li>
+<li class="chapter" data-level="3.3.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#quiz-4"><i class="fa fa-check"></i><b>3.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#configurações-qgis"><i class="fa fa-check"></i><b>3.4</b> Configurações QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorialexercício-criando-um-perfil-de-usuário"><i class="fa fa-check"></i><b>3.4.1</b> Tutorial/Exercício: Criando um perfil de usuário<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#quiz-5"><i class="fa fa-check"></i><b>3.4.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#formatos-de-arquivo-do-qgis"><i class="fa fa-check"></i><b>3.5</b> Formatos de arquivo do QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#arquivo-de-projeto-qgis-qgs-qgz"><i class="fa fa-check"></i><b>3.5.1</b> Arquivo de projeto QGIS (QGS / QGZ)<span></span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#definição-da-camada-qgis-qlr"><i class="fa fa-check"></i><b>3.5.2</b> Definição da camada QGIS (QLR)<span></span></a></li>
+<li class="chapter" data-level="3.5.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#arquivo-de-estilo-qgis-qml"><i class="fa fa-check"></i><b>3.5.3</b> Arquivo de estilo QGIS (QML)<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#se-você-quiser-ir-mais-longe-1"><i class="fa fa-check"></i><b>3.6</b> Se você quiser ir mais longe<span></span></a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#para-praticar-suas-novas-habilidades-tente"><i class="fa fa-check"></i><b>3.6.1</b> Para praticar suas novas habilidades, tente…<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html"><i class="fa fa-check"></i><b>4</b> Camadas no QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-dados-formatos-de-arquivo-o-painel-do-navegador-e-o-painel-de-camadas"><i class="fa fa-check"></i><b>4.1</b> Tipos de dados, formatos de arquivo, o painel do navegador e o painel de camadas<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-dados-e-formatos-de-arquivo-comuns"><i class="fa fa-check"></i><b>4.1.1</b> Tipos de dados e formatos de arquivo comuns<span></span></a></li>
+<li class="chapter" data-level="4.1.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-fontes-de-dados"><i class="fa fa-check"></i><b>4.1.2</b> Tipos de fontes de dados<span></span></a></li>
+<li class="chapter" data-level="4.1.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregando-camadas-no-qgis"><i class="fa fa-check"></i><b>4.1.3</b> Carregando camadas no QGIS<span></span></a></li>
+<li class="chapter" data-level="4.1.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-painel-do-navegador"><i class="fa fa-check"></i><b>4.1.4</b> O painel do navegador<span></span></a></li>
+<li class="chapter" data-level="4.1.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-painel-de-camadas"><i class="fa fa-check"></i><b>4.1.5</b> O painel de camadas<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#propriedades-da-camada"><i class="fa fa-check"></i><b>4.2</b> Propriedades da camada<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#metadados-geoespaciais"><i class="fa fa-check"></i><b>4.3</b> Metadados geoespaciais<span></span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tutorialexercício-adicionando-metadados"><i class="fa fa-check"></i><b>4.3.1</b> Tutorial/Exercício: Adicionando metadados<span></span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#quiz-6"><i class="fa fa-check"></i><b>4.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-gerenciador-de-fonte-de-dados-e-conexão-com-serviços-remotos"><i class="fa fa-check"></i><b>4.4</b> O gerenciador de fonte de dados e conexão com serviços remotos<span></span></a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-gerenciador-de-fonte-de-dados"><i class="fa fa-check"></i><b>4.4.1</b> O gerenciador de fonte de dados<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#conectando-qgis-a-serviços-remotos"><i class="fa fa-check"></i><b>4.4.2</b> Conectando QGIS a serviços remotos<span></span></a></li>
+<li class="chapter" data-level="4.4.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#quiz-7"><i class="fa fa-check"></i><b>4.4.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exportando-camadas-camadas-na-memória-temporárias-e-camadas-virtuais"><i class="fa fa-check"></i><b>4.5</b> Exportando camadas, camadas na memória (temporárias) e camadas virtuais<span></span></a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exportando-camadas-do-qgis"><i class="fa fa-check"></i><b>4.5.1</b> Exportando camadas do QGIS<span></span></a></li>
+<li class="chapter" data-level="4.5.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#camadas-na-memória"><i class="fa fa-check"></i><b>4.5.2</b> Camadas na memória<span></span></a></li>
+<li class="chapter" data-level="4.5.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#camadas-virtuais"><i class="fa fa-check"></i><b>4.5.3</b> Camadas virtuais<span></span></a></li>
+<li class="chapter" data-level="4.5.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#quiz-8"><i class="fa fa-check"></i><b>4.5.4</b> Quiz<span></span></a></li>
+<li class="chapter" data-level="4.5.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#se-você-quiser-ir-mais-longe-2"><i class="fa fa-check"></i><b>4.5.5</b> Se você quiser ir mais longe<span></span></a></li>
+<li class="chapter" data-level="4.5.6" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exercíciotutorial-camadas-virtuais"><i class="fa fa-check"></i><b>4.5.6</b> Exercício/Tutorial: Camadas virtuais<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#para-praticar-suas-novas-habilidades-tente-1"><i class="fa fa-check"></i><b>4.6</b> Para praticar suas novas habilidades, tente…<span></span></a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregar-rasters-e-vetores-encontrados-na-internet"><i class="fa fa-check"></i><b>4.6.1</b> Carregar rasters e vetores encontrados na internet<span></span></a></li>
+<li class="chapter" data-level="4.6.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregar-uma-planilha-no-qgis-usando-o-plugin-spreadsheet-layers"><i class="fa fa-check"></i><b>4.6.2</b> Carregar uma planilha no QGIS usando o plugin Spreadsheet Layers<span></span></a></li>
+<li class="chapter" data-level="4.6.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#dicas"><i class="fa fa-check"></i><b>4.6.3</b> Dicas<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><i class="fa fa-check"></i><b>5</b> OSM e a camada de assentamentos de alta resolução<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#dados-do-osm"><i class="fa fa-check"></i><b>5.1</b> Dados do OSM<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#o-que-é-osm"><i class="fa fa-check"></i><b>5.1.1</b> O que é OSM?<span></span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#onde-o-osm-é-usado"><i class="fa fa-check"></i><b>5.1.2</b> Onde o OSM é usado?<span></span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#como-o-osm-pode-ser-usado-no-qgis"><i class="fa fa-check"></i><b>5.1.3</b> Como o OSM pode ser usado no QGIS?<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#os-dados-da-camada-de-assentamentos-de-alta-resolução-hrsl"><i class="fa fa-check"></i><b>5.2</b> Os dados da camada de assentamentos de alta resolução (HRSL)<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#o-que-é-high-resolution-settlement-layer-hrsl-ou-camada-de-assentamentos-de-alta-resolução"><i class="fa fa-check"></i><b>5.2.1</b> O que é High Resolution Settlement Layer (HRSL) ou camada de assentamentos de alta resolução?<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#casos-de-uso-do-hrsl"><i class="fa fa-check"></i><b>5.2.2</b> Casos de uso do HRSL<span></span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#se-você-quiser-ir-além"><i class="fa fa-check"></i><b>5.2.3</b> Se você quiser ir além<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#para-praticar-suas-novas-habilidades-tente-2"><i class="fa fa-check"></i><b>5.3</b> Para praticar suas novas habilidades, tente…<span></span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#carregar-mais-recursos-do-osm-usando-o-plug-in-quickosm"><i class="fa fa-check"></i><b>5.3.1</b> Carregar mais recursos do OSM usando o plug-in QuickOSM<span></span></a></li>
+<li class="chapter" data-level="5.3.2" data-path="osm-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="osm-e-a-camada-de-assentamentos-de-alta-resolução.html#dicas-1"><i class="fa fa-check"></i><b>5.3.2</b> Dicas<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html"><i class="fa fa-check"></i><b>6</b> Camadas de estilo<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#painéis-guias-e-tipos-de-renderização-principais"><i class="fa fa-check"></i><b>6.1</b> Painéis, guias e tipos de renderização principais<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#painel-de-estilo-da-camada"><i class="fa fa-check"></i><b>6.1.1</b> Painel de estilo da camada<span></span></a></li>
+<li class="chapter" data-level="6.1.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#guia-simbologia-nas-propriedades-das-camadas"><i class="fa fa-check"></i><b>6.1.2</b> Guia simbologia nas propriedades das camadas<span></span></a></li>
+<li class="chapter" data-level="6.1.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#renderização-raster-renderização-de-banda"><i class="fa fa-check"></i><b>6.1.3</b> Renderização raster: renderização de banda<span></span></a></li>
+<li class="chapter" data-level="6.1.4" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#renderização-de-vetor"><i class="fa fa-check"></i><b>6.1.4</b> Renderização de vetor<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#raster-básico-e-simbologia-vetorial"><i class="fa fa-check"></i><b>6.2</b> Raster básico e simbologia vetorial<span></span></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercício-renderização-vetorial"><i class="fa fa-check"></i><b>6.2.1</b> Tutorial/Exercício: Renderização vetorial<span></span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercicio-renderização-raster"><i class="fa fa-check"></i><b>6.2.2</b> Tutorial/Exercicio: Renderização raster<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#modos-de-mesclagem-e-efeitos-de-desenho"><i class="fa fa-check"></i><b>6.3</b> Modos de mesclagem e efeitos de desenho<span></span></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercício"><i class="fa fa-check"></i><b>6.3.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#substituições-definidas-por-dados-e-geradores-de-geometria"><i class="fa fa-check"></i><b>6.4</b> Substituições definidas por dados e geradores de geometria<span></span></a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorialexercício-1"><i class="fa fa-check"></i><b>6.4.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html"><i class="fa fa-check"></i><b>7</b> Fazendo mapas<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#exportando-a-tela-do-mapa"><i class="fa fa-check"></i><b>7.1</b> Exportando a tela do mapa<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#primeiro-método-exportar-a-tela-do-mapa-sem-o-layout-de-impressão"><i class="fa fa-check"></i><b>7.1.1</b> Primeiro método: Exportar a tela do mapa sem o layout de impressão<span></span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#segundo-método-exportar-a-tela-do-mapa-para-a-impressão-layout"><i class="fa fa-check"></i><b>7.1.2</b> Segundo método: Exportar a tela do mapa para a impressão layout<span></span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#quiz-12"><i class="fa fa-check"></i><b>7.1.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#adicionando-e-editando-elementos-do-mapa-ao-layout-de-impressão"><i class="fa fa-check"></i><b>7.2</b> Adicionando e editando elementos do mapa ao layout de impressão<span></span></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#tutorialexercício-2"><i class="fa fa-check"></i><b>7.2.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="7.2.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#quiz-13"><i class="fa fa-check"></i><b>7.2.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#automatizando-a-criação-de-mapas-usando-os-recursos-do-atlas"><i class="fa fa-check"></i><b>7.3</b> Automatizando a criação de mapas usando os recursos do Atlas<span></span></a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#tutorialexercício-3"><i class="fa fa-check"></i><b>7.3.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html"><i class="fa fa-check"></i><b>8</b> Atributos da camada<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#editando-atributos-da-camada"><i class="fa fa-check"></i><b>8.1</b> Editando atributos da camada<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#tutorialexercício-4"><i class="fa fa-check"></i><b>8.1.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="8.1.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#quiz-14"><i class="fa fa-check"></i><b>8.1.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#entender-e-trabalhar-com-dados-de-atributos-consultas-e-análises"><i class="fa fa-check"></i><b>8.2</b> Entender e trabalhar com dados de atributos, consultas e análises<span></span></a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#tutorialexercício-5"><i class="fa fa-check"></i><b>8.2.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="8.2.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#quiz-15"><i class="fa fa-check"></i><b>8.2.2</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#expressões-de-qgis-avançadas"><i class="fa fa-check"></i><b>8.3</b> Expressões de QGIS avançadas<span></span></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#tutorialexercício-6"><i class="fa fa-check"></i><b>8.3.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="8.3.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#quiz-16"><i class="fa fa-check"></i><b>8.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html"><i class="fa fa-check"></i><b>9</b> Criando e editando camadas<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-uma-nova-camada-geopackage-ou-shapefile"><i class="fa fa-check"></i><b>9.1</b> Criando uma nova camada GeoPackage ou Shapefile<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-uma-nova-camada-geopackage"><i class="fa fa-check"></i><b>9.1.1</b> Criando uma nova camada GeoPackage<span></span></a></li>
+<li class="chapter" data-level="9.1.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-um-novo-shapefile"><i class="fa fa-check"></i><b>9.1.2</b> Criando um novo Shapefile<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#digitalizando-uma-camada-existente"><i class="fa fa-check"></i><b>9.2</b> Digitalizando uma camada existente<span></span></a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#tutorialexercício-7"><i class="fa fa-check"></i><b>9.2.1</b> Tutorial/Exercício<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#georreferenciando-um-mapa-topográfico"><i class="fa fa-check"></i><b>9.3</b> Georreferenciando um mapa topográfico<span></span></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#tutorialexercício-8"><i class="fa fa-check"></i><b>9.3.1</b> Tutorial/Exercício<span></span></a></li>
+<li class="chapter" data-level="9.3.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#quiz-17"><i class="fa fa-check"></i><b>9.3.2</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html"><i class="fa fa-check"></i><b>10</b> Processamento e análise vetorial<span></span></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#o-modelo-de-dados-vetoriais"><i class="fa fa-check"></i><b>10.1</b> O modelo de dados vetoriais<span></span></a></li>
+<li class="chapter" data-level="10.2" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#metadados"><i class="fa fa-check"></i><b>10.2</b> Metadados<span></span></a></li>
+<li class="chapter" data-level="10.3" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#lógica-do-processamento-vetorial"><i class="fa fa-check"></i><b>10.3</b> Lógica do processamento vetorial<span></span></a></li>
+<li class="chapter" data-level="10.4" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#entendendo-seus-dados"><i class="fa fa-check"></i><b>10.4</b> Entendendo seus dados<span></span></a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-1-prepare-seu-ambiente-de-trabalho"><i class="fa fa-check"></i><b>10.4.1</b> Etapa 1: Prepare seu ambiente de trabalho<span></span></a></li>
+<li class="chapter" data-level="10.4.2" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-2-entenda-o-que-você-está-olhando"><i class="fa fa-check"></i><b>10.4.2</b> Etapa 2: Entenda o que você está olhando<span></span></a></li>
+<li class="chapter" data-level="10.4.3" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-3-verificações-básicas-para-encontrar-erros-rapidamente-em-seus-dados"><i class="fa fa-check"></i><b>10.4.3</b> Etapa 3: Verificações básicas para encontrar erros rapidamente em seus dados<span></span></a></li>
+<li class="chapter" data-level="10.4.4" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-4-observe-as-informações-anexadas-aos-pontos-linhas-e-polígonos"><i class="fa fa-check"></i><b>10.4.4</b> Etapa 4: Observe as informações anexadas aos pontos, linhas e polígonos<span></span></a></li>
+<li class="chapter" data-level="10.4.5" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#quiz-18"><i class="fa fa-check"></i><b>10.4.5</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#introdução-ao-processamento-vetorial"><i class="fa fa-check"></i><b>10.5</b> Introdução ao processamento vetorial<span></span></a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#quiz-19"><i class="fa fa-check"></i><b>10.5.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#geoestatística-e-interpolação"><i class="fa fa-check"></i><b>10.6</b> Geoestatística e interpolação<span></span></a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#quiz-20"><i class="fa fa-check"></i><b>10.6.1</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html"><i class="fa fa-check"></i><b>11</b> Processamento e análise raster<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#o-modelo-de-dados"><i class="fa fa-check"></i><b>11.1</b> O modelo de dados<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#racional-do-processamento-raster"><i class="fa fa-check"></i><b>11.2</b> Racional do processamento raster<span></span></a></li>
+<li class="chapter" data-level="11.3" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#entendendo-seus-dados-raster"><i class="fa fa-check"></i><b>11.3</b> Entendendo seus dados raster<span></span></a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#etapa-1-prepare-seu-ambiente-de-trabalho-1"><i class="fa fa-check"></i><b>11.3.1</b> Etapa 1: Prepare seu ambiente de trabalho<span></span></a></li>
+<li class="chapter" data-level="11.3.2" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#etapa-2-entenda-o-que-você-está-olhando-1"><i class="fa fa-check"></i><b>11.3.2</b> Etapa 2: Entenda o que você está olhando<span></span></a></li>
+<li class="chapter" data-level="11.3.3" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#quiz-21"><i class="fa fa-check"></i><b>11.3.3</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#introdução-ao-trabalho-com-dados-raster"><i class="fa fa-check"></i><b>11.4</b> Introdução ao trabalho com dados raster<span></span></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#quiz-22"><i class="fa fa-check"></i><b>11.4.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#trabalho-com-dados-raster-e-vetoriais"><i class="fa fa-check"></i><b>11.5</b> Trabalho com dados raster e vetoriais<span></span></a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#quiz-23"><i class="fa fa-check"></i><b>11.5.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#referências"><i class="fa fa-check"></i><b>11.6</b> Referências<span></span></a></li>
+<li class="chapter" data-level="11.7" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#notas"><i class="fa fa-check"></i><b>11.7</b> Notas<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="plugins-qgis.html"><a href="plugins-qgis.html"><i class="fa fa-check"></i><b>12</b> Plugins QGIS<span></span></a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#introdução-à-mentalidade-do-plugin"><i class="fa fa-check"></i><b>12.1</b> Introdução à mentalidade do plugin<span></span></a></li>
+<li class="chapter" data-level="12.2" data-path="plugins-qgis.html"><a href="plugins-qgis.html#o-gerenciador-de-plugins"><i class="fa fa-check"></i><b>12.2</b> O gerenciador de plugins<span></span></a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#quiz-24"><i class="fa fa-check"></i><b>12.2.1</b> Quiz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="plugins-qgis.html"><a href="plugins-qgis.html#alguns-plugins-interessantes"><i class="fa fa-check"></i><b>12.3</b> Alguns plugins interessantes<span></span></a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#discovery"><i class="fa fa-check"></i><b>12.3.1</b> Discovery<span></span></a></li>
+<li class="chapter" data-level="12.3.2" data-path="plugins-qgis.html"><a href="plugins-qgis.html#polygon-divider"><i class="fa fa-check"></i><b>12.3.2</b> Polygon Divider<span></span></a></li>
+<li class="chapter" data-level="12.3.3" data-path="plugins-qgis.html"><a href="plugins-qgis.html#load-them-all"><i class="fa fa-check"></i><b>12.3.3</b> Load Them All<span></span></a></li>
+<li class="chapter" data-level="12.3.4" data-path="plugins-qgis.html"><a href="plugins-qgis.html#raster-tracer"><i class="fa fa-check"></i><b>12.3.4</b> Raster tracer<span></span></a></li>
+<li class="chapter" data-level="12.3.5" data-path="plugins-qgis.html"><a href="plugins-qgis.html#active-fire"><i class="fa fa-check"></i><b>12.3.5</b> Active Fire<span></span></a></li>
+<li class="chapter" data-level="12.3.6" data-path="plugins-qgis.html"><a href="plugins-qgis.html#qgis2web"><i class="fa fa-check"></i><b>12.3.6</b> <span>Qgis2web</span><span></span></a></li>
+<li class="chapter" data-level="12.3.7" data-path="plugins-qgis.html"><a href="plugins-qgis.html#dataplotly"><i class="fa fa-check"></i><b>12.3.7</b> DataPlotly<span></span></a></li>
+<li class="chapter" data-level="12.3.8" data-path="plugins-qgis.html"><a href="plugins-qgis.html#plugin-quickmapservices-openlayers"><i class="fa fa-check"></i><b>12.3.8</b> Plugin QuickMapServices / OpenLayers<span></span></a></li>
+<li class="chapter" data-level="12.3.9" data-path="plugins-qgis.html"><a href="plugins-qgis.html#table2style"><i class="fa fa-check"></i><b>12.3.9</b> Table2Style<span></span></a></li>
+<li class="chapter" data-level="12.3.10" data-path="plugins-qgis.html"><a href="plugins-qgis.html#ors-tools"><i class="fa fa-check"></i><b>12.3.10</b> ORS Tools<span></span></a></li>
+<li class="chapter" data-level="12.3.11" data-path="plugins-qgis.html"><a href="plugins-qgis.html#quiz-25"><i class="fa fa-check"></i><b>12.3.11</b> Quiz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com o bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Geodados: uma introdução gentil</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="plugins-qgis" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Capitulo 12</span> Plugins QGIS<a href="plugins-qgis.html#plugins-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Autores</strong>: Codrina, Ben Hur</p>
+<p>Este módulo irá destacar alguns dos plugins mais interessantes e úteis que a comunidade internacional QGIS desenvolveu e disponibilizou para todos usarem. Neste módulo, você irá adquirir as seguintes habilidades:</p>
+<ul>
+<li>Como pesquisar e instalar um novo plugin;</li>
+<li>Como alternar entre os diferentes repositórios de plugins;</li>
+<li>Como ler a documentação de um plugin e como pesquisar;</li>
+<li>Detalhes sobre algumas das funcionalidades de plugins mais populares.</li>
+</ul>
+<p>Ferramentas e recursos necessários:</p>
+<ul>
+<li>Este módulo foi preparado usando <a href="https://qgis.org/en/site/forusers/download.html">QGIS versão 3.16.1 - Hannover</a></li>
+</ul>
+<p>Pré-requisitos:</p>
+<ul>
+<li>Conhecimento básico de operação um computador</li>
+<li>Uma compreensão robusta de todos os módulos, pois os plugins que apresentaremos se aplicam a várias noções / elementos que você aprendeu ao longo deste currículo, como vetores, rasters, tabelas de atributos, regras cartográficas e muitos outros.</li>
+</ul>
+<div id="introdução-à-mentalidade-do-plugin" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Introdução à mentalidade do plugin<a href="plugins-qgis.html#introdução-à-mentalidade-do-plugin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Uma das muitas vantagens da comunidade de código aberto - composta por desenvolvedores e usuários - é a incrível velocidade com que os desenvolvimentos e melhorias acontecem, e a maneira como novas ideias surgem e são colocadas em prática.</p>
+<p>Como você viu no módulo 1, o QGIS é projetado com uma arquitetura de ‘plugin’ (ou complemento), permitindo que ele seja facilmente personalizado para as necessidades do usuário adicionando plugins externos. Na verdade, QGIS é a combinação de plugins <strong>principais (core)</strong> e <strong>externos</strong>. Os plugins principais - como o nome sugere - formam a estrutura principal, são mantidos pela Equipe de Desenvolvimento do QGIS e estão sempre incluídos na instalação, como por exemplo o plugin de núcleo de processamento, as estatísticas de zona ou o gerenciador de plugins. Com o tempo, devido à sua relevância, diferentes plugins externos passaram a ser principais.</p>
+<p>É claro que, dados os princípios do código aberto, juntamente com a grande e muito detalhada documentação disponível e os muitos canais de comunicação e eventos dedicados, é possível aprender a construir um plugin que atenda aos seus requisitos. E esse seria um um <strong>plugin externo</strong>. Nesta <a href="https://plugins.qgis.org/">página da web</a>, você pode encontrar toda a documentação necessária. A maioria dos plugins externos são escritos em Python, mas também podem ser escritos em C ++.</p>
+<p>Nesta primeira fase, vamos explorar a configuração dos plugins QGIS - como procurar um plugin para resolver um requisito específico que alguém possa ter, como interpretar sua documentação e como relatar ao desenvolvedor se você encontrar um problema.</p>
+</div>
+<div id="o-gerenciador-de-plugins" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> O gerenciador de plugins<a href="plugins-qgis.html#o-gerenciador-de-plugins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O QGIS oferece um plugin principal para permitir aos usuários gerenciar, instalar, atualizar e desinstalar plugins externos. A funcionalidade é intuitiva, fornecendo acesso total ao repositório público oficial de plugins.</p>
+<p>Deve ser destacado que os plugins externos - sejam oficiais ou experimentais - são o trabalho de desenvolvedores individuais ou organizações e a organização QGIS não se responsabiliza por eles. Dito isso, existem algumas regras que os desenvolvedores que desejam compartilhar seu trabalho através do repositório oficial devem cumprir, bem como uma série de recomendações para uma rápida aceitação. Os requisitos incluem elementos como licença compatível, documentação mínima, identificação clara de dependências e outros. As recomendações incluem verificar se o plugin não duplica funcionalidades existentes, bom formato do repositório fonte, compatível com todas as plataformas (Windows, Linux, macOS) e muitas outras.</p>
+<p>Plug-ins experimentais - que são rotulados como tal no gerenciador de plugins - são plugins que estão em estágios iniciais de desenvolvimento, que não são adequados para uso operacional. Eles são considerados como testes de “prova de conceito” e os usuários não são aconselhados a instalá-los, a menos que pretendam usá-los para fins de teste.</p>
+<p>Para ver os plugins experimentais, o usuário deve habilitá-los. Assim, nas configurações do gerenciador de plugins, marque a opção <code>Mostrar também plugins experimentais</code> (Figura 10.2a). Também existe a possibilidade de listar os plugins obsoletos. Eles não são recomendados porque não são mais mantidos.</p>
+<p>Os dois tipos são bem diferenciados no gerenciador de plugins (consulte as figuras 10.1 e 10.2b).</p>
+<div class="figure">
+<img src="media/modulo10/fig101.png" title="Plugin oficial do gerenciador" alt="" />
+<p class="caption">Plugin oficial do gerenciador</p>
+</div>
+<p>Figura 10.1 - Plugin oficial do gerenciador</p>
+<div class="figure">
+<img src="media/modulo10/fig102_a.png" title="Exibir plugins experimentais" alt="" />
+<p class="caption">Exibir plugins experimentais</p>
+</div>
+<p>Figura 10.2a - Exibir plugins experimentais</p>
+<div class="figure">
+<img src="media/modulo10/fig102_b.png" title="Plugin experimental do plugin Manager" alt="" />
+<p class="caption">Plugin experimental do plugin Manager</p>
+</div>
+<p>Figura 10.2b - Plugin experimental do plugin Manager</p>
+<p>Outro aspecto que vale a pena mencionar é que o gerenciador de plugins é uma funcionalidade bastante versátil que permite aos desenvolvedores adicionar seus repositórios privados (veja a figura 10.3).</p>
+<div class="figure">
+<img src="media/modulo10/fig103.png" title="Adicionar repositório de plugins privado ao seu QGIS" alt="" />
+<p class="caption">Adicionar repositório de plugins privado ao seu QGIS</p>
+</div>
+<p>Figura 10.3 - Adicionar repositório de plugins privado ao seu QGIS</p>
+<p>Isso é útil, se por exemplo, dentro de sua organização há necessidade de mais plugins, mas que não estão em conformidade com QGIS requisitos para hospedagem pública em seu repositório oficial. Um recurso útil sobre como configurar seu próprio repositório de plugins está disponível em <a href="https://gis-ops.com/qgis-3-plugin-tutorial-set-up-a-plugin-repository-explained/">GIS OPS</a></p>
+<p>O método mais simples é preparar um pacote zip contendo um plugin e que pode ser compartilhado por meios tradicionais. No entanto, esse método não é recomendado.</p>
+<p>Além de Configurações, pode-se ter notado que existem várias outras guias do lado esquerdo, com nomes que são autoexplicativos: <code>Todos, Instalado, Não instalado, Novo, Inválido, Instalar do ZIP</code> e, como mencionado, <code>Configurações</code>.</p>
+<p>Depois de decidir quais tipos de plugins listar em seu gerenciador, pode-se alternar para a guia <code>Todos</code> e vamos investigar como um plugin aparece no Gerenciador de plugins. Para fins de demonstração, pesquise o plugin <code>Cartographic Line Generalization</code>.</p>
+<p>Como você notou, o Gerenciador de Plug-ins possui uma barra de pesquisa disponível - aqui é onde se pode digitar uma ou mais palavras-chave adequadas para um requisito específico. No nosso caso, a palavra-chave é ‘cartographic’.</p>
+<div class="figure">
+<img src="media/modulo10/fig104.png" title="Buscando um plugin específico no Gerenciador de Plugins" alt="" />
+<p class="caption">Buscando um plugin específico no Gerenciador de Plugins</p>
+</div>
+<p>Figura 10.4 - Buscando um plugin específico no Gerenciador de Plugins</p>
+<p>Como se pode notar, do lado direito há uma janela apresentando um conjunto de elementos de documentação. Você perceberá que estes são padronizados e cada plugin deve ter as mesmas informações disponibilizadas, da mesma forma.</p>
+<p>A exibição de metadados para cada plugin é a seguinte:</p>
+<ol style="list-style-type: decimal">
+<li>Nome do plugin e subtítulo descrevendo suas capacidades;</li>
+<li>Seção de descrição - dependendo do desenvolvedor, esta seção pode ser mais ou menos detalhada;</li>
+<li>O número de downloads e quantas estrelas o plugin recebeu da comunidade;</li>
+<li>As palavras-chave escolhidas pelo desenvolvedor;</li>
+<li>Uma série de links muito importantes: a página web do plugin, o <strong>bug tracker</strong> e o repositório de código</li>
+<li>O nome do(s) desenvolvedor(es), bem como a organização afiliada. Às vezes, o nome do projeto no qual o plugin foi desenvolvido também é listado;</li>
+<li>O número da versão, com a menção <em>estável</em> ou <em>experimental</em>, conforme o caso;</li>
+<li>O ícone do plugin.</li>
+</ol>
+<p>Na figura 10.5, todos os elementos de metadados mencionados são identificados.</p>
+<div class="figure">
+<img src="media/modulo10/fig105.png" title="Documentação de um plugin" alt="" />
+<p class="caption">Documentação de um plugin</p>
+</div>
+<p>Figura 10.5 - Documentação de um plugin</p>
+<p>No canto inferior esquerdo está disponível o botão <code>Instalar plugin</code>. Ao ativá-lo, o plugin escolhido será instalado em seu QGIS e um novo ícone ou menu será adicionado à sua interface QGIS.</p>
+<p>É importante mencionar que normalmente, devido a limitações de espaço, a descrição disponível no gerenciador de plugins não é extensa. Assim, para melhor entender se o plugin escolhido atende aos requisitos, é necessário acessar a sua página inicial. No nosso caso, observamos que a página inicial é idêntica ao repositório de código - no Gitlab, - mas isso nem sempre é o caso (veja a figura 10.6).</p>
+<div class="figure">
+<img src="media/modulo10/fig106_a.png" title="Página inicial do plugin selecionado" alt="" />
+<p class="caption">Página inicial do plugin selecionado</p>
+</div>
+<p>Figura 10.6a - Página inicial do plugin selecionado</p>
+<div class="figure">
+<img src="media/modulo10/fig106_b.png" title="Metadados detalhados na página inicial do plugin" alt="" />
+<p class="caption">Metadados detalhados na página inicial do plugin</p>
+</div>
+<p>Figura 10.6b - Metadados detalhados na página inicial do plugin</p>
+<p>Outro aspecto muito importante a destacar em relação à documentação de um plugin é o link web do <strong>bug tracker</strong>. Um sistema rastreador de bugs é um aplicativo de software que rastreia todos os problemas de software relatados (também conhecidos como bugs). Em nosso caso, o bug tracker é suportado pelo repositório de código dedicado Github (veja a figura 10.7).</p>
+<div class="figure">
+<img src="media/modulo10/fig107.png" title="Sistema de rastreamento de bug no Github para um plugin QGIS" alt="" />
+<p class="caption">Sistema de rastreamento de bug no Github para um plugin QGIS</p>
+</div>
+<p>Figura 10.7 - Sistema de rastreamento de bug no Github para um plugin QGIS</p>
+<p>Detalhar como relatar um problema de software no Github excede o escopo deste módulo, no entanto, é importante destacar um alguns aspectos. Em primeiro lugar, o ecossistema de código aberto - seja geoespacial ou não - funciona melhor quando todas as partes envolvidas estão ativas, ou seja, os desenvolvedores programando e os usuários testando e relatando os problemas identificados. Se alguém fizer uma pesquisa rápida nos diferentes rastreadores de bug para <a href="https://github.com/qgis/QGIS/issues">QGIS</a> ou <a href="https://github.com/OSGeo/grass/issues">GRASS</a> ou outra solução de código aberto, notará uma atividade intensa. E isso é bom, mostra que a comunidade está viva, que a interação entre desenvolvedores e usuários funciona normalmente. Em segundo lugar, antes de abrir um relatório de bug através de muitos canais diferentes, certifique-se de ter pesquisado exaustivamente online por uma solução para o seu problema. Caso contrário, você corre o risco de não ser atendido por não dedicar tempo para fazer seu dever de casa.</p>
+<div id="quiz-24" class="section level3 hasAnchor" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Quiz<a href="plugins-qgis.html#quiz-24" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Você precisa do nome completo do plugin para encontrá-lo no Gerenciador de plugins?
+<ol style="list-style-type: lower-alpha">
+<li><strong>Não, uma palavra-chave é suficiente.</strong></li>
+<li>Sim.</li>
+</ol></li>
+<li>Os plugins oficiais e experimentais estão disponíveis no mesmo repositório?
+<ol style="list-style-type: lower-alpha">
+<li><strong>Sim, desde que a opção ‘Mostrar os plugins experimentais’ no Plug-in do gerenciador esteja selecionada.</strong></li>
+<li>Não, para experimental existem outros repositórios.</li>
+</ol></li>
+<li>Cite 2 ou 3 informações que um usuário pode encontrar na documentação de um plugin:
+-<strong>Título e descrição, número de downloads, página inicial, links do repositório de código, nome do desenvolvedor, uma descrição resumida.</strong></li>
+</ol>
+</div>
+</div>
+<div id="alguns-plugins-interessantes" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Alguns plugins interessantes<a href="plugins-qgis.html#alguns-plugins-interessantes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Plugins podem ser classificados em várias categorias, dependendo do que se considera importante. A seguir, identificamos os 2:</p>
+<ul>
+<li>Pelo nível de desenvolvimento:
+<ul>
+<li>Oficial - o plugin é considerado estável, bem documentado e pode ser usado em produção;</li>
+<li>Experimental - o plugin está em estágio inicial de desenvolvimento, é recomendado apenas para fins de teste;</li>
+<li>Obsoleto - o plugin não é mais mantido, ou seja, não será atualizado para versões mais recentes, o desenvolvedor pode não responder ao relatório de bug, para ser usado apenas se não houver outra maneira de resolver o problema em questão.</li>
+</ul></li>
+<li>Por tipo de categoria:
+<ul>
+<li>Vetor;</li>
+<li>Raster;</li>
+<li>Rede;</li>
+<li>Base de dados;</li>
+<li>Cartografia.</li>
+</ul></li>
+</ul>
+<p>Deve-se notar que alguns plugins externos agem como pontes que permitem o acesso através do QGIS a bancos de dados externos, nuvens, serviços, nesse caso, elementos adicionais podem ser necessários - como uma conta paga para o serviço externo, nuvem ou uma chave de API. Um exemplo para ilustrar isso é o plugin Planet Explorer da Planet Inc. (veja a figura 10.8).</p>
+<div class="figure">
+<img src="media/modulo10/fig108.png" title="Exemplo de um plugin que requer assinatura externa para funcionar no QGIS em sua capacidade total" alt="" />
+<p class="caption">Exemplo de um plugin que requer assinatura externa para funcionar no QGIS em sua capacidade total</p>
+</div>
+<p>Figura 10.8 - Exemplo de um plugin que requer assinatura externa para funcionar no QGIS em sua capacidade total</p>
+<p>Embora na descrição não haja nenhuma menção sobre isso, vá para a página inicial do plugin e veja os requisitos para seu funcionamento: “Assinatura ou teste do Planet para acessar e baixar imagens do Planet. Não tem uma assinatura? Entre em contato com nossa <a href="https://www.planet.com/contact/">equipe</a> para saber mais.”</p>
+<p>Nas páginas a seguir, identificaremos e forneceremos exemplos curto de alguns plugins que consideramos úteis. Por favor, tenha em mente que esta é uma pequena lista do extenso universo de plugins, então fique à vontade para explorar mais.</p>
+<div id="discovery" class="section level3 hasAnchor" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Discovery<a href="plugins-qgis.html#discovery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig109_a.png" title="O plugin" alt="" />
+<p class="caption">O plugin</p>
+</div>
+<p>Figura 10.9a - O plugin</p>
+<p>Discovery é um plugin muito útil que permite pesquisar texto armazenado nos atributos de seus vetores. O plugin se conecta a um banco de dados PostgreSQL / PostGIS, MS SQL Server, ou um arquivo de geopackage e procura por texto nas colunas indicadas. Ele permite auto-completar e também oferece suporte para escalas com base em expressões flexíveis.</p>
+<p>Para testá-lo, usaremos um arquivo de geopackage preparado por The Humanitarian Data Exchange e disponível para <a href="https://data.humdata.org/dataset/hotosm_phl_north_populated_places">download</a>. É um arquivo vetorial contendo os lugares povoados das Filipinas, junto com os nomes e número de pessoas. Os dados brutos foram baixados do OpenStreetMap.</p>
+<p>Depois de usar o gerenciador de plugins para instalar o Discovery, uma nova barra de ferramentas deve estar visível em seu QGIS. Vamos configurar os parâmetros: Tipo de fonte de dados: geopackage, nome: Filipinas, escolha o arquivo de acordo e a camada será <code>Populated Places</code> (Locais Povoados), a coluna de pesquisa: nome. Também solicitaremos informações adicionais a serem exibidas na barra de pesquisa: <code>is_in</code> e <code>population</code>. Na nossa situação, se houver mais povoados com o mesmo nome, mas em províncias diferentes, seremos capazes de diferenciá-las. Sua configuração do Discovery deve ser semelhante à figura 10.9b.</p>
+<div class="figure">
+<img src="media/modulo10/fig109_b.png" title="Configurando o plugin Discovery" alt="" />
+<p class="caption">Configurando o plugin Discovery</p>
+</div>
+<p>Figura 10.9b - Configurando o plugin Discovery</p>
+<p>Clique em OK e vamos procurar por “San Roque” na barra de pesquisa (ver figura 10.9c).</p>
+<div class="figure">
+<img src="media/modulo10/fig109_c.png" title="Usando o Discovery para pesquisar rapidamente os atributos das camadas vetoriais." alt="" />
+<p class="caption">Usando o Discovery para pesquisar rapidamente os atributos das camadas vetoriais.</p>
+</div>
+<p>Figura 10.9c - Usando o Discovery para pesquisar rapidamente os atributos das camadas vetoriais.</p>
+<p>Em nosso exemplo, podemos ver que há muitos lugares povoados de San Roque nas Filipinas, escolhendo uma entrada nesta lista e o QGIS irá ampliá-la (consulte a figura 10.9d).</p>
+<div class="figure">
+<img src="media/modulo10/fig109_d.png" title="Ampliação da geometria do elemento selecionado na barra de pesquisa." alt="" />
+<p class="caption">Ampliação da geometria do elemento selecionado na barra de pesquisa.</p>
+</div>
+<p>Figura 10.9d - Ampliação da geometria do elemento selecionado na barra de pesquisa.</p>
+<p>O plugin oferece a possibilidade de encontrar vetores por pesquisa de texto juntamente com vários filtros, como uma caixa delimitadora ou várias consultas SQL.</p>
+<p>Para uma descrição detalhada dos recursos do plugin, junto com um tutorial mais abrangente, verifique o plugin Discovery <a href="https://www.lutraconsulting.co.uk/projects/discovery/">página da web</a>.</p>
+</div>
+<div id="polygon-divider" class="section level3 hasAnchor" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Polygon Divider<a href="plugins-qgis.html#polygon-divider" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig1010_a.png" title="O plugin" alt="" />
+<p class="caption">O plugin</p>
+</div>
+<p>Figura 10.10a - O plugin</p>
+<p>Polygon Divider Polygon Divider é outro plugin QGIS útil que ajuda o usuário a dividir de forma eficiente polígonos em ‘aproximadamente quadrados’ de um tamanho definido, a partir de uma camada vetorial do tipo polígono.</p>
+<p>Essa ferramenta pode ser útil para uma infinidade de aplicações, como parcelamento de terras, amostragem ambiental e assim por diante.</p>
+<p>Vamos usar esta ferramenta no conjunto de dados dos limites do Rio de Janeiro e ver quais resultados obtemos.</p>
+<p>Usando o gerenciador de plugins, instale o Polygon Divider. Após a conclusão, um novo ícone aparecerá na barra de ferramentas QGIS e uma nova janela será aberta (consulte a figura 10.10b).</p>
+<div class="figure">
+<img src="media/modulo10/fig1010_b.png" title="Janela do plugin do divisor de polígono" alt="" />
+<p class="caption">Janela do plugin do divisor de polígono</p>
+</div>
+<p>Figura 10.10b - Janela do plugin do divisor de polígono</p>
+<p>Escolha como camada de entrada a camada de polígono do Rio de Janeiro, salve o arquivo de saída como <code>rj_polygonDivider</code>, escolha <code>1000000</code> (significando que todas as divisões terão cerca de 100 hectares), escolha <code>left to right</code> (da esquerda para a direita) como direção de corte e tolerância <code>1</code>. O resultado deve ser semelhante à figura 10.10c.</p>
+<div class="figure">
+<img src="media/modulo10/fig1010_c.png" title="Resultado da execução do plugin Polygon Divider na camada vetorial do Rio" alt="" />
+<p class="caption">Resultado da execução do plugin Polygon Divider na camada vetorial do Rio</p>
+</div>
+<p>Figura 10.10c - Resultado da execução do plugin Polygon Divider na camada vetorial do Rio</p>
+<p>Para uma descrição detalhada dos recursos do plugin, junto com um tutorial mais abrangente, verifique o Polygon Divisor <a href="https://github.com/jonnyhuck/RFCL-PolygonDivider">página da web</a>.</p>
+</div>
+<div id="load-them-all" class="section level3 hasAnchor" number="12.3.3">
+<h3><span class="header-section-number">12.3.3</span> Load Them All<a href="plugins-qgis.html#load-them-all" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig1011_a.png" title="O plugin Load Them All" alt="" />
+<p class="caption">O plugin Load Them All</p>
+</div>
+<p>Figura 10.11a - O plugin Load Them All</p>
+<p>Este é um plugin útil quando você tem múltiplas camadas (vetores e rasters) que você precisa carregar no QGIS. O plugin permite que você carregue tudo automaticamente, de uma vez. Mas a grande vantagem é que ele fornece uma infinidade de filtros, como alfanuméricos (por nome), data de modificação, bounding box (extensão, a partir de coordenadas inseridas manualmente), tipo de geometria e outros.</p>
+<p>Para testá-lo, carregaremos os arquivos do módulo anterior 8. Para o vetor, escolheremos os shapefiles que foram processados ​​antes de uma data selecionada, para o raster escolheremos um filtro alfanumérico - o nome do raster carregado deve começar com LandCover (veja a figura 10.11_b).</p>
+<div class="figure">
+<img src="media/modulo10/fig1011_b.png" title="Configurando os parâmetros do plugin Load Them All (vetores e rasters)" alt="" />
+<p class="caption">Configurando os parâmetros do plugin Load Them All (vetores e rasters)</p>
+</div>
+<p>Figura 10.11b - Configurando os parâmetros do plugin Load Them All (vetores e rasters)</p>
+<p>Os parâmetros identificados acima representam um exemplo baseado na estrutura disponível. Você pode alterá-lo da maneira que achar melhor, com base nos arquivos do computador.</p>
+<p>Os resultados da execução de Load Them All com os parâmetros acima são apresentados na figura 10.11c (vetores) e 10.11d (rasters).</p>
+<div class="figure">
+<img src="media/modulo10/fig1011_c.png" title="Usando o plugin Load Them All para carregar vários vetores" alt="" />
+<p class="caption">Usando o plugin Load Them All para carregar vários vetores</p>
+</div>
+<p>Figura 10.11c - Usando o plugin Load Them All para carregar vários vetores</p>
+<div class="figure">
+<img src="media/modulo10/fig1011_d.png" title="Usando o plugin Load Them All para carregar vários rasters" alt="" />
+<p class="caption">Usando o plugin Load Them All para carregar vários rasters</p>
+</div>
+<p>Figura 10.11d - Usando o plugin Load Them All para carregar vários rasters</p>
+<p>Para obter uma descrição detalhada dos recursos do plugin, junto com um tutorial mais abrangente, verifique a <a href="https://github.com/gacarrillor/loadthemall">página da web do plugin</a>.</p>
+</div>
+<div id="raster-tracer" class="section level3 hasAnchor" number="12.3.4">
+<h3><span class="header-section-number">12.3.4</span> Raster tracer<a href="plugins-qgis.html#raster-tracer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig1012_a.png" title="O plugin Raster tracer" alt="" />
+<p class="caption">O plugin Raster tracer</p>
+</div>
+<p>Figura 10.12a - O plugin Raster tracer</p>
+<p>O Raster Tracer pode ser um plugin muito útil quando se digitaliza por sobre um mapa, em outras palavras, extraindo dados na forma de vetores. Esta atividade é geralmente realizada em mapas topográficos antigos digitalizados, dos quais queremos extrair várias informações para armazenar, processar e visualizá-las em um SIG/GIS. Um bom exemplo é a digitalização feita sobre mapas topográficos para extrair curvas de nível para construir em SIG um modelo 3D do relevo.</p>
+<p>Embora hoje, com o surgimento de modelos digitais de terreno obtidos a partir de imagens de satélite, isso possa não ser mais um problema, a digitalização ainda é amplamente empregada. O uso mais proeminente é para extrair informações de mapas antigos. Mapas históricos nos oferecem uma janela para o passado, antes de termos satélites para monitorar nossas florestas e mudanças na cobertura do solo. Como esses documentos cartográficos eram originalmente em papel, para poder usar a informação com tecnologia moderna é preciso digitalizá-los.</p>
+<p>Usando o Gerenciador de plugins, pesquise e instale o Raster Tracer. Este plugin adiciona ao QGIS uma capacidade semi-automática de traçar características lineares do mapa raster subjacente, clicando em seus pontos de inflexão no mapa raster. Uma vez instalado, um novo ícone deve aparecer na sua barra de ferramentas.</p>
+<p>Para usá-lo, precisamos de pelo menos 2 camadas - uma é a camada raster e a outra é a camada vetorial que irá capturar os dados. Identificamos para a província de Pampanga um mapa topográfico, 1: 50k no site oficial da Autoridade Nacional de Mapeamento e Informação de Recursos. Infelizmente, embora eles tenham fornecido acesso ao <a href="http://www.namria.gov.ph/3131-IIIAngelesCity.html">mapa</a>, ele não é georreferenciado. Para fins de demonstração, continuaremos sem corrigir esse problema, no entanto, observe! Antes de fazer a digitação de vetores de um mapa raster, é fundamental que o último seja georreferenciado corretamente. Caso contrário, o trabalho - que consome muito tempo - será inútil.</p>
+<p>Dito isso, traga o mapa topográfico da cidade de Angeles (<code>Camada - Adicionar camada - Adicionar camada raster ..</code>).</p>
+<p>A seguir, criaremos uma camada vetorial MultiString onde todos os objetos de linha que extraímos do mapa topográfico serão armazenados (Camada - Criar Camada - Nova camada GeoPackage ..). Crie um vetor MultiLine e salve-o com o nome tracer_lines. Escolha a projeção EPSG: 3123 - a projeção oficial da região. Inicie o modo de edição nele (<code>Clique com o botão direito - Alternar edição</code>).</p>
+<p>Clique no ícone Raster Tracer e configure os parâmetros, como na figura 10.12b. Escolha a cor das linhas de contorno usando o seletor de cores que se abre ao clicar na opção Trace color.</p>
+<div class="figure">
+<img src="media/modulo10/fig1012_b.png" title="Configurando os parâmetros do Raster Tracer" alt="" />
+<p class="caption">Configurando os parâmetros do Raster Tracer</p>
+</div>
+<p>Figura 10.12b - Configurando os parâmetros do Raster Tracer</p>
+<p>Agora, tudo o que resta fazer é iniciar a digitalização. Depois de verificar se o raster do vetor é editável e se o plugin está ativado clicando mais uma vez sobre ele, clique nos pontos de inflexão da linha de contorno que iremos extrair (ver figura 10.112c).</p>
+<div class="figure">
+<img src="media/modulo10/fig1012_c.png" title="Clique nos pontos de inflexão para traçar a linha usando Raster Tracer" alt="" />
+<p class="caption">Clique nos pontos de inflexão para traçar a linha usando Raster Tracer</p>
+</div>
+<p>Figura 10.12c - Clique nos pontos de inflexão para traçar a linha usando Raster Tracer</p>
+<p>A figura 10.12d apresenta o resultado.</p>
+<div class="figure">
+<img src="media/modulo10/fig1012_d.png" title="Linha desenhada semiautomática seguindo a cor indicada." alt="" />
+<p class="caption">Linha desenhada semiautomática seguindo a cor indicada.</p>
+</div>
+<p>Figura 10.12d - Linha desenhada semiautomática seguindo a cor indicada.</p>
+</div>
+<div id="active-fire" class="section level3 hasAnchor" number="12.3.5">
+<h3><span class="header-section-number">12.3.5</span> Active Fire<a href="plugins-qgis.html#active-fire" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig1013_a.png" title="O plugin Active Fire" alt="" />
+<p class="caption">O plugin Active Fire</p>
+</div>
+<p>Figura 10.13a O plugin Active Fire</p>
+<p>Plugins não são apenas projetados para trabalhar com dados que você tem, mas são construídos para também trazer para o QGIS conjuntos de dados que são produzidos por outras instituições, agências, organizações ou qualquer pessoa que os compartilhe por meio de serviços padronizados de mapeamento da web.</p>
+<p>Um bom exemplo é o plugin Active Fire. Este foi desenvolvido para permitir que os usuários do QGIS exibam de forma rápida, intuitiva e sem nenhum esforço, os incêndios nas últimas 24h em qualquer região de interesse. Os produtos de incêndio são produzidos pela NASA e disponibilizados gratuitamente para todos. Os dados brutos vêm de 2 satélites: o espectrorradiômetro de imagem de resolução moderada (<a href="https://modis.gsfc.nasa.gov/">MODIS</a>) (<a href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firm/c6-mcd14dl">MCD14DL</a>) e Visible Infrared Imaging Radiometer Suite (<a href="https://www.jpss.noaa.gov/viirs.html">VIIRS</a>) 375 m (<a href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/v1-vnp14imgt">VNP14IMGTDL_NRT</a> e <a href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/vj114imgtdl-nrt">VJ114IMGTDL_NRT</a>) para as últimas 24h.</p>
+<p>Para encontrá-lo, abra o Gerenciador de plugins escreva <code>fire</code>. Após a instalação, um novo ícone vermelho aparecerá na barra de ferramentas QGIS. Ao clicar sobre ele, aparece uma nova janela onde permite selecionar em qual sensor deseja que os pixels de incêndio sejam identificados nas últimas 24 horas (ver figura 10.13b).</p>
+<div class="figure">
+<img src="media/modulo10/fig1013_b.png" title="Usando o plugin Active Fire para carregar produtos de incêndio da NASA no QGIS" alt="" />
+<p class="caption">Usando o plugin Active Fire para carregar produtos de incêndio da NASA no QGIS</p>
+</div>
+<p>Figura 10.13b - Usando o plugin Active Fire para carregar produtos de incêndio da NASA no QGIS</p>
+<p>O plugin também calcula o número de pixels de incêndio registrados.</p>
+</div>
+<div id="qgis2web" class="section level3 hasAnchor" number="12.3.6">
+<h3><span class="header-section-number">12.3.6</span> <a href="https://github.com/tomchadwin/qgis2web">Qgis2web</a><a href="plugins-qgis.html#qgis2web" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig1014_a.png" title="O plugin qgis2web" alt="" />
+<p class="caption">O plugin qgis2web</p>
+</div>
+<p>Figura 10.14a - O plugin qgis2web</p>
+<p>Este é um plugin que permite ao usuário exportar rapidamente seu projeto QGIS para um <strong>mapa web</strong>.</p>
+<p>Um mapa web é uma exibição interativa de informações geográficas que pode ser aberta em navegadores (browsers). Interagimos diariamente com essas representações; basta pensar em OpenStreetMap, Google Maps, Waze, Pokémon Go.</p>
+<p>Este plugin permite preparar e exportar rapidamente um mapa para a Internet, através das tecnologias web de <a href="https://openlayers.org/">OpenLayer3</a> ou <a href="https://leafletjs.com/">Leaflet</a>. Qgis2web faz o seu melhor para interpretar um projeto QGIS e exportar HTML, Javascript e CSS para criar um mapa web o mais próximo possível do projeto QGIS.</p>
+<p>Após a instalação do plugin qgis2web, um novo ícone aparece na barra de ferramentas QGIS, o mesmo representado no Gerenciador de Plugins. Clique nele para abrir uma janela, como a da figura 10.14b.</p>
+<div class="figure">
+<img src="media/modulo10/fig1014_b.png" title="Escolhendo o que seu mapa irá mostrar no navegador" alt="" />
+<p class="caption">Escolhendo o que seu mapa irá mostrar no navegador</p>
+</div>
+<p>Figura 10.14b - Escolhendo o que seu mapa irá mostrar no navegador.</p>
+<p>A interface é intuitiva, mas lembre-se de que quanto mais pesados ​​os conjuntos de dados, mais tempo demorará para ser preparado e exportado. Após escolher para onde exportar, clique no botão exportar para finalizar (ver figura 10.14c).</p>
+<div class="figure">
+<img src="media/modulo10/fig1014_c.png" title="QGIS2web preparando os arquivos e pastas necessários para a tecnologia da web OpenLayer 3" alt="" />
+<p class="caption">QGIS2web preparando os arquivos e pastas necessários para a tecnologia da web OpenLayer 3</p>
+</div>
+<p>Figura 10.14c - QGIS2web preparando os arquivos e pastas necessários para a tecnologia da web OpenLayer 3</p>
+<p>A pasta exportada contém vários arquivos, dependendo de qual tecnologia de mapeamento da web foi selecionada - Leaflet ou Openlayers3 . No caso do OpenLayer3, a pasta escolhida para a exportação contém os seguintes arquivos e pastas: <code>images, index.html, layers, resources, styles, webfonts</code>. Clique duas vezes no arquivo <code>index.html</code> e seu mapa exportado será aberto em seu navegador, onde você pode alternar quais camadas ficarão visíveis (consulte a figura 10.14d).</p>
+<div class="figure">
+<img src="media/modulo10/fig1014_d.png" title="Abrindo o arquivo index.html em seu navegador" alt="" />
+<p class="caption">Abrindo o arquivo index.html em seu navegador</p>
+</div>
+<p>Figura 10.14d - Abrindo o arquivo index.html em seu navegador</p>
+<p>Como você notou, o navegador abre este mapa de sua pasta local (onde você disse ao qgis2web para exportar).</p>
+<p>Este plugin QGIS é uma ótima ferramenta para ajudá-lo a preparar seus mapas para a web.</p>
+<p>Para uma descrição detalhada dos recursos do plugin, junto com um tutorial mais abrangente, verifique a qgis2web <a href="https://github.com/tomchadwin/qgis2web">página da web</a>.</p>
+</div>
+<div id="dataplotly" class="section level3 hasAnchor" number="12.3.7">
+<h3><span class="header-section-number">12.3.7</span> DataPlotly<a href="plugins-qgis.html#dataplotly" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig1015_a.png" title="O plugin DataPlotly" alt="" />
+<p class="caption">O plugin DataPlotly</p>
+</div>
+<p>Figura 10.14a - O plugin DataPlotly</p>
+<p>O plugin DataPlotly foi desenvolvido especificamente para suportar visualizações interativas de gráficos dos dados vetoriais carregados no QGIS. O plugin é baseado em uma biblioteca Python chamada Plotly, que é bastante poderosa, fornecendo a possibilidade de criar vários gráficos interativos com qualidade para publicação: gráficos de linha, gráficos de dispersão, gráficos de área, gráficos de barras, barras de erro, gráficos boxplot, histogramas, mapas de calor, subplots, eixos múltiplos, gráficos polares e gráficos de bolhas. Mais informações sobre esta biblioteca Python estão disponíveis no <a href="https://plotly.com/python/">site oficial</a>.</p>
+<p>Instale o plugin usando o gerenciador de plugins e carregue algumas camadas vetoriais para visualizar:</p>
+<ul>
+<li>Waterways_3123 (tipo de linha);</li>
+<li>Locais povoados (tipo de ponto);</li>
+</ul>
+<p>Vamos preparar um gráfico interativo mostrando quantos rios vs. canais vs. riachos vs. segmentos de drenagem que temos em nosso conjunto de dados.</p>
+<p>Ao clicar no ícone específico, uma nova janela será aberta, consulte a figura 10.24.</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_b.png" title="Janela / painel do DataPlotly." alt="" />
+<p class="caption">Janela / painel do DataPlotly.</p>
+</div>
+<p>Figura 10.15b - Janela / painel do DataPlotly.</p>
+<p>A seguir, configure os parâmetros, como na figura 10.15c.</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_c.png" title="Configurando os parâmetros para o gráfico de pizza que representa os tipos de linhas de água" alt="" />
+<p class="caption">Configurando os parâmetros para o gráfico de pizza que representa os tipos de linhas de água</p>
+</div>
+<p>Figura 10.15c - Configurando os parâmetros para o gráfico de pizza que representa os tipos de linhas de água</p>
+<p>Escolha waterways_3123 como a camada vetorial da qual extrair os dados plotados, campo de agrupamento - fclass, Campo Y - comprimento. Se o comprimento precisar ser calculado, vá para a tabela de atributos da camada vetorial e escreva no campo calculadora <code>round($length)</code>. Para mais detalhes, consulte o módulo 8. Em seguida, selecione ‘single plot’ no tipo ploty e clique no botão Criar plotagem, no lado inferior direito. Seu resultado deve ser semelhante à figura 10.15d.</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_d.png" title="Tipos de vias navegáveis ​​por gráfico circular de comprimento." alt="" />
+<p class="caption">Tipos de vias navegáveis ​​por gráfico circular de comprimento.</p>
+</div>
+<p>Figura 10.15d - Tipos de vias navegáveis ​​por gráfico circular de comprimento.</p>
+<p>Ao passar o mouse sobre cada segmento do gráfico de pizza, um pop-up aparece mostrando o nome (retirado da coluna fclass), a soma dos comprimentos e a porcentagem do total.</p>
+<p>Uma funcionalidade significativa do DataPlotly é a conexão com a tela do mapa QGIS. Para entender o que é isso, clique em uma das seções do gráfico de pizza. Você deve ver que alguns recursos são selecionados <strong>automaticamente</strong> na tela do mapa (consulte a figura 10.15e).</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_e.png" title="Teste de conexão interativa da tela do mapa DataPlotly e QGIS" alt="" />
+<p class="caption">Teste de conexão interativa da tela do mapa DataPlotly e QGIS</p>
+</div>
+<p>Figura 10.15e - Teste de conexão interativa da tela do mapa DataPlotly e QGIS</p>
+<p>Isso também significa que você pode atualizar interativamente seu gráfico, por exemplo, para mostrar apenas os recursos selecionados. Para testar, selecione apenas uma parte dos cursos d’água na tela do mapa, vá para o DataPlotly, primeira guia e nos parâmetros do gráfico, marque a opção ‘only selected features’ (consulte a figura 10.15f).</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_f.png" title="Atualizar interativamente o gráfico para mostrar apenas os recursos selecionados." alt="" />
+<p class="caption">Atualizar interativamente o gráfico para mostrar apenas os recursos selecionados.</p>
+</div>
+<p>Figura 10.15f - Atualizar interativamente o gráfico para mostrar apenas os recursos selecionados.</p>
+<p>Em seguida, clique no botão Atualizar gráfico no canto inferior direito da janela DataPlotly. Os resultados devem ser semelhantes aos da figura 10.29 (apenas aproximadamente, porque sua seleção provavelmente difere daquela mostrada na figura 10.15g).</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_g.png" title="Atualize o gráfico para mostrar apenas os recursos selecionados na tela do mapa." alt="" />
+<p class="caption">Atualize o gráfico para mostrar apenas os recursos selecionados na tela do mapa.</p>
+</div>
+<p>Figura 10.15g - Atualize o gráfico para mostrar apenas os recursos selecionados na tela do mapa.</p>
+<p>Além disso, o DataPlotly fornece ao usuário uma função de exportação - em um arquivo .pdf ou .html. Os botões correspondentes estão na parte inferior direita da janela DataPlotly, consulte a figura 10.15h.</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_h.png" title="Recursos de exportação do DataPlotly" alt="" />
+<p class="caption">Recursos de exportação do DataPlotly</p>
+</div>
+<p>Figura 10.15h - Recursos de exportação do DataPlotly</p>
+<p>Exportar como arquivo HTML permite ao usuário preparar uma ampla variedade de gráficos de dados prontos para publicação na web (consulte a figura 10.15i).</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_i.png" title="Usando um navegador para abrir o arquivo HTML exportado pelo DataPlotly" alt="" />
+<p class="caption">Usando um navegador para abrir o arquivo HTML exportado pelo DataPlotly</p>
+</div>
+<p>Figura 10.15i - Usando um navegador para abrir o arquivo HTML exportado pelo DataPlotly.</p>
+<p>O plugin também é muito bem documentado. Ele fornece um menu de ajuda para cada tipo de plotagem. Você pode acessá-lo clicando na quarta aba do DataPlotly (veja a figura 10.15j).</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_j.png" title="Menu de ajuda para cada tipo de plotagem acessível através da janela do plugin." alt="" />
+<p class="caption">Menu de ajuda para cada tipo de plotagem acessível através da janela do plugin.</p>
+</div>
+<p>Figura 10.15j - Menu de ajuda para cada tipo de plotagem acessível através da janela do plugin.</p>
+<p>Devido ao link direto e interativo com os conjuntos de dados carregados do QGIS, as expressões também podem ser usadas ao preparar um gráfico. Para testar essa capacidade, criaremos uma base de plotagem na camada vetorial Locais povoados. Defina os seguintes parâmetros: tipo: gráfico de barras, camada: locais povoados, X_field: is_in, Y_field - abra a calculadora de campo e insira <code>"population" is not null</code> (consulte a figura 10.15k e a figura 10.15l).</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_k.png" title="Abrindo o editor de campo no DataPlotly com base nos atributos da camada QGIS selecionada para aplicar uma expressão para filtrar o que o gráfico exibirá" alt="" />
+<p class="caption">Abrindo o editor de campo no DataPlotly com base nos atributos da camada QGIS selecionada para aplicar uma expressão para filtrar o que o gráfico exibirá</p>
+</div>
+<p>Figura 10.15k - Abrindo o editor de campo no DataPlotly com base nos atributos da camada QGIS selecionada para aplicar uma expressão para filtrar o que o gráfico exibirá</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_l.png" title="Inserindo uma expressão na calculadora de campo" alt="" />
+<p class="caption">Inserindo uma expressão na calculadora de campo</p>
+</div>
+<p>Figura 10.15l - Inserindo uma expressão na calculadora de campo</p>
+<p>O resultado deve ser semelhante ao da figura 10.35.</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_m.png" title="Resultado do DataPlotly da filtragem por expressão" alt="" />
+<p class="caption">Resultado do DataPlotly da filtragem por expressão</p>
+</div>
+<p>Figura 10.15m - Resultado do DataPlotly da filtragem por expressão</p>
+<p>Se formos interpretar este gráfico, ele nos mostra que entre todas as províncias onde existem lugares povoados, o atributo população é diferente de 0 em apenas 3 regiões, Alaminos, Sual, Pangasian e Bagac. Pode-se testar facilmente essa conclusão examinando a tabela de atributos.</p>
+<p>O DataPlotly também oferece ao usuário a possibilidade de criar subplots, o que significa que vários gráficos podem ser exibidas em uma única figura.</p>
+<p>Para testar essa funcionalidade, usaremos a camada vetorial de locais de população. Temos os seguintes atributos de interesse: <code>place</code> = tipo de lugar (cidade, vila, vila, etc., <code>is_in</code>= nome da província a que pertence (se conhecido), <code>population</code> = (números da população) e <code>name</code> = o nome do lugar (se conhecido). Vamos integrar na mesma figura, 2 gráficos de dados: um para nos mostrar quantos dos lugares povoados se enquadram em cada categoria de <code>place</code> e o segundo, como é a população dividida pelos 4 tipos de <code>places</code>.</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_n.png" title="Configurando os parâmetros para o primeiro lote - tipos de assentamentos por seus números" alt="" />
+<p class="caption">Configurando os parâmetros para o primeiro lote - tipos de assentamentos por seus números</p>
+</div>
+<p>Figura 10.15n - Configurando os parâmetros para o primeiro lote - tipos de assentamentos por seus números.</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_o.png" title="Configuração dos parâmetros para a segunda parcela - tipos de assentamentos por número de população" alt="" />
+<p class="caption">Configuração dos parâmetros para a segunda parcela - tipos de assentamentos por número de população</p>
+</div>
+<p>Figura 10.15o - Configuração dos parâmetros para a segunda parcela - tipos de assentamentos por número de população.</p>
+<div class="figure">
+<img src="media/modulo10/fig1015_p.png" title="Subplots em uma linha" alt="" />
+<p class="caption">Subplots em uma linha</p>
+</div>
+<p>Figura 10.15p - Subplots em uma linha</p>
+<p>Para uma descrição detalhada dos recursos do plugin, junto com um tutorial mais abrangente, verifique o DataPlotly <a href="https:%20//%20github%20.com%20/%20ghtmtt%20/%20DataPlotly">webpage</a>.</p>
+</div>
+<div id="plugin-quickmapservices-openlayers" class="section level3 hasAnchor" number="12.3.8">
+<h3><span class="header-section-number">12.3.8</span> Plugin QuickMapServices / OpenLayers<a href="plugins-qgis.html#plugin-quickmapservices-openlayers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig1016_a1.png" title="plugin QuickMapServices" alt="" />
+<p class="caption">plugin QuickMapServices</p>
+</div>
+<div class="figure">
+<img src="media/modulo10/fig1016_a2.png" title="Plug-in OpenLayers" alt="" />
+<p class="caption">Plug-in OpenLayers</p>
+</div>
+<p>Figura 10.16a - plugin QuickMapServices; 10.16b - Plug-in OpenLayers</p>
+<p>Estes 2 plugins são excepcionalmente úteis quando um usuário precisa adicionar mapas base ao seu projeto QGIS. Por exemplo, deseja-se ver no contexto o posicionamento de uma nova camada vetorial recebida, ou talvez apenas preparar uma representação cartográfica mais atrativa para um relatório. Para qualquer um desses objetivos, os QuickMapServices permite carregar camadas de mapa base de diferentes fornecedores, como OpenStreetMap, NASA, Bing ou Google Maps, em apenas 2 cliques.</p>
+<p>Instale os dois plugins usando o Gerenciador de plugins. Nesse caso, você notará que eles aparecerão na guia Web (consulte a figura 10.16b).</p>
+<div class="figure">
+<img src="media/modulo10/fig1016_b.png" title="Localização dos plugins QuickMapServices e OpenLayers" alt="" />
+<p class="caption">Localização dos plugins QuickMapServices e OpenLayers</p>
+</div>
+<p>Figura 10.16b - Localização dos plugins QuickMapServices e OpenLayers.</p>
+<p>Usá-los é bastante simples, basta clicar na camada que deseja trazer para a tela do mapa e o plugin fará todo o trabalho. Este plugin requer uma boa ligação à Internet, uma vez que utiliza dados disponibilizados pelos seus fornecedores através de serviços de mapeamento web.</p>
+<p>A Figura 10.16c apresenta o OSM Standard trazido como um mapa base para o Rio de Janeiro.</p>
+<div class="figure">
+<img src="media/modulo10/fig1016_c.png" title="Usando o plugin OpenLayer" alt="" />
+<p class="caption">Usando o plugin OpenLayer</p>
+</div>
+<p>Figura 10.16c - Usando o plugin OpenLayers.</p>
+<p>A Figura 10.16d ilustra o alinhamento perfeito do mapa base carregado na tela do mapa QGIS usando o plugin OpenLayers. Mesmo que as 2 camadas não estejam na mesma projeção, o QGIS permite a projeção em tempo real, portanto, a sobreposição é possível.</p>
+<div class="figure">
+<img src="media/modulo10/fig1016_d.png" title="Dados vetoriais carregados (estradas) sobrepostos ao mapa OSM Standard" alt="" />
+<p class="caption">Dados vetoriais carregados (estradas) sobrepostos ao mapa OSM Standard</p>
+</div>
+<p>Figura 10.16d - Dados vetoriais carregados (estradas) sobrepostos ao mapa OSM Standard</p>
+<p>Para uma descrição detalhada dos recursos dos plugins, juntamente com um tutorial mais abrangente, verifique seus página da web: <a href="https://nextgis.com/blog/quickmapservices/">QuickMapServices</a> e <a href="https://github.com/sourcepole/qgis-openlayers-plugin">OpenLayer Plugin</a>.</p>
+</div>
+<div id="table2style" class="section level3 hasAnchor" number="12.3.9">
+<h3><span class="header-section-number">12.3.9</span> Table2Style<a href="plugins-qgis.html#table2style" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig1017_a.png" title="O plugin Table to Style" alt="" />
+<p class="caption">O plugin Table to Style</p>
+</div>
+<p>Figura 10.17a - O plugin Table to Style</p>
+<p>Este plugin é útil para situações onde existem valores específicos para pixels dentro de uma camada raster que correspondem perfeitamente a uma cor específica. Neste currículo, encontramos esse exemplo, ao trabalhar com os dados de cobertura da terra (ver figura 10.17b).</p>
+<div class="figure">
+<img src="media/modulo10/fig1017_b.png" title="Exemplos de situações em que os valores dos pixels correspondem a uma cor exata" alt="" />
+<p class="caption">Exemplos de situações em que os valores dos pixels correspondem a uma cor exata</p>
+</div>
+<p>Figura 10.17b - Exemplos de situações em que os valores dos pixels correspondem a uma cor exata</p>
+<p>Do fornecedor deste produto com base em imagens de satélite, os valores dos pixels e as cores associadas também são disponibilizados:</p>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="27%" />
+<col width="59%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><strong>Valor</strong></th>
+<th align="left"><strong>Cor</strong></th>
+<th align="left"><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="left">#282828</td>
+<td align="left">Desconhecido. Nenhum ou nenhum dado de satélite disponível.</td>
+</tr>
+<tr class="even">
+<td align="left">20</td>
+<td align="left">#FFBB22</td>
+<td align="left">Arbustos. Plantas lenhosas perenes com caules persistentes e lenhosos e sem caule principal definido com menos de 5 m de altura. A folhagem do arbusto pode ser perene ou caduca.</td>
+</tr>
+<tr class="odd">
+<td align="left">30</td>
+<td align="left">#FFFF4C</td>
+<td align="left">Vegetação herbácea. Plantas sem caule persistente ou brotos acima do solo e sem estrutura firme definida. A cobertura de árvores e arbustos é inferior a 10%.</td>
+</tr>
+<tr class="even">
+<td align="left">40</td>
+<td align="left">#F096FF</td>
+<td align="left">Vegetação / agricultura cultivada e manejada. Terras cobertas com culturas temporárias seguidas de colheita e um período de solo nu (por exemplo, sistemas de cultivo único e múltiplo) Observe que as culturas lenhosas perenes serão classificadas como o tipo apropriado de cobertura de terra de floresta ou arbusto.</td>
+</tr>
+<tr class="odd">
+<td align="left">50</td>
+<td align="left">#FA0000</td>
+<td align="left">Urbano / edificado. Terreno coberto por edifícios e outras estruturas feitas pelo homem.</td>
+</tr>
+<tr class="even">
+<td align="left">60</td>
+<td align="left">#B4B4B4</td>
+<td align="left">Vegetação nua / esparsa. Terras com solo, areia ou rochas expostas e nunca apresentam mais de 10% de cobertura vegetal em qualquer época do ano.</td>
+</tr>
+<tr class="odd">
+<td align="left">70</td>
+<td align="left">#F0F0F0</td>
+<td align="left">Neve e gelo. Terras cobertas de neve ou gelo ao longo do ano.</td>
+</tr>
+<tr class="even">
+<td align="left">80</td>
+<td align="left">#0032C8</td>
+<td align="left">Corpos d’água permanentes. Lagos, reservatórios e rios. Podem ser corpos de água doce ou salgada.</td>
+</tr>
+<tr class="odd">
+<td align="left">90</td>
+<td align="left">#0096A0</td>
+<td align="left">Pantanal.Herbáceo. Terras com mistura permanente de água e vegetação herbácea ou lenhosa. A vegetação pode estar presente em água salgada, salobra ou doce.</td>
+</tr>
+<tr class="even">
+<td align="left">100</td>
+<td align="left">#FAE6A0</td>
+<td align="left">Musgo e líquen.</td>
+</tr>
+<tr class="odd">
+<td align="left">111</td>
+<td align="left">#58481F</td>
+<td align="left">Floresta fechada, folha de agulha perene. Copa das árvores&gt; 70%, quase todas as árvores de folhas agulhas permanecem verdes o ano todo. O dossel nunca está sem folhagem verde.</td>
+</tr>
+<tr class="even">
+<td align="left">112</td>
+<td align="left">#009900</td>
+<td align="left">Floresta fechada, folha larga perene. Copa das árvores&gt; 70%, quase todas as árvores de folha larga permanecem verdes durante todo o ano. O dossel nunca está sem folhagem verde.</td>
+</tr>
+<tr class="odd">
+<td align="left">113</td>
+<td align="left">#70663E</td>
+<td align="left">Floresta fechada, folha de agulha decídua. O dossel das árvores&gt; 70% consiste em comunidades de árvores de folhas agulhas sazonais com um ciclo anual de períodos de folhagem e folhagem.</td>
+</tr>
+<tr class="even">
+<td align="left">114</td>
+<td align="left">#00CC00</td>
+<td align="left">Floresta fechada, folha larga decídua. O dossel das árvores&gt; 70% consiste em comunidades sazonais de folhas largas com um ciclo anual de períodos de folhagem e folhagem.</td>
+</tr>
+<tr class="odd">
+<td align="left">115</td>
+<td align="left">#4E751F</td>
+<td align="left">Floresta fechada, mista.</td>
+</tr>
+<tr class="even">
+<td align="left">116</td>
+<td align="left">#007800</td>
+<td align="left">Floresta fechada, não correspondendo a nenhuma das outras definições.</td>
+</tr>
+<tr class="odd">
+<td align="left">121</td>
+<td align="left">#666000</td>
+<td align="left">Floresta aberta, folha de agulha perene. Camada superior - árvores 15-70% e segunda camada - mistura de arbustos e pastagens, quase todas as árvores de folhas agulhas permanecem verdes durante todo o ano. O dossel nunca está sem folhagem verde.</td>
+</tr>
+<tr class="even">
+<td align="left">122</td>
+<td align="left">#8DB400</td>
+<td align="left">Floresta aberta, folha larga perene. Camada superior - árvores 15-70% e segunda camada - mistura de arbustos e pastagens, quase todas as árvores de folha larga permanecem verdes durante todo o ano. O dossel nunca está sem folhagem verde.</td>
+</tr>
+<tr class="odd">
+<td align="left">123</td>
+<td align="left">#8D7400</td>
+<td align="left">Floresta aberta, folha de agulha decídua. Camada superior - árvores 15-70% e segunda camada - mista de arbustos e pastagens, consiste em comunidades sazonais de árvores de folhas agulhas com um ciclo anual de períodos de folhagem e folhagem.</td>
+</tr>
+<tr class="even">
+<td align="left">124</td>
+<td align="left">#A0DC00</td>
+<td align="left">Floresta aberta, folha caduca de folha larga. Camada superior - árvores 15-70% e segunda camada - mistura de arbustos e pastagens, consiste em comunidades sazonais de árvores de folha larga com um ciclo anual de períodos de folhagem e folhagem.</td>
+</tr>
+<tr class="odd">
+<td align="left">125</td>
+<td align="left">#929900</td>
+<td align="left">Floresta aberta, mista.</td>
+</tr>
+<tr class="even">
+<td align="left">126</td>
+<td align="left">#648C00</td>
+<td align="left">Floresta aberta, não correspondendo a nenhuma das outras definições.</td>
+</tr>
+<tr class="odd">
+<td align="left">200</td>
+<td align="left">#000080</td>
+<td align="left">Oceanos, mares. Podem ser corpos de água doce ou salgada.</td>
+</tr>
+</tbody>
+</table>
+<p>Quando um novo conjunto de dados - raster ou vetor - é carregado, o QGIS atribui a ele uma representação visual aleatória. É o usuário que deve definir cores e esquemas apropriados para as representações. Para obter mais informações sobre o estilo das camadas, vá para o módulo 4.</p>
+<p>Para testar o plugin table2style, usaremos o conjunto de dados raster LandCover2019, usado também no módulo nº 9. Ao carregar o raster no QGIS, você deve ter um resultado semelhante ao da figura 10.17c.</p>
+<div class="figure">
+<img src="media/modulo10/fig1017_c.png" title="QGIS atribui cores aleatoriamente aos valores de pixel" alt="" />
+<p class="caption">QGIS atribui cores aleatoriamente aos valores de pixel</p>
+</div>
+<p>Figura 10.17c - QGIS atribui cores aleatoriamente aos valores de pixel</p>
+<p>De acordo com o provedor de dados, sabemos que para cada valor de pixel há uma cor claramente atribuída e no domínio da cobertura da terra, e essas cores já representam convenções, assim como na cartografia clássica. As florestas são representadas com um tipo específico de verde, as pastagens com outro, o oceano é representado com um tipo diferente de azul do que a água superficial interior e assim por diante. O pior caso seria atribuir manualmente todas essas cores aos seus respectivos valores. No entanto, o plugin table2style resolve esse problema automaticamente, em questão de segundos.</p>
+<p>Vá para o plugin Manager e instale o plugin table2style. Um novo ícone aparecerá na sua barra de ferramentas. Abra-o clicando duas vezes nele. Uma janela de configuração deve aparecer, como na figura 10.17d.</p>
+<div class="figure">
+<img src="media/modulo10/fig1017_d.png" title="Janela Table2style" alt="" />
+<p class="caption">Janela Table2style</p>
+</div>
+<p>Figura 10.17d - Janela Table2style</p>
+<p>O plugin requer 2 parâmetros - uma camada raster e uma tabela de atributos com valores de pixel, rótulo de descrição e códigos de cores em um dos três sistemas: RGB , HSV ou Hex. De acordo com nossa tabela acima, temos códigos hexadecimais para as cores atribuídas. Portanto, carregue a tabela no QGIS (<code>Camada - Adicionar camada - Adicionar camada de texto delimitado…</code>), sem geometria. A tabela de valores LandCover deve ser semelhante à figura 10.17e.</p>
+<div class="figure">
+<img src="media/modulo10/fig1017_e.png" title="Tabela de atributos com valores de pixel, códigos de cores e descrição para Land Cover" alt="" />
+<p class="caption">Tabela de atributos com valores de pixel, códigos de cores e descrição para Land Cover</p>
+</div>
+<p>Figura 10.17e - Tabela de atributos com valores de pixel, códigos de cores e descrição para Land Cover</p>
+<p>Agora, vamos dar uma olhada no conjunto de dados raster. O table2style funciona apenas em um raster de 1 banda, pois conecta um valor de pixel com um código de cor. Se houver mais bandas disponíveis, ele não saberia qual escolher. No entanto, verificando as propriedades da camada LandCover2019, notamos que existem 3 bandas (<code>Propriedades - Informações - role para baixo até Bandas</code>). Como precisamos apenas da Banda 1 - classificação discreta, usaremos a calculadora raster para extraí-la (<code>Raster - Calculadora raster</code> e inserimos no campo de expressão apenas <code>"LandCover_2019@1"</code> - salvar o resultado). Para obter mais detalhes sobre como trabalhar com rasters, verifique o módulo 9.</p>
+<p>Agora, temos tudo o que precisamos para testar o plugin. Configure os parâmetros como na figura 10.17f.</p>
+<div class="figure">
+<img src="media/modulo10/fig1017_f.png" title="Configurando os parâmetros do plugin table2style para o conjunto de dados Land Cover" alt="" />
+<p class="caption">Configurando os parâmetros do plugin table2style para o conjunto de dados Land Cover</p>
+</div>
+<p>Figura 10.17f - Configurando os parâmetros do plugin table2style para o conjunto de dados Land Cover</p>
+<p>O resultado deve ser semelhante ao da figura 10.17g.</p>
+<div class="figure">
+<img src="media/modulo10/fig1017_g.png" title="Conjunto de dados raster estilizado automaticamente usando o plugin table2style" alt="" />
+<p class="caption">Conjunto de dados raster estilizado automaticamente usando o plugin table2style</p>
+</div>
+<p>Figura 10.17g - Conjunto de dados raster estilizado automaticamente usando o plugin table2style</p>
+<p>Para uma descrição detalhada do plugin veja <a href="https://github.com/ptarroso/table2style">https://github.com/ptarroso/table2style</a>.</p>
+</div>
+<div id="ors-tools" class="section level3 hasAnchor" number="12.3.10">
+<h3><span class="header-section-number">12.3.10</span> ORS Tools<a href="plugins-qgis.html#ors-tools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="media/modulo10/fig1018_a.png" title="O plugin ORS Tools" alt="" />
+<p class="caption">O plugin ORS Tools</p>
+</div>
+<p>Figura 10.48a - O plugin ORS Tools</p>
+<p>Para nosso último plugin a ser apresentado, iremos mostrar os incríveis recursos do mundo interconectado de dados, ferramentas e serviços GIS. Vimos anteriormente que existem plugins que podem nos ajudar a carregar nossos dados QGIS de outros provedores sem qualquer incômodo relacionado a baixar, armazenar e saber como abri-lo (plugin OpenLayers, Active Fire). Ainda, o plugin ORS Tools é construído para fornecer acesso a um serviço de roteamento externo - o openrouteservice.org, baseado no OpenStreetMap.</p>
+<p><strong>Roteamento</strong> é o processo de seleção de um caminho para o tráfego em uma rede ou entre ou através de vários pontos selecionados.</p>
+<p>O conjunto de ferramentas inclui roteamento, isócronas e cálculos de matriz, tanto interativos na tela do mapa quanto de arquivos de pontos dentro da estrutura de processamento.</p>
+<p>Usando o gerenciador de plugins, instale o plugin ORS Tools. Um novo ícone aparecerá na sua barra de ferramentas. Clique duas vezes para abrir (veja a figura 10.18b).</p>
+<div class="figure">
+<img src="media/modulo10/fig1018_b.png" title="Abra a janela de ferramentas ORS" alt="" />
+<p class="caption">Abra a janela de ferramentas ORS</p>
+</div>
+<p>Figura 10.18b - Abra a janela de ferramentas ORS.</p>
+<p>Conforme mencionado, este plugin está usando um banco de dados externo - OpenStreetMap - e algoritmos externos que fazem parte do serviço - openrouteservice. Para podermos nos conectar a este serviço externo, precisaremos fazer uma conta em sua página web e pedir uma <strong>chave API.</strong></p>
+<p>Uma chave de API é um identificador exclusivo usado para autenticar um usuário, desenvolvedor ou programa de chamada para uma API. A API é como um portal para o interior de um software, um acesso programático a seus processos e algoritmos. Assim, para usar o openrouteservice através do QGIS, vamos pedir uma <em>chave</em>.</p>
+<p>Prossiga com os seguintes passos:</p>
+<ol style="list-style-type: decimal">
+<li>Clique no botão Sign Up na janela ORS Tools (figura 10.49).</li>
+</ol>
+<div class="figure">
+<img src="media/modulo10/fig1018_c.png" title="Botão de login" alt="" />
+<p class="caption">Botão de login</p>
+</div>
+<p>Figura 10.18c - Botão de login</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Faça uma conta gratuita no site no site openrouteservice que foi aberto.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo10/fig1018_d.png" title="Página da conta do Openrouteservice" alt="" />
+<p class="caption">Página da conta do Openrouteservice</p>
+</div>
+<p>Figura 10.18d - Página da conta do Openrouteservice</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Após fazer a conta, você receberá um e-mail informando sobre o que acabou de obter acesso gratuito.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo10/fig1018_e.png" title="E-mail recebido de openrouteservice" alt="" />
+<p class="caption">E-mail recebido de openrouteservice</p>
+</div>
+<p>Figura 10.18e - E-mail recebido de openrouteservice</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Faça login em sua conta recém-criada e solicite um token.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo10/fig1018_f.png" title="Solicitar token openrouteservice" alt="" />
+<p class="caption">Solicitar token openrouteservice</p>
+</div>
+<p>Figura 10.18f - Solicitar token openrouteservice</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Depois que seu token for criado, clique no longo texto para copiá-lo.</li>
+<li>Retorne ao QGIS e insira a chave API copiada.</li>
+</ol>
+<div class="figure">
+<img src="media/modulo10/fig1018_g.png" title="Insira a chave openrouteserviceAPI em seu QGIS" alt="" />
+<p class="caption">Insira a chave openrouteserviceAPI em seu QGIS</p>
+</div>
+<p>Figura 10.18g - Insira a chave openrouteserviceAPI em seu QGIS</p>
+<p>Neste ponto, seu QGIS deve estar pronto para calcular rotas usando openrouteservice e OpenStreetMap. Para testar seus recursos básicos, carregue no QGIS as camadas de construção de Pampanga. Certifique-se de estar trabalhando em EPSG 3857 ou EPSG: 4326. Depois de carregar a camada, comece a inserir os pontos de roteamento. Abra as Ferramentas ORS e pressione o botão verde + (veja a figura 10.18h).</p>
+<div class="figure">
+<img src="media/modulo10/fig1018_h.png" title="Inserindo os pontos de roteamento usando ferramentas ORS." alt="" />
+<p class="caption">Inserindo os pontos de roteamento usando ferramentas ORS.</p>
+</div>
+<p>Figura 10.18h - Inserindo os pontos de roteamento usando ferramentas ORS.</p>
+<p>Escolha o algoritmo de roteamento do caixeiro viajante (traveling salesman) e clique em aplicar. Após alguns momentos, uma nova camada vetorial foi criada: Routes_ORS.</p>
+<div class="figure">
+<img src="media/modulo10/fig1018_i.png" title="Resultado da execução de ferramentas ORS" alt="" />
+<p class="caption">Resultado da execução de ferramentas ORS</p>
+</div>
+<p>Figura 10.18i - Resultado da execução de ferramentas ORS.</p>
+<p>Abrindo o OpenStreetMap, notaremos que o ORS Tools tentou construir uma rota para tocar todos os pontos dados clicando no mapa. <strong>Atenção!</strong> O QGIS tinha apenas uma camada carregada e essa era a camada de construções e agora, uma nova camada foi calculada e adicionada automaticamente à tela do mapa!</p>
+<div class="figure">
+<img src="media/modulo10/fig1018_j.png" title="A rota calculada sobreposta no OpenStreetMap" alt="" />
+<p class="caption">A rota calculada sobreposta no OpenStreetMap</p>
+</div>
+<p>Figura 10.18j - A rota calculada sobreposta no OpenStreetMap.</p>
+<p>Os resultados das Ferramentas ORS dependem muito da qualidade das bases de dados utilizadas, neste caso - o OpenStreetMap.</p>
+<p>O plugin, assim como o openroutingservice, tem mais a oferecer, mas deixamos você descobrir isso em sua jornada GIS.</p>
+</div>
+<div id="quiz-25" class="section level3 hasAnchor" number="12.3.11">
+<h3><span class="header-section-number">12.3.11</span> Quiz<a href="plugins-qgis.html#quiz-25" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Os plugins QGIS podem ser executados fora da plataforma QGIS?</p>
+<ol style="list-style-type: lower-alpha">
+<li><strong>Não</strong></li>
+<li>Sim</li>
+</ol></li>
+<li><p>Para usar um plugin QGIS, é necessário aprender a programar?</p>
+<ol style="list-style-type: lower-alpha">
+<li><strong>Não</strong></li>
+<li>Sim</li>
+</ol></li>
+<li><p>É altamente recomendável que todos os plugins sejam instalados através do Gerenciador de Plug-ins, mesmo se eles pudessem ser instalados baixando o arquivo zip e colocando-o na pasta QGIS correta?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Não</li>
+<li><strong>Sim</strong></li>
+</ol></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="processamento-e-análise-raster.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/escola-de-dados/GIS-curriculum/edit/gh-pages/module10.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ebook-gis.pdf", "ebook-gis.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

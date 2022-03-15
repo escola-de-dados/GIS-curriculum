@@ -1,0 +1,27 @@
+bookdown::gitbook:
+  dev: svglite
+  css: style.css
+  config:
+    sharing:
+      github: yes
+      facebook: no
+    toc:
+      before: |
+        <li><a href="./">Geodados: uma introdução gentil</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com o bookdown</a></li>
+    edit: https://github.com/escola-de-dados/GIS-curriculum/edit/gh-pages/%s
+    download: ["pdf", "epub"]
+bookdown::pdf_book:
+  dev: png
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+  pandoc_args: --top-level-division=chapter
+# pandoc_args: [
+#   "-V", "papersize=a4paper"
+#   ] 
+bookdown::epub_book:
+  dev: svglite

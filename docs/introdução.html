@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="pt" xml:lang="pt">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 2 Introdução | Geodados: uma introdução gentil</title>
+  <meta name="description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 2 Introdução | Geodados: uma introdução gentil" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="escola-de-dados.github.io/GIS-curriculum/" />
+  <meta property="og:image" content="escola-de-dados.github.io/GIS-curriculum//media/cover/cover.jpg" />
+  <meta property="og:description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="github-repo" content="escola-de-dados/GIS-curriculum" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 2 Introdução | Geodados: uma introdução gentil" />
+  
+  <meta name="twitter:description" content="Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution Settlement Layer Data" />
+  <meta name="twitter:image" content="escola-de-dados.github.io/GIS-curriculum//media/cover/cover.jpg" />
+
+<meta name="author" content="Ben Hur Pintor, Ketty Adoch, Codrina Maria Ilie" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="introdução-ao-qgis.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Geodados: uma introdução gentil</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Créditos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#conjuntos-de-dados"><i class="fa fa-check"></i><b>1.1</b> Conjuntos de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introdução.html"><a href="introdução.html"><i class="fa fa-check"></i><b>2</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introdução.html"><a href="introdução.html#introdução-suave-a-conceitos-de-gis"><i class="fa fa-check"></i><b>2.1</b> Introdução suave a conceitos de GIS</a></li>
+<li class="chapter" data-level="2.2" data-path="introdução.html"><a href="introdução.html#mapas-e-coordenadas"><i class="fa fa-check"></i><b>2.2</b> Mapas e coordenadas</a></li>
+<li class="chapter" data-level="2.3" data-path="introdução.html"><a href="introdução.html#projeções-cartográficas"><i class="fa fa-check"></i><b>2.3</b> Projeções cartográficas</a></li>
+<li class="chapter" data-level="2.4" data-path="introdução.html"><a href="introdução.html#sistemas-de-referência-de-coordenadas"><i class="fa fa-check"></i><b>2.4</b> Sistemas de referência de coordenadas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introdução.html"><a href="introdução.html#quiz"><i class="fa fa-check"></i><b>2.4.1</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introdução.html"><a href="introdução.html#tipos-de-dados-espaciais"><i class="fa fa-check"></i><b>2.5</b> Tipos de dados espaciais</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introdução.html"><a href="introdução.html#dados-raster"><i class="fa fa-check"></i><b>2.5.1</b> Dados raster</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introdução.html"><a href="introdução.html#dados-vetoriais"><i class="fa fa-check"></i><b>2.5.2</b> Dados vetoriais</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introdução.html"><a href="introdução.html#quiz-1"><i class="fa fa-check"></i><b>2.5.3</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introdução.html"><a href="introdução.html#sistema-de-informação-geográfica-sig"><i class="fa fa-check"></i><b>2.6</b> Sistema de Informação Geográfica (SIG)</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introdução.html"><a href="introdução.html#quiz-2"><i class="fa fa-check"></i><b>2.6.1</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introdução.html"><a href="introdução.html#software-livre-e-de-código-aberto-para-uso-geoespacial-foss4g"><i class="fa fa-check"></i><b>2.7</b> Software Livre e de Código Aberto para uso Geoespacial (FOSS4G)</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="introdução.html"><a href="introdução.html#software-grátis"><i class="fa fa-check"></i><b>2.7.1</b> Software grátis</a></li>
+<li class="chapter" data-level="2.7.2" data-path="introdução.html"><a href="introdução.html#código-aberto"><i class="fa fa-check"></i><b>2.7.2</b> Código aberto</a></li>
+<li class="chapter" data-level="2.7.3" data-path="introdução.html"><a href="introdução.html#osgeo"><i class="fa fa-check"></i><b>2.7.3</b> OSGeo</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="introdução.html"><a href="introdução.html#se-você-quiser-ir-mais-longe"><i class="fa fa-check"></i><b>2.8</b> Se você quiser ir mais longe</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html"><i class="fa fa-check"></i><b>3</b> Introdução ao QGIS</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#introdução-ao-qgis-e-à-interface-do-qgis"><i class="fa fa-check"></i><b>3.1</b> Introdução ao QGIS e à interface do QGIS</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#o-que-é-o-qgis"><i class="fa fa-check"></i><b>3.1.1</b> <strong>O que é o QGIS</strong></a></li>
+<li class="chapter" data-level="3.1.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#ciclo-de-lançamento-e-versões"><i class="fa fa-check"></i><b>3.1.2</b> <strong>Ciclo de lançamento e versões</strong></a></li>
+<li class="chapter" data-level="3.1.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#exemplos-de-mapas-qgis"><i class="fa fa-check"></i><b>3.1.3</b> <strong>Exemplos de mapas QGIS</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#instalando-o-qgis"><i class="fa fa-check"></i><b>3.2</b> <strong>Instalando o QGIS</strong></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#partes-da-interface-do-qgis"><i class="fa fa-check"></i><b>3.2.1</b> <strong>Partes da interface do QGIS</strong></a></li>
+<li class="chapter" data-level="3.2.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorial-exercício-1-mudando-a-aparência-e-layout-da-interface-qgis"><i class="fa fa-check"></i><b>3.2.2</b> <strong>Tutorial / Exercício 1: Mudando a aparência e layout da interface QGIS</strong></a></li>
+<li class="chapter" data-level="3.2.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#perguntas-do-questionário"><i class="fa fa-check"></i><b>3.2.3</b> <strong>Perguntas do questionário</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#complementos-complementos-qgis"><i class="fa fa-check"></i><b>3.3</b> Complementos (Complementos) QGIS</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorial-exercício-2-instalando-um-complemento-qgis"><i class="fa fa-check"></i><b>3.3.1</b> <strong>Tutorial / Exercício 2: Instalando um complemento QGIS</strong></a></li>
+<li class="chapter" data-level="3.3.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#perguntas-do-questionário-1"><i class="fa fa-check"></i><b>3.3.2</b> <strong>Perguntas do questionário</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#configurações-qgis"><i class="fa fa-check"></i><b>3.4</b> Configurações QGIS</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#tutorial-exercício-03-criando-um-perfil-de-usuário"><i class="fa fa-check"></i><b>3.4.1</b> <strong>Tutorial / Exercício 03: Criando um Perfil de Usuário</strong></a></li>
+<li class="chapter" data-level="3.4.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#perguntas-do-questionário-2"><i class="fa fa-check"></i><b>3.4.2</b> <strong>Perguntas do questionário</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#formatos-de-arquivo-do-qgis"><i class="fa fa-check"></i><b>3.5</b> Formatos de arquivo do QGIS</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#arquivo-de-projeto-qgis-qgs-qgz"><i class="fa fa-check"></i><b>3.5.1</b> <strong>Arquivo de projeto QGIS (QGS / QGZ)</strong></a></li>
+<li class="chapter" data-level="3.5.2" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#definição-da-camada-qgis-qlr"><i class="fa fa-check"></i><b>3.5.2</b> <strong>Definição da camada QGIS (QLR)</strong></a></li>
+<li class="chapter" data-level="3.5.3" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#arquivo-de-estilo-qgis-qml"><i class="fa fa-check"></i><b>3.5.3</b> <strong>Arquivo de estilo QGIS (QML)</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#se-você-quiser-ir-mais-longe-1"><i class="fa fa-check"></i><b>3.6</b> Se você quiser ir mais longe:</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="introdução-ao-qgis.html"><a href="introdução-ao-qgis.html#para-praticar-suas-novas-habilidades-tente"><i class="fa fa-check"></i><b>3.6.1</b> Para praticar suas novas habilidades, tente …</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html"><i class="fa fa-check"></i><b>4</b> Camadas no QGIS</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#introdução-pedagógica"><i class="fa fa-check"></i><b>4.1</b> Introdução Pedagógica</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#ferramentas-e-recursos-necessários"><i class="fa fa-check"></i><b>4.1.1</b> Ferramentas e recursos necessários</a></li>
+<li class="chapter" data-level="4.1.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#pré-requisitos"><i class="fa fa-check"></i><b>4.1.2</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="4.1.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#recursos-adicionais"><i class="fa fa-check"></i><b>4.1.3</b> Recursos adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#introdução-temática"><i class="fa fa-check"></i><b>4.2</b> Introdução temática</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#detalhamento-dos-conceitos"><i class="fa fa-check"></i><b>4.2.1</b> Detalhamento dos conceitos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-dados-formatos-de-arquivo-o-painel-do-navegador-e-o-painel-de-camadas"><i class="fa fa-check"></i><b>4.3</b> Tipos de dados, formatos de arquivo, o painel do navegador e o painel de camadas</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-dados-e-formatos-de-arquivo-comuns"><i class="fa fa-check"></i><b>4.3.1</b> Tipos de dados e formatos de arquivo comuns</a></li>
+<li class="chapter" data-level="4.3.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#tipos-de-fontes-de-dados"><i class="fa fa-check"></i><b>4.3.2</b> <strong>Tipos de fontes de dados</strong></a></li>
+<li class="chapter" data-level="4.3.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregando-camadas-no-qgis"><i class="fa fa-check"></i><b>4.3.3</b> <strong>Carregando camadas no QGIS</strong></a></li>
+<li class="chapter" data-level="4.3.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-painel-do-navegador"><i class="fa fa-check"></i><b>4.3.4</b> <strong>O painel do navegador</strong></a></li>
+<li class="chapter" data-level="4.3.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-painel-de-camadas"><i class="fa fa-check"></i><b>4.3.5</b> <strong>O painel de camadas</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#propriedades-da-camada"><i class="fa fa-check"></i><b>4.4</b> Propriedades da camada</a></li>
+<li class="chapter" data-level="4.5" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#metadados-geoespaciais"><i class="fa fa-check"></i><b>4.5</b> Metadados geoespaciais</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exercício-01.2-adicionando-metadados"><i class="fa fa-check"></i><b>4.5.1</b> <strong>Exercício 01.2: Adicionando metadados</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-gerenciador-de-fonte-de-dados-e-conexão-com-serviços-remotos"><i class="fa fa-check"></i><b>4.6</b> O gerenciador de fonte de dados e conexão com serviços remotos</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#o-gerenciador-de-fonte-de-dados"><i class="fa fa-check"></i><b>4.6.1</b> <strong>O Gerenciador de fonte de dados</strong></a></li>
+<li class="chapter" data-level="4.6.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#conectando-qgis-a-serviços-remotos"><i class="fa fa-check"></i><b>4.6.2</b> <strong>Conectando QGIS a Serviços Remotos</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exportando-camadas-camadas-na-memória-temporárias-e-camadas-virtuais"><i class="fa fa-check"></i><b>4.7</b> Exportando Camadas, Camadas na Memória (Temporárias) e Camadas Virtuais</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#exportando-camadas-do-qgis"><i class="fa fa-check"></i><b>4.7.1</b> <strong>Exportando Camadas do QGIS</strong></a></li>
+<li class="chapter" data-level="4.7.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#camadas-na-memória"><i class="fa fa-check"></i><b>4.7.2</b> <strong>Camadas na memória</strong></a></li>
+<li class="chapter" data-level="4.7.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#camadas-virtuais"><i class="fa fa-check"></i><b>4.7.3</b> <strong>Camadas virtuais</strong></a></li>
+<li class="chapter" data-level="4.7.4" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#se-você-quiser-ir-mais-longe-2"><i class="fa fa-check"></i><b>4.7.4</b> Se você quiser ir mais longe:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#para-praticar-suas-novas-habilidades-tente-1"><i class="fa fa-check"></i><b>4.8</b> Para praticar suas novas habilidades, tente …</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregar-rasters-e-vetores-encontrados-na-internet"><i class="fa fa-check"></i><b>4.8.1</b> <strong>Carregar rasters e vetores encontrados na internet</strong></a></li>
+<li class="chapter" data-level="4.8.2" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#carregar-uma-planilha-no-qgis-usando-o-plugin-spreadsheet-layers"><i class="fa fa-check"></i><b>4.8.2</b> <strong>Carregar uma planilha no QGIS usando o plugin Spreadsheet Layers</strong></a></li>
+<li class="chapter" data-level="4.8.3" data-path="camadas-no-qgis.html"><a href="camadas-no-qgis.html#dicas"><i class="fa fa-check"></i><b>4.8.3</b> Dicas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><i class="fa fa-check"></i><b>5</b> OpenStreetMap e a camada de assentamentos de alta resolução</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#introdução-pedagógica-1"><i class="fa fa-check"></i><b>5.1</b> Introdução pedagógica</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#ferramentas-e-recursos-necessários-1"><i class="fa fa-check"></i><b>5.1.1</b> Ferramentas e recursos necessários</a></li>
+<li class="chapter" data-level="5.1.2" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#pré-requisitos-1"><i class="fa fa-check"></i><b>5.1.2</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="5.1.3" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#recursos-adicionais-1"><i class="fa fa-check"></i><b>5.1.3</b> Recursos adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#introdução-temática-1"><i class="fa fa-check"></i><b>5.2</b> Introdução temática</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#análise-dos-conceitos"><i class="fa fa-check"></i><b>5.2.1</b> Análise dos conceitos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#dados-do-openstreetmap-osm"><i class="fa fa-check"></i><b>5.3</b> Dados do OpenStreetMap (OSM)</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#o-que-é-openstreetmap-osm"><i class="fa fa-check"></i><b>5.3.1</b> <strong>O que é OpenStreetMap (OSM)?</strong></a></li>
+<li class="chapter" data-level="5.3.2" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#onde-o-openstreetmap-é-usado"><i class="fa fa-check"></i><b>5.3.2</b> <strong>Onde o OpenStreetMap é usado?</strong></a></li>
+<li class="chapter" data-level="5.3.3" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#como-o-openstreetmap-pode-ser-usado-no-qgis"><i class="fa fa-check"></i><b>5.3.3</b> <strong>Como o OpenStreetMap pode ser usado no QGIS?</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#os-dados-da-camada-de-assentamentos-de-alta-resolução-hrsl"><i class="fa fa-check"></i><b>5.4</b> Os dados da camada de assentamentos de alta resolução (HRSL)</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#o-que-é-high-resolution-settlement-layer-hrsl-ou-camada-de-assentamentos-de-alta-resolução"><i class="fa fa-check"></i><b>5.4.1</b> <strong>O que é High Resolution Settlement Layer (HRSL), ou camada de assentamentos de alta resolução?</strong></a></li>
+<li class="chapter" data-level="5.4.2" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#casos-de-uso-do-hrsl"><i class="fa fa-check"></i><b>5.4.2</b> <strong>Casos de uso do HRSL</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#se-você-quiser-ir-além"><i class="fa fa-check"></i><b>5.5</b> Se você quiser ir além:</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#use-a-api-overpass-para-criar-uma-consulta-no-osm"><i class="fa fa-check"></i><b>5.5.1</b> <strong>Use a API Overpass para criar uma consulta no OSM</strong></a></li>
+<li class="chapter" data-level="5.5.2" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#para-praticar-suas-novas-habilidades-tente-2"><i class="fa fa-check"></i><b>5.5.2</b> Para praticar suas novas habilidades, tente…</a></li>
+<li class="chapter" data-level="5.5.3" data-path="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html"><a href="openstreetmap-e-a-camada-de-assentamentos-de-alta-resolução.html#dicas-1"><i class="fa fa-check"></i><b>5.5.3</b> Dicas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html"><i class="fa fa-check"></i><b>6</b> Camadas de estilo</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#introdução-pedagógica-2"><i class="fa fa-check"></i><b>6.1</b> Introdução pedagógica</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#ferramentas-e-recursos-necessários-2"><i class="fa fa-check"></i><b>6.1.1</b> Ferramentas e recursos necessários</a></li>
+<li class="chapter" data-level="6.1.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#pré-requisitos-2"><i class="fa fa-check"></i><b>6.1.2</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="6.1.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#recursos-adicionais-2"><i class="fa fa-check"></i><b>6.1.3</b> Recursos adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#introdução-temática-2"><i class="fa fa-check"></i><b>6.2</b> Introdução temática</a></li>
+<li class="chapter" data-level="6.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#painéis-guias-e-tipos-de-renderização-principais"><i class="fa fa-check"></i><b>6.3</b> Painéis, guias e tipos de renderização principais</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#painel-de-estilo-da-camada"><i class="fa fa-check"></i><b>6.3.1</b> <strong>Painel de estilo da camada</strong></a></li>
+<li class="chapter" data-level="6.3.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#guia-simbologia-nas-propriedades-das-camadas"><i class="fa fa-check"></i><b>6.3.2</b> <strong>Guia Simbologia nas Propriedades das camadas</strong></a></li>
+<li class="chapter" data-level="6.3.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#renderização-raster-renderização-de-banda"><i class="fa fa-check"></i><b>6.3.3</b> <strong>Renderização raster: renderização de banda</strong></a></li>
+<li class="chapter" data-level="6.3.4" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#renderização-de-vetor"><i class="fa fa-check"></i><b>6.3.4</b> <strong>Renderização de vetor</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#raster-básico-e-simbologia-vetorial"><i class="fa fa-check"></i><b>6.4</b> Raster básico e simbologia vetorial</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#conteúdo"><i class="fa fa-check"></i><b>6.4.1</b> <strong>Conteúdo</strong></a></li>
+<li class="chapter" data-level="6.4.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#exemplo-1-renderização-vetorial"><i class="fa fa-check"></i><b>6.4.2</b> <strong>Exemplo 1: Renderização vetorial</strong></a></li>
+<li class="chapter" data-level="6.4.3" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#exemplo-2-renderização-raster"><i class="fa fa-check"></i><b>6.4.3</b> <strong>Exemplo 2: Renderização raster</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#modos-de-mesclagem-e-efeitos-de-desenho"><i class="fa fa-check"></i><b>6.5</b> Modos de mesclagem e efeitos de desenho</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#conteúdo-1"><i class="fa fa-check"></i><b>6.5.1</b> <strong>Conteúdo</strong></a></li>
+<li class="chapter" data-level="6.5.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorial"><i class="fa fa-check"></i><b>6.5.2</b> <strong>Tutorial</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#substituições-definidas-por-dados-e-geradores-de-geometria"><i class="fa fa-check"></i><b>6.6</b> Substituições definidas por dados e geradores de geometria</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#conteúdo-2"><i class="fa fa-check"></i><b>6.6.1</b> <strong>Conteúdo</strong></a></li>
+<li class="chapter" data-level="6.6.2" data-path="camadas-de-estilo.html"><a href="camadas-de-estilo.html#tutorial-1"><i class="fa fa-check"></i><b>6.6.2</b> <strong>Tutorial</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html"><i class="fa fa-check"></i><b>7</b> Fazendo mapas</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#introdução-pedagógica-3"><i class="fa fa-check"></i><b>7.1</b> Introdução Pedagógica</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#ferramentas-e-recursos-necessários-3"><i class="fa fa-check"></i><b>7.1.1</b> Ferramentas e recursos necessários</a></li>
+<li class="chapter" data-level="7.1.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#pré-requisitos-3"><i class="fa fa-check"></i><b>7.1.2</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="7.1.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#recursos-adicionais-3"><i class="fa fa-check"></i><b>7.1.3</b> Recursos adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#introdução-temática-3"><i class="fa fa-check"></i><b>7.2</b> Introdução temática</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#detalhamento-dos-conceitos-1"><i class="fa fa-check"></i><b>7.2.1</b> Detalhamento dos conceitos</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#exportando-a-tela-do-mapa"><i class="fa fa-check"></i><b>7.3</b> Exportando a tela do mapa</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#primeiro-método-exportar-a-tela-do-mapa-sem-o-layout-de-impressão"><i class="fa fa-check"></i><b>7.3.1</b> <strong>Primeiro método: Exportar a tela do mapa sem o layout de impressão</strong></a></li>
+<li class="chapter" data-level="7.3.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#segundo-método-exportar-a-tela-do-mapa-para-a-impressão-layout"><i class="fa fa-check"></i><b>7.3.2</b> <strong>Segundo método: Exportar a tela do mapa para a impressão layout</strong></a></li>
+<li class="chapter" data-level="7.3.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#perguntas-do-questionário-8"><i class="fa fa-check"></i><b>7.3.3</b> <strong>Perguntas do questionário </strong></a></li>
+<li class="chapter" data-level="7.3.4" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#respostas-do-questionário-1"><i class="fa fa-check"></i><b>7.3.4</b> <strong>Respostas do questionário </strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#adicionando-e-editando-elementos-do-mapa-ao-layout-de-impressão"><i class="fa fa-check"></i><b>7.4</b> Adicionando e editando elementos do mapa ao layout de impressão</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#conteúdotutorial"><i class="fa fa-check"></i><b>7.4.1</b> <strong>Conteúdo/Tutorial</strong></a></li>
+<li class="chapter" data-level="7.4.2" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#perguntas-do-questionário-9"><i class="fa fa-check"></i><b>7.4.2</b> <strong>Perguntas do questionário</strong></a></li>
+<li class="chapter" data-level="7.4.3" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#respostas-do-questionário-2"><i class="fa fa-check"></i><b>7.4.3</b> <strong>Respostas do questionário </strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#automatizando-a-criação-de-mapas-usando-os-recursos-do-atlas"><i class="fa fa-check"></i><b>7.5</b> Automatizando a criação de mapas usando os recursos do Atlas</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="fazendo-mapas.html"><a href="fazendo-mapas.html#conteúdotutorial-1"><i class="fa fa-check"></i><b>7.5.1</b> <strong>Conteúdo/Tutorial</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html"><i class="fa fa-check"></i><b>8</b> Atributos da camada</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#introdução-pedagógica-4"><i class="fa fa-check"></i><b>8.1</b> Introdução pedagógica</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#ferramentas-e-recursos-necessários-4"><i class="fa fa-check"></i><b>8.1.1</b> Ferramentas e recursos necessários</a></li>
+<li class="chapter" data-level="8.1.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#pré-requisitos-4"><i class="fa fa-check"></i><b>8.1.2</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="8.1.3" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#recursos-adicionais-4"><i class="fa fa-check"></i><b>8.1.3</b> Recursos adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#introdução-temática-4"><i class="fa fa-check"></i><b>8.2</b> Introdução temática</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#detalhamento-dos-conceitos-2"><i class="fa fa-check"></i><b>8.2.1</b> Detalhamento dos conceitos</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#editando-atributos-da-camada"><i class="fa fa-check"></i><b>8.3</b> Editando atributos da camada</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#conteúdotutorial-2"><i class="fa fa-check"></i><b>8.3.1</b> <strong>Conteúdo/Tutorial</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#entender-e-trabalhar-com-dados-de-atributos-consultas-e-análises"><i class="fa fa-check"></i><b>8.4</b> Entender e trabalhar com dados de atributos, consultas e análises</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#conteúdotutorial-3"><i class="fa fa-check"></i><b>8.4.1</b> <strong>Conteúdo/Tutorial</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#expressões-de-qgis-avançadas"><i class="fa fa-check"></i><b>8.5</b> Expressões de QGIS avançadas</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="atributos-da-camada.html"><a href="atributos-da-camada.html#conteúdotutorial-4"><i class="fa fa-check"></i><b>8.5.1</b> <strong>Conteúdo/Tutorial</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html"><i class="fa fa-check"></i><b>9</b> Criando e editando camadas</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#introdução-pedagógica-5"><i class="fa fa-check"></i><b>9.1</b> Introdução pedagógica</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#pré-requisitos-5"><i class="fa fa-check"></i><b>9.1.1</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="9.1.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#recursos-adicionais-5"><i class="fa fa-check"></i><b>9.1.2</b> Recursos adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#introdução-temática-5"><i class="fa fa-check"></i><b>9.2</b> Introdução temática</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#detalhamento-dos-conceitos-3"><i class="fa fa-check"></i><b>9.2.1</b> Detalhamento dos conceitos</a></li>
+<li class="chapter" data-level="9.2.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#conteúdo-principal"><i class="fa fa-check"></i><b>9.2.2</b> Conteúdo principal</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-uma-nova-camada-geopackage-ou-shapefile"><i class="fa fa-check"></i><b>9.3</b> Criando uma nova camada GeoPackage ou Shapefile</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-uma-nova-camada-geopackage"><i class="fa fa-check"></i><b>9.3.1</b> <strong>Criando uma nova camada GeoPackage</strong></a></li>
+<li class="chapter" data-level="9.3.2" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#criando-um-novo-shapefile"><i class="fa fa-check"></i><b>9.3.2</b> <strong>Criando um novo Shapefile</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#digitalizando-uma-camada-existente"><i class="fa fa-check"></i><b>9.4</b> Digitalizando uma camada existente</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#conteúdotutorial-5"><i class="fa fa-check"></i><b>9.4.1</b> <strong>Conteúdo/Tutorial</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#georreferenciando-um-mapa-topográfico"><i class="fa fa-check"></i><b>9.5</b> Georreferenciando um mapa Topográfico</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="criando-e-editando-camadas.html"><a href="criando-e-editando-camadas.html#conteúdotutorial-6"><i class="fa fa-check"></i><b>9.5.1</b> <strong>Conteúdo/Tutorial</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html"><i class="fa fa-check"></i><b>10</b> <strong>Processamento e análise vetorial</strong></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#introdução-pedagógica-6"><i class="fa fa-check"></i><b>10.1</b> Introdução pedagógica</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#ferramentas-e-recursos-necessários-5"><i class="fa fa-check"></i><b>10.1.1</b> Ferramentas e recursos necessários</a></li>
+<li class="chapter" data-level="10.1.2" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#pré-requisitos-6"><i class="fa fa-check"></i><b>10.1.2</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="10.1.3" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#recursos-adicionais-6"><i class="fa fa-check"></i><b>10.1.3</b> Recursos adicionais:</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#introdução-temática-6"><i class="fa fa-check"></i><b>10.2</b> Introdução temática</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#detalhamento-dos-conceitos-4"><i class="fa fa-check"></i><b>10.2.1</b> Detalhamento dos conceitos</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#o-modelo-de-dados-vetoriais"><i class="fa fa-check"></i><b>10.3</b> O modelo de dados vetoriais</a></li>
+<li class="chapter" data-level="10.4" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#metadados"><i class="fa fa-check"></i><b>10.4</b> Metadados</a></li>
+<li class="chapter" data-level="10.5" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#lógica-do-processamento-vetorial"><i class="fa fa-check"></i><b>10.5</b> Lógica do processamento vetorial</a></li>
+<li class="chapter" data-level="10.6" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#entendendo-seus-dados"><i class="fa fa-check"></i><b>10.6</b> Entendendo seus dados</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-1.-prepare-seu-ambiente-de-trabalho."><i class="fa fa-check"></i><b>10.6.1</b> <strong>Etapa 1. Prepare seu ambiente de trabalho.</strong></a></li>
+<li class="chapter" data-level="10.6.2" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-2.-entenda-o-que-você-está-olhando."><i class="fa fa-check"></i><b>10.6.2</b> <strong>Etapa 2. Entenda o que você está olhando.</strong></a></li>
+<li class="chapter" data-level="10.6.3" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-3.-verificações-básicas-para-encontrar-erros-rapidamente-em-seus-dados."><i class="fa fa-check"></i><b>10.6.3</b> <strong>Etapa 3. Verificações básicas para encontrar erros rapidamente em seus dados.</strong></a></li>
+<li class="chapter" data-level="10.6.4" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#etapa-4.-observe-as-informações-anexadas-aos-pontos-linhas-e-polígonos."><i class="fa fa-check"></i><b>10.6.4</b> <strong>Etapa 4. Observe as informações anexadas aos pontos, linhas e polígonos.</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#introdução-ao-processamento-vetorial"><i class="fa fa-check"></i><b>10.7</b> Introdução ao processamento vetorial</a></li>
+<li class="chapter" data-level="10.8" data-path="processamento-e-análise-vetorial.html"><a href="processamento-e-análise-vetorial.html#geoestatística-e-interpolação"><i class="fa fa-check"></i><b>10.8</b> Geoestatística e interpolação</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html"><i class="fa fa-check"></i><b>11</b> <strong>Processamento e análise raster</strong></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#introdução-pedagógica-7"><i class="fa fa-check"></i><b>11.1</b> Introdução pedagógica</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#ferramentas-e-recursos-necessários-6"><i class="fa fa-check"></i><b>11.1.1</b> Ferramentas e recursos necessários</a></li>
+<li class="chapter" data-level="11.1.2" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#pré-requisitos-7"><i class="fa fa-check"></i><b>11.1.2</b> Pré-requisitos:</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#o-modelo-de-dados"><i class="fa fa-check"></i><b>11.2</b> O modelo de dados</a></li>
+<li class="chapter" data-level="11.3" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#racional-do-processamento-raster"><i class="fa fa-check"></i><b>11.3</b> Racional do processamento raster</a></li>
+<li class="chapter" data-level="11.4" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#entendendo-seus-dados-raster."><i class="fa fa-check"></i><b>11.4</b> Entendendo seus dados raster.</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#etapa-1.-prepare-seu-ambiente-de-trabalho.-1"><i class="fa fa-check"></i><b>11.4.1</b> <strong>Etapa 1. Prepare seu ambiente de trabalho.</strong></a></li>
+<li class="chapter" data-level="11.4.2" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#etapa-2.-entenda-o-que-você-está-olhando.-1"><i class="fa fa-check"></i><b>11.4.2</b> <strong>Etapa 2. Entenda o que você está olhando.</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#introdução-ao-trabalho-com-dados-raster"><i class="fa fa-check"></i><b>11.5</b> Introdução ao trabalho com dados raster</a></li>
+<li class="chapter" data-level="11.6" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#trabalho-com-dados-raster-e-vetoriais"><i class="fa fa-check"></i><b>11.6</b> Trabalho com dados raster e vetoriais</a></li>
+<li class="chapter" data-level="11.7" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#referências"><i class="fa fa-check"></i><b>11.7</b> Referências:</a></li>
+<li class="chapter" data-level="11.8" data-path="processamento-e-análise-raster.html"><a href="processamento-e-análise-raster.html#notas"><i class="fa fa-check"></i><b>11.8</b> Notas</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="plugins-qgis.html"><a href="plugins-qgis.html"><i class="fa fa-check"></i><b>12</b> Plugins QGIS</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#introdução-pedagógica-8"><i class="fa fa-check"></i><b>12.1</b> Introdução Pedagógica</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#adquirir-as-seguintes-habilidades"><i class="fa fa-check"></i><b>12.1.1</b> Adquirir as seguintes habilidades:</a></li>
+<li class="chapter" data-level="12.1.2" data-path="plugins-qgis.html"><a href="plugins-qgis.html#ferramentas-e-recursos-necessários-7"><i class="fa fa-check"></i><b>12.1.2</b> Ferramentas e recursos necessários</a></li>
+<li class="chapter" data-level="12.1.3" data-path="plugins-qgis.html"><a href="plugins-qgis.html#pré-requisitos-8"><i class="fa fa-check"></i><b>12.1.3</b> Pré-requisitos:</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="plugins-qgis.html"><a href="plugins-qgis.html#introdução-à-mentalidade-do-plugin"><i class="fa fa-check"></i><b>12.2</b> Introdução à mentalidade do plugin</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#o-gerenciador-de-plugins"><i class="fa fa-check"></i><b>12.2.1</b> O gerenciador de plugins</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="plugins-qgis.html"><a href="plugins-qgis.html#alguns-plugins-interesantes"><i class="fa fa-check"></i><b>12.3</b> Alguns plugins interesantes</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="plugins-qgis.html"><a href="plugins-qgis.html#discovery"><i class="fa fa-check"></i><b>12.3.1</b> <strong>Discovery</strong></a></li>
+<li class="chapter" data-level="12.3.2" data-path="plugins-qgis.html"><a href="plugins-qgis.html#polygon-divider"><i class="fa fa-check"></i><b>12.3.2</b> <strong>Polygon Divider</strong></a></li>
+<li class="chapter" data-level="12.3.3" data-path="plugins-qgis.html"><a href="plugins-qgis.html#load-them-all"><i class="fa fa-check"></i><b>12.3.3</b> <strong>Load Them All</strong></a></li>
+<li class="chapter" data-level="12.3.4" data-path="plugins-qgis.html"><a href="plugins-qgis.html#raster-tracer"><i class="fa fa-check"></i><b>12.3.4</b> <strong>Raster tracer</strong></a></li>
+<li class="chapter" data-level="12.3.5" data-path="plugins-qgis.html"><a href="plugins-qgis.html#active-fire"><i class="fa fa-check"></i><b>12.3.5</b> <strong>Active Fire</strong></a></li>
+<li class="chapter" data-level="12.3.6" data-path="plugins-qgis.html"><a href="plugins-qgis.html#qgis2web"><i class="fa fa-check"></i><b>12.3.6</b> <strong><span>Qgis2web</span></strong></a></li>
+<li class="chapter" data-level="12.3.7" data-path="plugins-qgis.html"><a href="plugins-qgis.html#dataplotly"><i class="fa fa-check"></i><b>12.3.7</b> <strong>DataPlotly</strong></a></li>
+<li class="chapter" data-level="12.3.8" data-path="plugins-qgis.html"><a href="plugins-qgis.html#plugin-quickmapservices-openlayers"><i class="fa fa-check"></i><b>12.3.8</b> <strong>Plugin QuickMapServices / OpenLayers</strong></a></li>
+<li class="chapter" data-level="12.3.9" data-path="plugins-qgis.html"><a href="plugins-qgis.html#table2style"><i class="fa fa-check"></i><b>12.3.9</b> <strong>Table2Style</strong></a></li>
+<li class="chapter" data-level="12.3.10" data-path="plugins-qgis.html"><a href="plugins-qgis.html#ors-tools"><i class="fa fa-check"></i><b>12.3.10</b> <strong>ORS Tools</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com o bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Geodados: uma introdução gentil</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introdução" class="section level1" number="2">
+<h1><span class="header-section-number">Capitulo 2</span> Introdução</h1>
+<p><strong>Autor</strong>: Ben Hur</p>
+<p>Este módulo serve como uma introdução suave aos conceitos geográficos necessários para trabalhar com sistemas de informação geográfica (SIG, ou GIS em língua inglesa). Ao final deste módulo, os alunos deverão compreender os seguintes conceitos:</p>
+<ul>
+<li>projeções cartográficas</li>
+<li>sistemas de referência de coordenadas</li>
+<li>formatos de dados espaciais (exemplo: vetores e rasters)</li>
+<li>componentes e funções de um SIG</li>
+<li>usos de um SIG</li>
+<li>exemplos de uso de GIS e outras aplicações geoespaciais</li>
+</ul>
+<p>Além disso, este módulo irá também introduzir alguns conceitos chave de softwares livres e de código aberto (Free and Open Source Software, ou FOSS) e softwares livres e de código aberto para aplicações geoespaciais (FOSS4G).</p>
+<p>As ferramentas e recursos necessários para este módulo são:</p>
+<ul>
+<li>computador</li>
+<li>conexão de internet</li>
+</ul>
+<p>Pré-requisitos:</p>
+<ul>
+<li>conhecimento básico de uso de computadores</li>
+</ul>
+<p>Recursos adicionais:</p>
+<ul>
+<li>A Gentle Introduction to GIS - <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/index.html">https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/index.html</a></li>
+<li>QGIS User Guide - <a href="https://docs.qgis.org/3.16/en/docs/user_manual/">https://docs.qgis.org/3.16/en/docs/user_manual/</a></li>
+<li>QGIS Training Manual - <a href="https://docs.qgis.org/3.16/en/docs/training_manual/index.html">https://docs.qgis.org/3.16/en/docs/training_manual/index.html</a></li>
+<li>QGIS website - <a href="https://qgis.org/en/site/">https://qgis.org/en/site/</a></li>
+<li>OSGeo website - <a href="https://www.osgeo.org/">https://www.osgeo.org/</a></li>
+<li>OSGeoLive website - <a href="https://live.osgeo.org/en/index.html">https://live.osgeo.org/en/index.html</a></li>
+<li>What is free software? - <a href="https://www.gnu.org/philosophy/free-sw.en.html">https://www.gnu.org/philosophy/free-sw.en.html</a></li>
+<li>Open source definition - <a href="https://opensource.org/osd">https://opensource.org/osd</a></li>
+</ul>
+<div id="introdução-suave-a-conceitos-de-gis" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Introdução suave a conceitos de GIS</h2>
+<p>Vamos começar com um exemplo:</p>
+<p>Você pode ter ouvido a frase “todos os mapas mentem”, ou você viu uma postagem nas redes sociais afirmando que “O mapa mundi que você conheceu a vida inteira está errado!”. Bem, não é que os mapas estejam deliberadamente querendo mentir para você, mas a realidade é que os mapas não têm como te mostrar toda a verdade. Um exemplo disso são os tamanhos relativos dos países.</p>
+<p>The True Size Of (“O verdadeiro tamanho de”) (<a href="https://thetruesize.com/">https://thetruesize.com/</a>) é um mapa online (ou aplicativo web) interessante que mostra como os tamanhos relativos dos países são distorcidos em um dos mapas mais comuns que usamos (o mapa que usa a projeção de Mercator). Ele também mostra alguns exemplos de tipos de dados espaciais sobre os quais aprenderemos mais neste módulo. Tente usar esse site para comparar o tamanho do seu país com o de outros.</p>
+<div class="figure">
+<img src="media/modulo0/true-size-of.png" title="O verdadeiro tamanho dos países" alt="" />
+<p class="caption">True Size Of</p>
+</div>
+<p>Então por que isso acontece? Como você aprenderá neste módulo, é difícil representar a forma tridimensional da Terra em uma folha de papel plana. Para fazer isso, os cartógrafos usam o que é chamado de <strong>projeção cartográfica</strong>, para projetar os pontos da superfície tridimensional da Terra em uma superfície plana. No entanto, ao fazer isso, eles introduzem alguma <strong>distorção</strong>. Essa distorção pode ser de forma, tamanho, direção e distâncias dos objetos representados no mapa. Todos os mapas têm pelo menos uma dessas distorções. Por causa dessa distorção, um mapa nunca pode mostrar toda a verdade sobre a Terra.</p>
+<p>No mapa online que usamos, o mapa de fundo que não muda de tamanho (em cinza) é um exemplo de <strong>dados raster</strong>. Os dados raster são representações do mundo baseadas em pixels, semelhantes a como fotografias funcionam. Enquanto isso, a forma dos países que podemos mover são exemplos de <strong>dados vetor, ou vetoriais</strong>. Os dados vetoriais, ao contrário dos rasters, representam o mundo usando objetos discretos (no sentido matemático da palavra), como pontos, linhas e polígonos.</p>
+</div>
+<div id="mapas-e-coordenadas" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Mapas e coordenadas</h2>
+<p>Quando as pessoas pensam na Terra atualmente, elas geralmente imaginam uma massa esférica azul, verde, branca e marrom flutuando no espaço. É por isso que tradicionalmente usamos globos para representar a Terra.</p>
+<table>
+<tr>
+<td>
+<img src="media/modulo0/blue-marble.jpg">
+Figura 1. A Bola de Gude Azul (<a href="https://commons.wikimedia.org/wiki/Earth#/media/File:The_Blue_Marble.jpg"> https://commons.wikimedia.org/wiki/Earth#/media/File:The_Blue_Marble.jpg</a>)
+</td>
+<td>
+<img src="media/modulo0/globe.jpg">
+Figura 2. Globo de l’Isle (1765) (<a href="https://commons.wikimedia.org/wiki/Globe#/media/File:3quarter_globe.jpg"> https://commons.wikimedia.org/wiki/Globe#/media/File:3quarter_globe.jpg</a>)
+</td>
+</tr>
+</table>
+<p>No entanto, embora o globo seja capaz de capturar a maioria das características da Terra, ele possui duas desvantagens principais:</p>
+<ul>
+<li>Os globos são pesados e difíceis de transportar.</li>
+<li>Os globos só podem ser usados em pequenas escalas (por exemplo, encontrar locais de países, as posições relativas de cidades, etc.). Eles são praticamente inúteis para atividades que exigem grandes escalas ou detalhes finos (por exemplo, navegação dentro de uma cidade).</li>
+</ul>
+<p>É aqui que entram os mapas. Os mapas corrigem essas duas desvantagens dos globos, representando a Terra como uma superfície plana. Ao fazer isso, os mapas se tornam portáteis e adequados para uma infinidade de usos. Dito isso, os mapas também apresentam uma desvantagem própria. Através do processo de conversão de um objeto tridimensional (globo) em um bidimensional (mapa), distorções são geradas, de tal forma que é impossível para um mapa capturar perfeitamente as diferentes características da Terra (ou seja, formas, áreas e direções).</p>
+</div>
+<div id="projeções-cartográficas" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Projeções cartográficas</h2>
+<p>Uma projeção cartográfica é usada para achatar a superfície da Terra (ou de um globo qualquer) em um plano, a fim de criar um mapa. Este processo de transformação gera distorção.</p>
+<div class="figure">
+<img src="media/modulo0/dalandan.png" title="A terra como uma laranja" alt="" />
+<p class="caption">A terra como uma laranja</p>
+</div>
+<p>Pense na Terra como uma laranja. Se você descascá-la, poderá deixá-la plana, mas nunca poderá torná-la perfeitamente plana. Você sempre encontrará um dos seguintes problemas:</p>
+<ul>
+<li><strong>Alongamento</strong> - o alongamento da casca (ou superfície) em uma ou mais direções</li>
+<li><strong>Rasgos</strong> - a divisão ou ruptura da casca (ou superfície)</li>
+<li><strong>Compressão</strong> - o encurtamento ou encolhimento da casca (ou superfície)</li>
+</ul>
+<p>Por causa desses problemas, cada mapa contém distorção em uma ou mais das seguintes características:</p>
+<ul>
+<li><strong>Forma</strong></li>
+<li><strong>Área</strong></li>
+<li><strong>Distância</strong></li>
+<li><strong>Direção</strong></li>
+</ul>
+<p>As projeções cartográficas podem preservar (sem distorção) uma ou mais dessas características, mas nunca todas ao mesmo tempo. Outra opção é balancear e minimizar as distorções para todas as características ao mesmo tempo. Isso se deve à natureza das próprias características.</p>
+<p>Características principais como <strong>Forma</strong> e <strong>Área</strong> são <strong>mutuamente excludentes</strong> e não podem ser preservadas simultaneamente. Enquanto isso, as características secundárias <strong>Distância</strong> e <strong>Direção</strong> <strong>não têm como estar corretas em todos os lugares</strong> do mapa.</p>
+<p>Ao escolher qual projeção cartográfica usar, é importante que você considere o propósito do mapa. Por exemplo, se deseja realizar análises baseadas em área, é melhor usar uma projeção cartográfica que preserva a área.</p>
+<p>Existem várias classificações de projeções cartográficas. A primeira é baseada nas <strong>características que elas preservam</strong>.</p>
+<ul>
+<li>Projeções de mapa <strong>conforme</strong> ou <strong>ortomórficas</strong> são aquelas que preservam a forma ou a conformidade angular. Estes são comumente usados para fins de navegação ou meteorológicos. As formas são preservadas, mas as áreas são distorcidas. Quanto maior a área, maior a distorção.</li>
+<li>Projeções de mapa de <strong>equivalente</strong> ou <strong>de igual área</strong> são aquelas que preservam a proporção ou áreas relativas dos objetos no mapa. Nesse tipo de projeção cartográfica, quanto maior a área mapeada, mais precisa ela será.</li>
+<li>As projeções cartográficas <strong>equidistantes</strong> preservam a distância das linhas que originam em um ou dois pontos no mapa ou têm escala adequada ao longo de uma ou mais linhas.</li>
+<li>As projeções cartográficas <strong>azimutais</strong> preservam a direção a partir de um ou dois pontos no mapa. São úteis para mapear rotas de aeronaves e embarcações marítimas entre portos.</li>
+</ul>
+<p>Uma única projeção cartográfica pode preservar mais de uma característica (por exemplo, uma projeção azimutal equidistante que preserva a direção e as distâncias a partir de um ou dois pontos no mapa), mas nem todas delas, como mostrado na tabela abaixo.</p>
+<table>
+<tr>
+<td>
+</td>
+<td>
+<strong>Conforme</strong>
+</td>
+<td>
+<strong>Equivalente</strong>
+</td>
+<td>
+<strong>Equidistante</strong>
+</td>
+<td>
+<strong>Azimutal</strong>
+</td>
+</tr>
+<tr>
+<td>
+<p style="text-align: right">
+<strong>Conforme</strong>
+</p>
+</td>
+<td>
+<ul>
+<li></td>
+<td>
+Não
+</td>
+<td>
+Não
+</td>
+<td>
+Sim
+</td>
+</tr>
+<tr>
+<td>
+<p style="text-align: right">
+<strong>Equivalente</strong>
+</p>
+</td>
+<td>
+Não
+</td>
+<td>
+<ul>
+<li></td>
+<td>
+Não
+</td>
+<td>
+Sim
+</td>
+</tr>
+<tr>
+<td>
+<p style="text-align: right">
+<strong>Equidistante</strong>
+</p>
+</td>
+<td>
+Não
+</td>
+<td>
+Não
+</td>
+<td>
+<ul>
+<li></td>
+<td>
+Sim
+</td>
+</tr>
+<tr>
+<td>
+<p style="text-align: right">
+<strong>Azimutal</strong>
+</p>
+</td>
+<td>
+Sim
+</td>
+<td>
+Sim
+</td>
+<td>
+Sim
+</td>
+<td>
+<ul>
+<li></li>
+</ul>
+</td>
+</tr>
+</table></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Tabela: Ambas características podem ser preservadas por um mapa ao mesmo tempo?</p>
+<p>Existe outra classificação de projeções cartográficas que não preserva nenhuma das características do mapa, mas tenta minimizar todas as distorções no mapa. Estes são chamados de projeções <strong>Erro Mínimo (Minimum Error, ou Compromise)</strong> (mapas que não preservam a forma nem a área são chamados de <strong>Afiláticos</strong>).</p>
+<p>Uma maneira de visualizar a distorção é usando o que é chamado de <strong>indicador de Tissot</strong>. Este indicador caracteriza as distorções locais usando círculos e mostrando como esses círculos são transformados ao longo do mapa.</p>
+<div class="figure">
+<img src="media/modulo0/conformal.png" title="Projeção conforme" alt="" />
+<p class="caption">Projeção conforme</p>
+</div>
+<p>Figura 3. Projeção conforme com seu índice de Tissot. Os círculos permanecem como círculos por todo o mapa, mas suas áreas aumentam a medida que os círculos se movem do equador em direção aos pólos.</p>
+<div class="figure">
+<img src="media/modulo0/authalic.png" title="Projeção equivalente" alt="" />
+<p class="caption">Projeção equivalente</p>
+</div>
+<p>Figura 4. Projeção equivalente com seu índice de Tissot. Os círculos tornam-se elipses, mas suas áreas permanecem as mesmas.</p>
+<div class="figure">
+<img src="media/modulo0/equidistant.png" title="Projeção equidistante" alt="" />
+<p class="caption">Projeção equidistante</p>
+</div>
+<p>Figura 5. Projeção equidistante com seu índice de Tissot. Observe que as alturas dos círculos são iguais, o que significa que a escala / distâncias ao longo dos meridianos são preservadas.</p>
+<div class="figure">
+<img src="media/modulo0/az-equidistant.png" title="Projeção azimutal equidistante" alt="" />
+<p class="caption">Projeção azimutal equidistante</p>
+</div>
+<p>Figura 6. Projeção azimutal equidistante com seu índice de Tissot. Observe que os círculos estão todos apontando para o centro do mapa e as alturas dos círculos são todas iguais.</p>
+<p>Outra maneira de classificar as projeções do mapa é pela <strong>superfície desenvolvível (“developable surface”)</strong> usada para criar o mapa. Uma superfície é desenvolvível se ela puder ser planificada sem introduzir distorções. As superfícies mais comumente usadas são: Cilindros (Figura 7), Cones (Figura 8) e Planos (Figura 9).</p>
+<div class="figure">
+<img src="media/modulo0/cylinder.png" title="Cilindro como uma superfície desenvolvível" alt="" />
+<p class="caption">Cilindro como uma superfície desenvolvível</p>
+</div>
+<p>Figura 7. As projeções cilíndricas têm meridianos (longitude) e paralelos (latitude) encontrando-se em ângulos retos com as distâncias entre os meridianos sendo iguais.</p>
+<div class="figure">
+<img src="media/modulo0/cone.png" title="Cone como superfície desenvolvível" alt="" />
+<p class="caption">Cone como superfície desenvolvível</p>
+</div>
+<p>Figura 8. As projeções cônicas têm meridianos retos indo para um ponto nos pólos. Os paralelos são arcos.</p>
+<div class="figure">
+<img src="media/modulo0/plane.png" title="Plano como superfície desenvolvível" alt="" />
+<p class="caption">Plano como superfície desenvolvível</p>
+</div>
+<p>Figura 9. As projeções planas (comumente usadas em projeções azimutais) têm meridianos retos semelhantes às projeções cônicas, mas seus paralelos são círculos em vez de arcos.</p>
+<p>Existem inúmeras outras superfícies desenvolvíveis que podem ser usadas para transformar um globo em um mapa. Eles podem ser uma variação das superfícies comuns, como no caso de projeções pseudo-cilíndricas e pseudo-cônicas ou podem ser superfícies únicas e diferentes, como no mapa Dymaxion, que usa um icosaedro (poliedro com 20 faces), ou a Projeção de Cahill-Keyes que usa um octaedro (poliedro com 8 faces).</p>
+<p>A projeção de um mapa também pode ser classificada de acordo com seu <strong>aspecto</strong> (Figura 10) ou o modo como a superfície desenvolvível está posicionada no globo: Normal, Transversal ou Oblíqua.</p>
+<div class="figure">
+<img src="media/modulo0/aspects.png" title="Aspectos de uma projeção cartográfica" alt="" />
+<p class="caption">Aspectos de uma projeção cartográfica</p>
+</div>
+<p>Figura 10. Aspectos de uma projeção cartográfica</p>
+</div>
+<div id="sistemas-de-referência-de-coordenadas" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Sistemas de referência de coordenadas</h2>
+<p>Um <strong>Sistema de Referência de Coordenadas (SRC, ou CRS na sigla em inglês)</strong> é usado para especificar a localização de um objeto na superfície da Terra por meio do uso de coordenadas. SRCs podem ser classificados em dois:</p>
+<ul>
+<li><strong>Sistemas de referência de coordenadas geográficas</strong> usam graus de latitude e longitude como coordenadas para se referir à posição.</li>
+<li><strong>Sistemas de referência de coordenadas projetadas</strong> usam unidades lineares (por exemplo, metros, pés, quilômetros) de leste e norte como coordenadas.</li>
+</ul>
+<p>O conhecimento dos sistemas de referência de coordenadas é importante porque mesmo que dois mapas (ou camadas) mostrem o mesmo local, as coordenadas das localizações nesses mapas serão diferentes se os SRC que eles usam forem diferentes.</p>
+<p><strong>Veja este exemplo:</strong> Mapa A e Mapa B mostram a mesma área e extensão. Eles são basicamente o mesmo mapa. A única diferença é o sistema de referência de coordenadas que eles usam. O Mapa A usa SRC X e o Mapa B usa SRC Y. Digamos que obtivemos a coordenada do Ponto 1, que é (10, 10), do Mapa A. Se olharmos para a coordenada (10,10) no Mapa B, é possível que o Ponto 1 não esteja lá, pois o Mapa B usa um SRC diferente. Ou, se você sobrepor os mapas um ao outro usando uma referência comum, os objetos dos dois mapas não coincidirão. Este conhecimento de sistemas de referência de coordenadas é importante para qualquer tipo de GIS.</p>
+<p>As versões do QGIS anteriores à versão 3 tinham a opção de ativar o que é chamado de “OTF” ou “Transformação On-The-Fly (em ‘tempo real’)”. Isso permitia que camadas com diferentes SRC fossem projetadas na tela do mapa como se estivessem no mesmo SRC. Com o QGIS 3 em diante, esta opção é ativada automaticamente como comportamento padrão do QGIS. QGIS também executa esta ação automaticamente para tarefas de processamento. Isso é muito importante porque se as camadas não estiverem no mesmo SRC, os resultados das consultas espaciais e do processamento como junções espaciais, clipes, etc. podem ser comprometidos.</p>
+<p>Você pode notar que alguns Sistemas de Referência de Coordenadas são referidos por seu Código EPSG. Este código se refere ao código do SRC no conjunto de dados de parâmetros geodésicos EPSG, que é um registro de dados geodésicos, sistemas de referência espacial, elipsóides terrestres, transformações de coordenadas e unidades de medida relacionadas. A maioria dos GIS, incluindo QGIS, referem-se ao código EPSG para identificar sistemas de referência de coordenadas, projeções e realizar transformações entre esses sistemas.</p>
+<p>Alguns códigos EPSG comuns incluem:</p>
+<ul>
+<li><strong>EPSG: 4326</strong> - WGS 84, sistema de coordenadas de latitude / longitude baseado no Sistema de Posicionamento Global (GPS) entre outros.</li>
+<li><strong>EPSG: 3857</strong> - Projeção Web Mercator usada para exibição por muitas ferramentas de mapeamento baseadas na web, como OpenStreetMap e Google Maps</li>
+<li><strong>EPSG: 31973 a EPSG: 31974 e EPSG: 31978 a EPSG: 31985</strong> - Universal Transverse Mercator (UTM) Zonas 19N a 20N, e 18S a 25S. Zonas UTM usadas no Brasil</li>
+<li><strong>EPSG: 4674</strong> - Sistema de Referência SIRGAS 2000, utilizado nas Américas a partir do ano 2000</li>
+</ul>
+<div id="quiz" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Quiz</h3>
+<ol style="list-style-type: decimal">
+<li>Que tipo de projeção é melhor para os seguintes casos?
+<ol style="list-style-type: decimal">
+<li>um mapa de uso geral que precisa ter uma aparência agradável</li>
+<li>um mapa mostrando uma análise de área por unidade entre diferentes locais</li>
+<li>um mapa que mostra uma comparação de uma zona de 10 km de raio de diferentes locais</li>
+</ol></li>
+<li>Que tipo de sistema de referência de coordenadas (geográfico ou projetado) é melhor utilizado para os seguintes casos?
+<ol style="list-style-type: decimal">
+<li>mostrar a localização de pontos usando GPS</li>
+<li>calcular a distância entre dois pontos</li>
+<li>Verdadeiro ou falso - É possível preservar as seguintes características do mapa juntas em um único mapa:</li>
+<li>Área e forma</li>
+<li>Distância e direção</li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="tipos-de-dados-espaciais" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Tipos de dados espaciais</h2>
+<p>Em sua essência, um Sistema de Informação Geográfica (SIG) deve ser capaz de modelar objetos, informações e fenômenos do mundo real, como limites de lotes, rios, estradas, temperatura, etc. Ele faz isso por meio de modelos de dados espaciais.</p>
+<p>Os modelos de dados espaciais são compostos de dois componentes principais que, quando combinados, modelam a realidade. Esses componentes são:</p>
+<ul>
+<li><strong>Feições espaciais (ou geometria)</strong></li>
+<li><strong>Atributos</strong></li>
+</ul>
+<div class="figure">
+<img src="media/modulo0/spatial-model.png" title="Modelo de dados espaciais" alt="" />
+<p class="caption">Modelo de dados espaciais</p>
+</div>
+<p>Existem dois modelos principais de dados espaciais: <strong>raster</strong> e <strong>vetorial</strong>. Embora qualquer objeto do mundo real possa ser representado por qualquer um dos dois modelos de dados, um deles é geralmente melhor para representar certos objetos do mundo real do que o outro.</p>
+<div id="dados-raster" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Dados raster</h3>
+<p>Os dados raster são mais utilizados para representar fenômenos contínuos, como elevação ou temperatura.</p>
+<p>Um raster é uma representação de objetos do mundo real composta de linhas e colunas de células ou pixels, no qual cada célula ou pixel representa uma área geográfica (pense em uma fotografia ou imagem). O valor da célula representa o valor de um atributo na referida área geográfica. O tamanho da área depende da resolução espacial do raster.</p>
+<p>Rasters são bastante úteis para modelagem de adequação de locais (suitability modelling), pois você pode combinar rasters por meio de operações matemáticas (álgebra de raster).</p>
+<div class="figure">
+<img src="media/modulo0/raster.png" title="Modelo de dados raster" alt="" />
+<p class="caption">Modelo de dados raster</p>
+</div>
+<p>Figura 12. Um raster consiste em pixels de tamanhos iguais em linhas e colunas.</p>
+<p>Um pixel raster pode conter apenas um valor de cada vez. Assim, um raster pode modelar apenas um objeto ou fenômeno por vez.</p>
+</div>
+<div id="dados-vetoriais" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Dados vetoriais</h3>
+<p>Os dados vetoriais são mais utilizados para representar objetos discretos.</p>
+<p>Os dados vetoriais possuem três formas: ponto, linha e polígono. São mais preciso que rasters porque pontos, linhas e polígonos são modelados usando coordenadas bem definidas, tornando-os melhores na representação de objetos discretos do que rasters.</p>
+<p>Os vetores são comumente usados quando necessitamos precisão com comprimentos, áreas e distâncias. Eles também são úteis ao realizar análises de rede (por exemplo, encontrar o caminho mais curto um ponto a outro em uma rede de vias).</p>
+<div class="figure">
+<img src="media/modulo0/vector.png" title="Modelo de dados vetoriais" alt="" />
+<p class="caption">Modelo de dados vetoriais</p>
+</div>
+<p>Figura 13. Um vetor consiste em feições com seus atributos correspondentes.</p>
+<p>Comparado aos pixels raster, uma feição vetorial pode conter mais de um valor por vez. Esses valores são armazenados como colunas na tabela de atributos. Cada feição é armazenada como uma linha.</p>
+</div>
+<div id="quiz-1" class="section level3" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Quiz</h3>
+<ol style="list-style-type: decimal">
+<li>Qual tipo de dado pode representar melhor os seguintes objetos/fenômenos:
+<ol style="list-style-type: decimal">
+<li>estradas</li>
+<li>casas</li>
+<li>densidade populacional</li>
+<li>perigo de inundação</li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="sistema-de-informação-geográfica-sig" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Sistema de Informação Geográfica (SIG)</h2>
+<p>As informações geográficas e de localização tornaram-se onipresentes no século 21 em todos os níveis de granularidade. Temos satélites, aeronaves e até drones comerciais que são capazes de capturar grandes quantidades de dados brutos em grandes áreas por longos períodos de tempo. Existem também sensores que coletam e reúnem informações de localização, como o GPS e outros aplicativos em nossos telefones e dispositivos.</p>
+<p>Com todos esses dados à nossa disposição, é fundamental saber gerenciá-los, analisá-los e apresentá-los. É aqui que entram os Sistemas de Informação Geográfica, ou mais comumente conhecidos como SIG, ou GIS.</p>
+<p>SIG é uma ferramenta / framework / sistema que nos permite trabalhar com informação geográfica (ou espacial) e sua correspondente informação de atributo (não espacial). Em particular, um GIS deve ser capaz de:</p>
+<ul>
+<li><strong>Coletar</strong>, <strong>armazenar</strong>, <strong>editar</strong>, <strong>manipular</strong>, ou em termos mais gerais, <strong>gerenciar</strong> dados espaciais.</li>
+<li><strong>Analizar</strong> os dados usando seu componente espacial (onde os dados estão) ou atributo (o valor dos dados).</li>
+<li><strong>Apresentar</strong> os dados e análises como informações significativas por meio de mapas, gráficos, plotagens e outras visualizações.</li>
+</ul>
+<p><em>SIG não é apenas mapeamento</em>. Embora a elaboração de mapas seja um dos aspectos mais importantes e comumente conhecidos do SIG, ela ainda é apenas uma parte de seus muitos recursos. Podemos ver a estrutura SIG moderna como sendo composta por:</p>
+<ul>
+<li><strong>Dados</strong> - referem-se às informações utilizadas pelo SIG que podem ou não conter informações de localização (por exemplo, nomes de lojas, localizações de lojas).</li>
+<li><strong>Tecnologia</strong> - inclui os componentes de hardware e software de um SIG - as máquinas, instrumentos e computadores com os aplicativos de software usados para fazer o trabalho geoespacial.</li>
+<li><strong>Métodos e análises</strong> - referem-se à ciência e matemática em SIG, que permitem realizar consultas e cálculos espaciais e não espaciais (de atributos).</li>
+<li><strong>Visualização</strong> - embora semelhante aos métodos e análises, a visualização pode ser considerada como um componente separado, pois se refere especificamente aos meios pelos quais um SIG representa os dados graficamente. Isso inclui não apenas mapas, embora seja o caso mais comum, mas também tabelas, gráficos, etc.</li>
+<li><strong>Pessoas</strong> - são as pessoas e / ou grupos de pessoas que estão envolvidas no uso, desenvolvimento, ensino e manutenção de SIG.</li>
+</ul>
+<p>Todas as partes da estrutura SIG moderna - dos dados às pessoas - são essenciais para garantir seu sucesso.</p>
+<div id="quiz-2" class="section level3" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Quiz</h3>
+<ol style="list-style-type: decimal">
+<li>Verdadeiro ou falso:
+<ol style="list-style-type: decimal">
+<li>Um SIG só pode ser usado com dados geoespaciais.</li>
+<li>Um mapa é sempre o resultado ao se usar um SIG.</li>
+<li>Aprender SIG é difícil e caro.</li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="software-livre-e-de-código-aberto-para-uso-geoespacial-foss4g" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Software Livre e de Código Aberto para uso Geoespacial (FOSS4G)</h2>
+<p>QGIS é apenas um exemplo de software livre e de código aberto para uso geoespacial (FOSS4G). Outros exemplos de FOSS4G são GRASS, PostGIS, GeoServer, GeoNode, etc. Esses aplicativos FOSS4G são ótimas ferramentas para trabalhar não só porque são confiáveis, mas também porque, sendo gratuitos e de código aberto, têm uma barreira de entrada menor e são altamente personalizáveis para qualquer necessidade. Você pode encontrar uma variedade de softwares geoespaciais gratuitos e de código aberto para cada necessidade e para cada parte do “stack” geoespacial.</p>
+<div class="figure">
+<img src="media/modulo0/foss4g-stack.jpeg" title="Stack de aplicativos de software livre e de código aberto para geoespaciais (FOSS4G)" alt="" />
+<p class="caption">Stack de aplicativos de software livre e de código aberto para geoespaciais (FOSS4G)</p>
+</div>
+<p>Figura 14. Uma amostra de stack geoespacial de código aberto (ou FOSS4G) (de Simon Nitz (<a href="https://twitter.com/si_nitz?lang=en">https://twitter.com/si_nitz?lang=en</a>))</p>
+<div id="software-grátis" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Software grátis</h3>
+<p><strong>Livre como em liberdade e não apenas grátis.</strong></p>
+<p>Software livre é o software que adere às Quatro Liberdades Essenciais do Software Livre, que são:</p>
+<ol style="list-style-type: decimal">
+<li>A liberdade de executar o programa como desejar, para qualquer propósito (liberdade 0).</li>
+<li>A liberdade de estudar como o programa funciona e alterá-lo para que ele faça o que você deseja (liberdade 1). O acesso ao código-fonte é uma pré-condição para isso.</li>
+<li>A liberdade de redistribuir cópias para que você possa ajudar outras pessoas (liberdade 2).</li>
+<li>A liberdade de distribuir cópias de suas versões modificadas para outros (liberdade 3). Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar com suas mudanças. O acesso ao código-fonte é uma pré-condição para isso.</li>
+</ol>
+</div>
+<div id="código-aberto" class="section level3" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> Código aberto</h3>
+<p>Softwares de código aberto são aqueles que possuem licenças que permitem uso sem precisar pagar royalties e que permitem a reutilização do software, juntamente com acesso livre ao código-fonte. Por convenção, essas licenças de código aberto são aquelas que estão em conformidade com a definição de código aberto prevista pela Open Source Initiative. O código-fonte aberto não só garante acesso gratuito ao software e código-fonte, mas também a capacidade de redistribuir o software sem custos adicionais.</p>
+<p>Por causa da natureza aberta do software de código aberto, ele também é um ótimo modelo de desenvolvimento de software, no qual todos são livres para atualizar, melhorar, modificar e compartilhar suas modificações com a comunidade.</p>
+</div>
+<div id="osgeo" class="section level3" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> OSGeo</h3>
+<p>Existem muitos softwares geoespaciais de código aberto e, às vezes, a parte mais difícil é saber onde e como começar a trabalhar com esses softwares. Felizmente, a Open Source Geospatial Foundation (OSGeo) (<a href="https://www.osgeo.org/">https://www.osgeo.org/</a>) existe para ajudar a promover a adoção global de tecnologia geoespacial aberta e apoiar o desenvolvimento dessas tecnologias.</p>
+</div>
+</div>
+<div id="se-você-quiser-ir-mais-longe" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Se você quiser ir mais longe</h2>
+<p>Se você quiser testar usar aplicativos FOSS4G facilmente, experimente o OSGeoLive (<a href="https://live.osgeo.org/en/index.html">https://live.osgeo.org/en/index.html</a>) que é uma distribuição Linux (sistema operacional) que vem pré-instalado com QGIS, GRASS e outros aplicativos FOSS4G.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introdução-ao-qgis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/escola-de-dados/GIS-curriculum/edit/gh-pages/module00.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ebook-gis.pdf", "ebook-gis.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

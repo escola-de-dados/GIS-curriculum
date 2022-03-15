@@ -1,0 +1,46 @@
+--- 
+title: 'Geodados: uma introdução gentil'
+author: "Ben Hur Pintor, Ketty Adoch, Codrina Maria Ilie"
+site: bookdown::bookdown_site
+output: pdf_document
+url: escola-de-dados.github.io/GIS-curriculum/
+cover-image: media/cover/cover.jpg
+description: Currículo aberto sobre GIS, com foco em QGIS, OSM and the High Resolution
+  Settlement Layer Data
+link-citations: yes
+colorlinks: yes
+github-repo: escola-de-dados/GIS-curriculum
+lang: pt
+documentclass: krantz
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  dev = 'png'
+)
+```
+
+```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html'), fig.link=''}
+knitr::include_graphics('media/cover/cover.jpg', dpi = NA)
+```
+
+# Edite esse livro! ;)
+Este ebook está disponível atualmente como uma página web - [https://gis.escoladedados.org/](https://gis.escoladedados.org/) - e em  um repositório - [https://github.com/escola-de-dados/GIS-curriculum/](https://github.com/escola-de-dados/GIS-curriculum/).
+
+Caso encontre algum erro ou informação desatualizada, por favor, abra uma issue ou faça um `pull request` em nosso repositório ([https://github.com/escola-de-dados/GIS-curriculum/issues/new/choose](https://github.com/escola-de-dados/GIS-curriculum/issues/new/choose)). Na versão HTML do livro, você também pode clicar no botão de editar.
+
+## Créditos
+
+Autoria: Ben Hur Pintor, Ketty Adoch, Codrina Maria Ilie
+
+Tradução e edição em português: Bernardo Loureiro
+
+Realização: School of Data/Open Knowledge
+
+Ebook: Escola de Dados/Open Knowledge Brasil
+
+## Conjuntos de dados
+
+Todos os conjuntos de dados utilizados nesta publicação estão disponíveis no repositório: [https://github.com/escola-de-dados/GIS-curriculum/tree/gh-pages/data](https://github.com/escola-de-dados/GIS-curriculum/tree/gh-pages/data)
+
+Se preferir, baixe o arquivo `.zip` do repositório e localize os arquivos na pasta `data`: [https://github.com/escola-de-dados/GIS-curriculum/archive/refs/heads/gh-pages.zip](https://github.com/escola-de-dados/GIS-curriculum/archive/refs/heads/gh-pages.zip)

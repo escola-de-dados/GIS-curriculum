@@ -1,0 +1,181 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {chapter}{\numberline {1}Edite esse livro}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Créditos}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Conjuntos de dados}{7}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Introdução suave a conceitos de GIS}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Mapas e coordenadas}{11}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Projeções cartográficas}{14}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Sistemas de referência de coordenadas}{20}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Quiz}{22}{subsection.2.3.1}%
+\contentsline {section}{\numberline {2.4}Tipos de dados espaciais}{23}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Dados raster}{23}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Dados vetoriais}{25}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Quiz}{26}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}SIG}{27}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Quiz}{28}{subsection.2.5.1}%
+\contentsline {section}{\numberline {2.6}FOSS4G}{28}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Software grátis}{29}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Código aberto}{29}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}OSGeo}{29}{subsection.2.6.3}%
+\contentsline {section}{\numberline {2.7}Se você quiser ir mais longe}{30}{section.2.7}%
+\contentsline {chapter}{\numberline {3}Introdução ao QGIS}{31}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introdução ao QGIS e à interface do QGIS}{34}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}O que é o QGIS}{34}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Ciclo de lançamento e versões}{36}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Exemplos de mapas QGIS}{37}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Instalando o QGIS}{37}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Partes da interface do QGIS}{38}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Tutorial/Exercício: Mudando a aparência e layout da interface QGIS}{40}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Quiz}{41}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Complementos QGIS}{43}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Tutorial/Exercício: Instalando um complemento QGIS}{45}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Quiz}{47}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Configurações QGIS}{47}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Tutorial/Exercício: Criando um perfil de usuário}{51}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Quiz}{53}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Formatos de arquivo do QGIS}{53}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Arquivo de projeto QGIS (QGS / QGZ)}{53}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Definição da camada QGIS (QLR)}{54}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Arquivo de estilo QGIS (QML)}{54}{subsection.3.5.3}%
+\contentsline {section}{\numberline {3.6}Se você quiser ir mais longe}{55}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Para praticar suas novas habilidades, tente\ldots {}}{55}{subsection.3.6.1}%
+\contentsline {chapter}{\numberline {4}Camadas no QGIS}{57}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Tipos de dados, formatos de arquivo, o painel do navegador e o painel de camadas}{60}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Tipos de dados e formatos de arquivo comuns}{60}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Tipos de fontes de dados}{61}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Carregando camadas no QGIS}{62}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}O painel do navegador}{62}{subsection.4.1.4}%
+\contentsline {subsubsection}{\numberline {4.1.4.1}Tutorial/Exercício: O painel do navegador}{63}{subsubsection.4.1.4.1}%
+\contentsline {subsection}{\numberline {4.1.5}O painel de camadas}{67}{subsection.4.1.5}%
+\contentsline {section}{\numberline {4.2}Propriedades da camada}{69}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Metadados geoespaciais}{71}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Tutorial/Exercício: Adicionando metadados}{72}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Quiz}{74}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}O gerenciador de fonte de dados e conexão com serviços remotos}{75}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}O gerenciador de fonte de dados}{75}{subsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.1.1}Tutorial/Exercício: O gerenciador de fonte de dados}{76}{subsubsection.4.4.1.1}%
+\contentsline {subsection}{\numberline {4.4.2}Conectando QGIS a serviços remotos}{79}{subsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.1}Tutorial/Exercício: Conectando-se a tiles XYZ}{81}{subsubsection.4.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.4.2.2}\textbf {Tutorial/Exercício: Conectando-se a WMS / WMTS e WFS}}{82}{subsubsection.4.4.2.2}%
+\contentsline {subsection}{\numberline {4.4.3}Quiz}{84}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Exportando camadas, camadas na memória (temporárias) e camadas virtuais}{87}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Exportando camadas do QGIS}{87}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Camadas na memória}{88}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Camadas virtuais}{90}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Quiz}{91}{subsection.4.5.4}%
+\contentsline {subsection}{\numberline {4.5.5}Se você quiser ir mais longe}{91}{subsection.4.5.5}%
+\contentsline {subsubsection}{\numberline {4.5.5.1}\textbf {Instale alguns plug-ins que servem como fontes de dados}}{91}{subsubsection.4.5.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.5.2}\textbf {Conecte-se a instâncias GeoNode}}{91}{subsubsection.4.5.5.2}%
+\contentsline {subsection}{\numberline {4.5.6}Exercício/Tutorial: Camadas virtuais}{92}{subsection.4.5.6}%
+\contentsline {section}{\numberline {4.6}Para praticar suas novas habilidades, tente\ldots {}}{96}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Carregar rasters e vetores encontrados na internet}{96}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Carregar uma planilha no QGIS usando o plugin Spreadsheet Layers}{97}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}Dicas}{97}{subsection.4.6.3}%
+\contentsline {chapter}{\numberline {5}OSM e a camada de assentamentos de alta resolução}{99}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Dados do OSM}{100}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}O que é OSM?}{100}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Onde o OSM é usado?}{101}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Como o OSM pode ser usado no QGIS?}{102}{subsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.3.1}Tutorial/Exercício: Carregando dados OSM no QGIS usando o plugin QuickOSM}{103}{subsubsection.5.1.3.1}%
+\contentsline {subsubsection}{\numberline {5.1.3.2}Quiz}{109}{subsubsection.5.1.3.2}%
+\contentsline {section}{\numberline {5.2}Os dados da camada de assentamentos de alta resolução (HRSL)}{110}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}O que é High Resolution Settlement Layer (HRSL) ou camada de assentamentos de alta resolução?}{110}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Casos de uso do HRSL}{110}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}Tutotial/Exercício: Carregando os dados HRSL no QGIS}{111}{subsubsection.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}Quiz}{112}{subsubsection.5.2.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Se você quiser ir além}{112}{subsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.3.1}Use a API Overpass para criar uma consulta no OSM}{112}{subsubsection.5.2.3.1}%
+\contentsline {section}{\numberline {5.3}Para praticar suas novas habilidades, tente\ldots {}}{117}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Carregar mais recursos do OSM usando o plug-in QuickOSM}{117}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Dicas}{117}{subsection.5.3.2}%
+\contentsline {chapter}{\numberline {6}Camadas de estilo}{119}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Painéis, guias e tipos de renderização principais}{120}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Painel de estilo da camada}{120}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Guia simbologia nas propriedades das camadas}{122}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Renderização raster: renderização de banda}{122}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Renderização de vetor}{123}{subsection.6.1.4}%
+\contentsline {section}{\numberline {6.2}Raster básico e simbologia vetorial}{124}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Tutorial/Exercício: Renderização vetorial}{124}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Tutorial/Exercicio: Renderização raster}{126}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}Quiz}{128}{subsubsection.6.2.2.1}%
+\contentsline {section}{\numberline {6.3}Modos de mesclagem e efeitos de desenho}{130}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Tutorial/Exercício}{130}{subsection.6.3.1}%
+\contentsline {section}{\numberline {6.4}Substituições definidas por dados e geradores de geometria}{137}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Tutorial/Exercício}{137}{subsection.6.4.1}%
+\contentsline {chapter}{\numberline {7}Fazendo mapas}{141}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Exportando a tela do mapa}{143}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Primeiro método: Exportar a tela do mapa sem o layout de impressão}{143}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Segundo método: Exportar a tela do mapa para a impressão layout}{144}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Quiz}{148}{subsection.7.1.3}%
+\contentsline {section}{\numberline {7.2}Adicionando e editando elementos do mapa ao layout de impressão}{149}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Tutorial/Exercício}{149}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Quiz}{153}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Automatizando a criação de mapas usando os recursos do Atlas}{154}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Tutorial/Exercício}{154}{subsection.7.3.1}%
+\contentsline {chapter}{\numberline {8}Atributos da camada}{163}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Editando atributos da camada}{166}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Tutorial/Exercício}{166}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Quiz}{171}{subsection.8.1.2}%
+\contentsline {section}{\numberline {8.2}Entender e trabalhar com dados de atributos, consultas e análises}{172}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Tutorial/Exercício}{172}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Quiz}{175}{subsection.8.2.2}%
+\contentsline {section}{\numberline {8.3}Expressões de QGIS avançadas}{175}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Tutorial/Exercício}{175}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Quiz}{176}{subsection.8.3.2}%
+\contentsline {chapter}{\numberline {9}Criando e editando camadas}{177}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Criando uma nova camada GeoPackage ou Shapefile}{180}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Criando uma nova camada GeoPackage}{180}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Criando um novo Shapefile}{182}{subsection.9.1.2}%
+\contentsline {section}{\numberline {9.2}Digitalizando uma camada existente}{184}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Tutorial/Exercício}{184}{subsection.9.2.1}%
+\contentsline {section}{\numberline {9.3}Georreferenciando um mapa topográfico}{192}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Tutorial/Exercício}{192}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Quiz}{198}{subsection.9.3.2}%
+\contentsline {chapter}{\numberline {10}Processamento e análise vetorial}{201}{chapter.10}%
+\contentsline {section}{\numberline {10.1}O modelo de dados vetoriais}{204}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Metadados}{204}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Lógica do processamento vetorial}{205}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Entendendo seus dados}{207}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}Etapa 1: Prepare seu ambiente de trabalho}{207}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}Etapa 2: Entenda o que você está olhando}{208}{subsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.4.3}Etapa 3: Verificações básicas para encontrar erros rapidamente em seus dados}{212}{subsection.10.4.3}%
+\contentsline {subsection}{\numberline {10.4.4}Etapa 4: Observe as informações anexadas aos pontos, linhas e polígonos}{221}{subsection.10.4.4}%
+\contentsline {subsubsection}{\numberline {10.4.4.1}pois\_cleand}{221}{subsubsection.10.4.4.1}%
+\contentsline {subsubsection}{\numberline {10.4.4.2}waterways}{223}{subsubsection.10.4.4.2}%
+\contentsline {subsubsection}{\numberline {10.4.4.3}pofw}{223}{subsubsection.10.4.4.3}%
+\contentsline {subsubsection}{\numberline {10.4.4.4}road}{223}{subsubsection.10.4.4.4}%
+\contentsline {subsubsection}{\numberline {10.4.4.5}landuse}{223}{subsubsection.10.4.4.5}%
+\contentsline {subsection}{\numberline {10.4.5}Quiz}{224}{subsection.10.4.5}%
+\contentsline {section}{\numberline {10.5}Introdução ao processamento vetorial}{228}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}Quiz}{257}{subsection.10.5.1}%
+\contentsline {section}{\numberline {10.6}Geoestatística e interpolação}{258}{section.10.6}%
+\contentsline {subsection}{\numberline {10.6.1}Quiz}{267}{subsection.10.6.1}%
+\contentsline {chapter}{\numberline {11}Processamento e análise raster}{269}{chapter.11}%
+\contentsline {section}{\numberline {11.1}O modelo de dados}{270}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Racional do processamento raster}{271}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Entendendo seus dados raster}{275}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Etapa 1: Prepare seu ambiente de trabalho}{275}{subsection.11.3.1}%
+\contentsline {subsection}{\numberline {11.3.2}Etapa 2: Entenda o que você está olhando}{279}{subsection.11.3.2}%
+\contentsline {subsection}{\numberline {11.3.3}Quiz}{296}{subsection.11.3.3}%
+\contentsline {section}{\numberline {11.4}Introdução ao trabalho com dados raster}{297}{section.11.4}%
+\contentsline {subsection}{\numberline {11.4.1}Quiz}{310}{subsection.11.4.1}%
+\contentsline {section}{\numberline {11.5}Trabalho com dados raster e vetoriais}{311}{section.11.5}%
+\contentsline {subsection}{\numberline {11.5.1}Quiz}{334}{subsection.11.5.1}%
+\contentsline {section}{\numberline {11.6}Referências}{334}{section.11.6}%
+\contentsline {section}{\numberline {11.7}Notas}{334}{section.11.7}%
+\contentsline {chapter}{\numberline {12}Plugins QGIS}{335}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Introdução à mentalidade do plugin}{335}{section.12.1}%
+\contentsline {section}{\numberline {12.2}O gerenciador de plugins}{336}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}Quiz}{343}{subsection.12.2.1}%
+\contentsline {section}{\numberline {12.3}Alguns plugins interessantes}{344}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}Discovery}{345}{subsection.12.3.1}%
+\contentsline {subsection}{\numberline {12.3.2}Polygon Divider}{348}{subsection.12.3.2}%
+\contentsline {subsection}{\numberline {12.3.3}Load Them All}{349}{subsection.12.3.3}%
+\contentsline {subsection}{\numberline {12.3.4}Raster tracer}{353}{subsection.12.3.4}%
+\contentsline {subsection}{\numberline {12.3.5}Active Fire}{357}{subsection.12.3.5}%
+\contentsline {subsection}{\numberline {12.3.6}\href {https://github.com/tomchadwin/qgis2web}{Qgis2web}}{358}{subsection.12.3.6}%
+\contentsline {subsection}{\numberline {12.3.7}DataPlotly}{361}{subsection.12.3.7}%
+\contentsline {subsection}{\numberline {12.3.8}Plugin QuickMapServices / OpenLayers}{369}{subsection.12.3.8}%
+\contentsline {subsection}{\numberline {12.3.9}Table2Style}{374}{subsection.12.3.9}%
+\contentsline {subsection}{\numberline {12.3.10}ORS Tools}{382}{subsection.12.3.10}%
+\contentsline {subsection}{\numberline {12.3.11}Quiz}{389}{subsection.12.3.11}%
