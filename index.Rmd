@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 knitr::include_graphics('media/cover/cover.jpg', dpi = NA)
 ```
 
-# Edite esse livro! ;)
+# Edite esse livro!
 Este ebook está disponível atualmente como uma página web - [https://gis.escoladedados.org/](https://gis.escoladedados.org/) - e em  um repositório - [https://github.com/escola-de-dados/GIS-curriculum/](https://github.com/escola-de-dados/GIS-curriculum/).
 
 Caso encontre algum erro ou informação desatualizada, por favor, abra uma issue ou faça um `pull request` em nosso repositório ([https://github.com/escola-de-dados/GIS-curriculum/issues/new/choose](https://github.com/escola-de-dados/GIS-curriculum/issues/new/choose)). Na versão HTML do livro, você também pode clicar no botão de editar.
