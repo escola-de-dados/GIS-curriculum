@@ -1,6 +1,6 @@
 # Geodados: uma introdução digital
 
-Publicação online e colaborativa com os conteúdos deste [currículo desenvolvido pela School of Data sobre dados espaciais]](https://github.com/school-of-data/GIS-curriculum). O código faz uso de R Markdown, [bookdown](https://github.com/rstudio/bookdown) e o Github Actions para compilar de forma automatizada as edições de conteúdo nos seguintes arquivos:
+Publicação online e colaborativa com os conteúdos deste [currículo desenvolvido pela School of Data sobre dados espaciais](https://github.com/school-of-data/GIS-curriculum). O código faz uso de R Markdown, [bookdown](https://github.com/rstudio/bookdown) e o Github Actions para compilar de forma automatizada as edições de conteúdo nos seguintes arquivos:
 
 - PDF: [https://gis.escoladedados.org/ebook-gis.pdf](https://gis.escoladedados.org/ebook-gis.pdf)
 - EPUB: [https://gis.escoladedados.org/ebook-gis.epub](https://gis.escoladedados.org/ebook-gis.epub)
