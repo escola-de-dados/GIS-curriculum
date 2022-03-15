@@ -4,12 +4,12 @@
 
 Este módulo serve como uma introdução suave aos conceitos geográficos necessários para trabalhar com sistemas de informação geográfica (SIG, ou GIS em língua inglesa). Ao final deste módulo, os alunos deverão compreender os seguintes conceitos:
 
-*   projeções cartográficas
-*   sistemas de referência de coordenadas
-*   formatos de dados espaciais (exemplo: vetores e rasters)
-*   componentes e funções de um SIG
-*   usos de um SIG
-*   exemplos de uso de GIS e outras aplicações geoespaciais
+*   projeções cartográficas;
+*   sistemas de referência de coordenadas;
+*   formatos de dados espaciais (exemplo: vetores e rasters);
+*   componentes e funções de um SIG;
+*   usos de um SIG;
+*   exemplos de uso de GIS e outras aplicações geoespaciais.
 
 Além disso, este módulo irá também introduzir alguns conceitos chave de softwares livres e de código aberto (*Free and Open Source Software*, ou FOSS) e softwares livres e de código aberto para aplicações geoespaciais (FOSS4G).
 
