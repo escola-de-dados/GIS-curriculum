@@ -47,6 +47,6 @@ Ebook: Escola de Dados/Open Knowledge Brasil
 
 ## Conjuntos de dados
 
-Todos os conjuntos de dados utilizados nesta publicação estão disponíveis no repositório: [https://github.com/escola-de-dados/GIS-curriculum/tree/gh-pages/data](https://github.com/escola-de-dados/GIS-curriculum/tree/gh-pages/data)
+Todos os conjuntos de dados utilizados nesta publicação estão disponíveis no repositório: [https://github.com/escola-de-dados/GIS-curriculum/tree/main/data](https://github.com/escola-de-dados/GIS-curriculum/tree/main/data)
 
-Se preferir, baixe o arquivo `.zip` do repositório e localize os arquivos na pasta `data`: [https://github.com/escola-de-dados/GIS-curriculum/archive/refs/heads/gh-pages.zip](https://github.com/escola-de-dados/GIS-curriculum/archive/refs/heads/gh-pages.zip)
+Se preferir, baixe o arquivo `.zip` do repositório e localize os arquivos na pasta `data`: [https://github.com/escola-de-dados/GIS-curriculum/archive/refs/heads/main.zip](https://github.com/escola-de-dados/GIS-curriculum/archive/refs/heads/main.zip)
