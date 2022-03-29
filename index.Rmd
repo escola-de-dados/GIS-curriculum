@@ -43,7 +43,9 @@ Tradução e edição em português: Bernardo Loureiro
 
 Realização: School of Data/Open Knowledge
 
-Ebook: Escola de Dados/Open Knowledge Brasil
+Revisão e editoração: Adriano Belisario e Anicely Santos (Escola de Dados/Open Knowledge Brasil)
+
+Apoio: Beatriz Milz
 
 ## Conjuntos de dados
 
