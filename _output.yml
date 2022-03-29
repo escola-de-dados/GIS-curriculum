@@ -10,7 +10,7 @@ bookdown::gitbook:
         <li><a href="./">Geodados: uma introdução gentil</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com o bookdown</a></li>
-    edit: https://github.com/escola-de-dados/GIS-curriculum/edit/gh-pages/%s
+    edit: https://github.com/escola-de-dados/GIS-curriculum/edit/main/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   dev: png
