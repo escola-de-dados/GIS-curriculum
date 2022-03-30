@@ -15,7 +15,7 @@ Além disso, este módulo irá também introduzir alguns conceitos chave de soft
 
 As ferramentas e recursos necessários para este módulo são:
 
-*   computador
+*   computador;
 *   conexão de internet
 
 Pré-requisitos:
